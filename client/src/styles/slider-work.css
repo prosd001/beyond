@@ -1,0 +1,21 @@
+.prev-arrow {
+  position: absolute;
+  top: -100px;
+  left: 46%;
+}
+.next-arrow {
+  position: absolute;
+  top: -100px;
+  left: 51%;
+}
+
+@media only screen and (max-width: 630px) {
+  .prev-arrow {
+    top: -100px;
+    left: 38%;
+  }
+  .next-arrow {
+    top: -100px;
+    left: 53%;
+  }
+}

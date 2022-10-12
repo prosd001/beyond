@@ -1,0 +1,31 @@
+.why-horses-bg {
+  background: url("../assets/why_horses_bg.png");
+  background-repeat: no-repeat;
+  background-position: 80%;
+}
+
+.why-trees-bg {
+  background: url("../assets/why_trees_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.why-bees-bg {
+  background: url("../assets/why_bees_bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media only screen and (max-width: 630px) {
+  .why-horses-bg {
+    background: url("../assets/why_horses_bg.png");
+    background-repeat: no-repeat;
+    background-position: left;
+  }
+
+  .why-trees-bg {
+    background: url("../assets/why_trees_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+  }
+}

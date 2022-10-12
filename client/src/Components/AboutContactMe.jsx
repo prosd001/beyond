@@ -1,0 +1,116 @@
+import { ReactComponent as PersonIcon } from "../assets/contact-person-icon.svg";
+import { ReactComponent as MailIcon } from "../assets/contact-mail-icon.svg";
+import { ReactComponent as LocationIcon } from "../assets/contact-location-icon.svg";
+import { ReactComponent as FacebookIcon } from "../assets/contact-facebook.svg";
+import { ReactComponent as LinkedinIcon } from "../assets/contact-linkedin.svg";
+import { useRef, useState } from "react";
+
+const AboutContactMe = () => {
+  const [loading, setLoading] = useState(false);
+
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const subRef = useRef();
+  const msgRef = useRef();
+
+  const click = async () => {
+    setLoading(true);
+    const name = nameRef.current.value;
+    const email = emailRef.current.value;
+    const subject = subRef.current.value;
+    const message = msgRef.current.value;
+
+    if ((name, email)) {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}/api/contacts/add-contact`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, subject, message }),
+        }
+      );
+
+      const responseData = await response.json();
+      if (responseData.success) {
+        setLoading(false);
+      }
+    }
+  };
+
+  return (
+    <div className="bg-[#252C08]">
+      <div className="max-w-[1400px] mx-auto py-24 xl:flex justify-around p-4">
+        <div className="flex items-center">
+          <div className="flex flex-col justify-center">
+            <h3 className="font-bold xl:text-[54px] text-white text-[40px]">
+              Contact <span className="text-[#84904B]">Me</span>
+            </h3>
+            <div className="flex items-center justify-start gap-x-3 mt-6">
+              <PersonIcon />
+              <p className="text-[#9AA098]">Karine Roy</p>
+            </div>
+            <div className="flex items-center justify-start gap-x-3 mt-4">
+              <MailIcon />
+              <p className="text-[#9AA098]">beyondwordzca@gmail.com</p>
+            </div>
+            <div className="flex items-center justify-start gap-x-3 mt-4">
+              <LocationIcon />
+              <p className="text-[#9AA098]">Carignan, QC</p>
+            </div>
+            <div className="flex items-center justify-start gap-x-6 ml-1 mt-7">
+              <FacebookIcon className="cursor-pointer" />
+              <LinkedinIcon className="cursor-pointer" />
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col mt-6 xl:mt-0">
+          <div>
+            <p className="font-semibold text-lg mb-3 text-[#9AA098]">
+              Your Info
+            </p>
+            <div className="grid grid-cols-2 gap-x-2">
+              <input
+                ref={emailRef}
+                type="email"
+                placeholder="Email"
+                className="py-2 bg-[#223F1D] border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50"
+              />
+              <input
+                ref={nameRef}
+                type="text"
+                placeholder="Name"
+                className="py-2 bg-[#223F1D] border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50"
+              />
+            </div>
+          </div>
+          <div>
+            <p className="font-semibold text-lg mb-3 mt-2 text-[#9AA098]">
+              Subject
+            </p>
+            <input
+              ref={subRef}
+              type="text"
+              placeholder="Insert your subject"
+              className="py-2 bg-[#223F1D] w-full border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50"
+            />
+          </div>
+          <div>
+            <p className="font-semibold text-lg mb-3 mt-2 text-[#9AA098]">
+              Message
+            </p>
+            <textarea
+              ref={msgRef}
+              className="py-2 bg-[#223F1D] w-full min-h-[100px] border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50"
+              placeholder="Your message"
+            />
+          </div>
+          <button className="btn-gradient-bg w-full text-white font-bold py-3 mt-4">
+            {loading ? "SENDING..." : "SEND YOUR MESSAGE"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AboutContactMe;

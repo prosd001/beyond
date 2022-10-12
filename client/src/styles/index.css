@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap");
+
+@layer base {
+  html {
+    font-family: "Red Hat Display", sans-serif;
+    color: #05040d;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .btn-gradient-bg {
+    background: linear-gradient(
+      90deg,
+      #40471b 0%,
+      #8c8843 51.56%,
+      #e0cf6f 100%
+    );
+  }
+
+  .first__package ul li::before {
+    content: "\2022";
+    color: #e0cf6f;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+  }
+  .second__package ul li::before {
+    content: "\2022";
+    color: #e0cf6f;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+  }
+  .third__package ul li::before {
+    content: "\2022";
+    color: #84904b;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+  }
+  .blog {
+  }
+  .blog p:first-child {
+    @apply first-letter:font-bold leading-9;
+  }
+  .blog p {
+    @apply text-xl leading-9;
+  }
+
+  .nav-btn-active {
+    @apply uppercase w-[156px] bg-[#84904B] text-sm text-white font-bold py-[10px] px-[15px];
+  }
+  .nav-btn-inactive {
+    @apply uppercase w-[156px] text-sm text-[#84904B] font-bold py-[10px] px-[15px];
+  }
+}
