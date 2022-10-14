@@ -4,17 +4,21 @@ import logoDark from "../assets/contact-me-logo.png";
 import { ReactComponent as Hamopen } from "../assets/hamburger-open.svg";
 import { ReactComponent as HamoClose } from "../assets/hamburger-close.svg";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { localizationState } from "../atoms/localizationAtom";
 
 const Navbar = () => {
+  const [lang, setLang] = useRecoilState(localizationState);
+
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   // Instances
   const location = useLocation();
 
   if (mobileNavOpen) {
     return (
-      <section className="absolute top-0 bg-[#05040D] z-50 w-full">
+      <section className="absolute top-0 bg-[#604945] z-50 w-full">
         <div className="flex justify-between px-3 py-2 items-center">
-          <img src={logoWhite} alt="" className="cursor-pointer h-[80px]" />
+          <img src={logoWhite} alt="" className=" h-[80px]" />
           <span
             onClick={() => {
               setMobileNavOpen(false);
@@ -48,14 +52,6 @@ const Navbar = () => {
           >
             <Link to="/programs">Programs</Link>
           </p>
-          <p
-            className="uppercase cursor-pointer mb-4"
-            onClick={() => {
-              setMobileNavOpen(false);
-            }}
-          >
-            <Link to="/articales">Articales & Resources</Link>
-          </p>
         </div>
         <div className="flex items-center flex-col mt-4 gap-y-3">
           <button
@@ -75,18 +71,126 @@ const Navbar = () => {
             PERSONAL DEVELOPMENT
           </button>
           <div className="text-white divide-x flex mb-8">
-            <p className="font-bold mr-1 cursor-pointer">EN</p>
-            <p className="pl-1 cursor-pointer">FR</p>
+            <p
+              className={`${
+                !lang ? "font-bold mr-1 cursor-pointer" : " mr-1 cursor-pointer"
+              }`}
+              onClick={() => {
+                setLang(false);
+              }}
+            >
+              EN
+            </p>
+            <p
+              className={`${
+                lang ? "font-bold pl-1 cursor-pointer" : "pl-1 cursor-pointer"
+              }`}
+              onClick={() => {
+                setLang(true);
+              }}
+            >
+              FR
+            </p>
           </div>
         </div>
       </section>
     );
   }
 
-  return location.pathname === "/" || location.pathname === "/programs" ? (
+  if (location.pathname === "/" || location.pathname === "/home-businesses") {
+    return (
+      <>
+        <section className="absolute top-0 xl:hidden flex justify-between items-center bg-transparent z-50 w-full px-3 py-2">
+          <img src={logoWhite} alt="" className=" h-[80px]" />
+          <span
+            onClick={() => {
+              setMobileNavOpen(true);
+            }}
+          >
+            <Hamopen className="w-7 h-7" />
+          </span>
+        </section>
+        <section className="absolute bg-transparent top-4 z-50 px-10 xl:flex hidden justify-evenly w-full">
+          <img src={logoWhite} alt="" />
+          <div className="flex items-center text-white gap-8 ml-[100px]">
+            <p
+              className={`${
+                location.pathname === "/"
+                  ? "uppercase cursor-pointer font-bold"
+                  : "uppercase cursor-pointer"
+              }`}
+            >
+              <Link to="/">Home</Link>
+            </p>
+            <p className="uppercase cursor-pointer">
+              <Link to="/about">About</Link>
+            </p>
+            <p
+              className={`${
+                location.pathname === "/programs" ||
+                location.pathname === "/programs-businesses"
+                  ? "uppercase cursor-pointer font-bold"
+                  : "uppercase cursor-pointer"
+              }`}
+            >
+              <Link to="/programs">Programs</Link>
+            </p>
+          </div>
+          <div className="flex items-center">
+            <button
+              className={`${
+                location.pathname === "/home-businesses"
+                  ? "nav-btn-active"
+                  : "nav-btn-inactive"
+              }`}
+            >
+              <Link to="/home-businesses">BUSINESSES & MANAGERS</Link>
+            </button>
+            <button
+              className={`${
+                location.pathname === "/" || location.pathname === "/"
+                  ? "nav-btn-active"
+                  : "nav-btn-inactive"
+              }`}
+            >
+              <Link to="/">PERSONAL DEVELOPMENT</Link>
+            </button>
+            <div className="text-white divide-x flex xl:ml-3">
+              <p
+                className={`${
+                  !lang
+                    ? "font-bold mr-1 cursor-pointer"
+                    : " mr-1 cursor-pointer"
+                }`}
+                onClick={() => {
+                  setLang(false);
+                }}
+              >
+                EN
+              </p>
+              <p
+                className={`${
+                  lang ? "font-bold pl-1 cursor-pointer" : "pl-1 cursor-pointer"
+                }`}
+                onClick={() => {
+                  setLang(true);
+                }}
+              >
+                FR
+              </p>
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  }
+
+  return location.pathname === "/" ||
+    location.pathname === "/programs" ||
+    location.pathname === "/programs-businesses" ? (
     <>
       <section className="absolute top-0 xl:hidden flex justify-between items-center bg-transparent z-50 w-full px-3 py-2">
-        <img src={logoWhite} alt="" className="cursor-pointer h-[80px]" />
+        <img src={logoWhite} alt="" className=" h-[80px]" />
         <span
           onClick={() => {
             setMobileNavOpen(true);
@@ -96,27 +200,71 @@ const Navbar = () => {
         </span>
       </section>
       <section className="absolute bg-transparent top-4 z-50 px-10 xl:flex hidden justify-evenly w-full">
-        <img src={logoWhite} alt="" className="cursor-pointer" />
+        <img src={logoWhite} alt="" />
         <div className="flex items-center text-white gap-8 ml-[100px]">
-          <p className="uppercase cursor-pointer font-bold">
+          <p
+            className={`${
+              location.pathname === "/"
+                ? "uppercase cursor-pointer font-bold"
+                : "uppercase cursor-pointer"
+            }`}
+          >
             <Link to="/">Home</Link>
           </p>
           <p className="uppercase cursor-pointer">
             <Link to="/about">About</Link>
           </p>
-          <p className="uppercase cursor-pointer">
+          <p
+            className={`${
+              location.pathname === "/programs" ||
+              location.pathname === "/programs-businesses"
+                ? "uppercase cursor-pointer font-bold"
+                : "uppercase cursor-pointer"
+            }`}
+          >
             <Link to="/programs">Programs</Link>
-          </p>
-          <p className="uppercase cursor-pointer">
-            <Link to="/articales">Articales & Resources</Link>
           </p>
         </div>
         <div className="flex items-center">
-          <button className="nav-btn-active">BUSINESSES & MANAGERS</button>
-          <button className="nav-btn-inactive">PERSONAL DEVELOPMENT</button>
-          <div className="text-white divide-x flex">
-            <p className="font-bold mr-1 cursor-pointer">EN</p>
-            <p className="pl-1 cursor-pointer">FR</p>
+          <button
+            className={`${
+              location.pathname === "/programs-businesses"
+                ? "nav-btn-active"
+                : "nav-btn-inactive"
+            }`}
+          >
+            <Link to="/programs-businesses">BUSINESSES & MANAGERS</Link>
+          </button>
+          <button
+            className={`${
+              location.pathname === "/programs" || location.pathname === "/"
+                ? "nav-btn-active"
+                : "nav-btn-inactive"
+            }`}
+          >
+            <Link to="/programs">PERSONAL DEVELOPMENT</Link>
+          </button>
+          <div className="text-white divide-x flex xl:ml-3">
+            <p
+              className={`${
+                !lang ? "font-bold mr-1 cursor-pointer" : " mr-1 cursor-pointer"
+              }`}
+              onClick={() => {
+                setLang(false);
+              }}
+            >
+              EN
+            </p>
+            <p
+              className={`${
+                lang ? "font-bold pl-1 cursor-pointer" : "pl-1 cursor-pointer"
+              }`}
+              onClick={() => {
+                setLang(true);
+              }}
+            >
+              FR
+            </p>
           </div>
         </div>
       </section>
@@ -130,7 +278,7 @@ const Navbar = () => {
             setMobileNavOpen(true);
           }}
         >
-          <Hamopen className="w-7 h-7" />
+          <Hamopen className="w-7 h-7 mr-2" />
         </span>
       </section>
       <section className="absolute bg-white top-0 z-50 px-10 xl:flex hidden justify-evenly w-full text-[#604945] py-5">
@@ -139,20 +287,46 @@ const Navbar = () => {
           <p className="uppercase cursor-pointer">
             <Link to="/">Home</Link>
           </p>
-          <p className="uppercase cursor-pointer font-bold text-[#E0CF6F]">
+          <p
+            className={`${
+              location.pathname === "/about"
+                ? "uppercase cursor-pointer font-bold text-[#E0CF6F]"
+                : "uppercase cursor-pointer"
+            }`}
+          >
             <Link to="/about">About</Link>
           </p>
           <p className="uppercase cursor-pointer">
             <Link to="/programs">Programs</Link>
           </p>
-          <p className="uppercase cursor-pointer">
-            <Link to="/articales">Articales & Resources</Link>
-          </p>
         </div>
+
         <div className="flex items-center">
           <div className="divide-x flex divide-[#393B3F]">
-            <p className="font-bold mr-1 cursor-pointer text-[#E0CF6F]">EN</p>
-            <p className="pl-1 cursor-pointer">FR</p>
+            <p
+              className={`${
+                !lang
+                  ? "font-bold mr-1 cursor-pointer text-[#E0CF6F]"
+                  : " mr-1 cursor-pointer"
+              }`}
+              onClick={() => {
+                setLang(false);
+              }}
+            >
+              EN
+            </p>
+            <p
+              className={`${
+                lang
+                  ? "font-bold pl-1 cursor-pointer text-[#E0CF6F]"
+                  : "pl-1 cursor-pointer"
+              }`}
+              onClick={() => {
+                setLang(true);
+              }}
+            >
+              FR
+            </p>
           </div>
         </div>
       </section>

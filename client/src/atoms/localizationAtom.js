@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 const localizationState = atom({
     key: "localizationState",
-    default: 'en',
+    default: false,
 });
 
 export { localizationState };

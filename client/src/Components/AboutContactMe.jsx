@@ -4,9 +4,12 @@ import { ReactComponent as LocationIcon } from "../assets/contact-location-icon.
 import { ReactComponent as FacebookIcon } from "../assets/contact-facebook.svg";
 import { ReactComponent as LinkedinIcon } from "../assets/contact-linkedin.svg";
 import { useRef, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { localizationState } from "../atoms/localizationAtom";
 
 const AboutContactMe = () => {
   const [loading, setLoading] = useState(false);
+  const lang = useRecoilValue(localizationState);
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -40,11 +43,18 @@ const AboutContactMe = () => {
   return (
     <div className="bg-[#252C08]">
       <div className="max-w-[1400px] mx-auto py-24 xl:flex justify-around p-4">
-        <div className="flex items-center">
+        <div className="flex items-center" data-aos="fade-right">
           <div className="flex flex-col justify-center">
-            <h3 className="font-bold xl:text-[54px] text-white text-[40px]">
-              Contact <span className="text-[#84904B]">Me</span>
-            </h3>
+            {!lang && (
+              <h3 className="font-bold xl:text-[54px] text-white text-[40px]">
+                Contact <span className="text-[#84904B]">Me</span>
+              </h3>
+            )}
+            {lang && (
+              <h3 className="font-bold xl:text-[54px] text-white text-[40px]">
+                Contactez <span className="text-[#84904B]">Moi</span>
+              </h3>
+            )}
             <div className="flex items-center justify-start gap-x-3 mt-6">
               <PersonIcon />
               <p className="text-[#9AA098]">Karine Roy</p>
@@ -63,7 +73,7 @@ const AboutContactMe = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col mt-6 xl:mt-0">
+        <div className="flex flex-col mt-6 xl:mt-0" data-aos="fade-left">
           <div>
             <p className="font-semibold text-lg mb-3 text-[#9AA098]">
               Your Info
@@ -104,7 +114,10 @@ const AboutContactMe = () => {
               placeholder="Your message"
             />
           </div>
-          <button className="btn-gradient-bg w-full text-white font-bold py-3 mt-4">
+          <button
+            className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
+            onClick={click}
+          >
             {loading ? "SENDING..." : "SEND YOUR MESSAGE"}
           </button>
         </div>

@@ -22,16 +22,17 @@ const Footer = () => {
       </div>
       <div className="font-bold -ml-10 xl:ml-0 mt-6">
         <p className="cursor-pointer my-1">
-          <Link>Home</Link>
+          <Link to="/">Home</Link>
         </p>
         <p className="cursor-pointer my-1">
-          <Link>About</Link>
+          <Link to="/about">About</Link>
         </p>
         <p className="cursor-pointer my-1">
-          <Link>Programs</Link>
+          <Link to="/programs">Programs</Link>
         </p>
-        <p className="cursor-pointer my-1">Articales & Resources</p>
-        <p className="cursor-pointer my-1">Beyond Worldz Academy</p>
+        <p className="cursor-pointer my-1">
+          <Link to="/articales">Articles & Resources</Link>
+        </p>
       </div>
     </footer>
   );

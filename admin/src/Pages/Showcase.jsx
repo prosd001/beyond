@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-
 const Showcase = () => {
   const [showcase, setShowcase] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -172,64 +171,66 @@ const Showcase = () => {
         )}
         {!loading && (
           <Box>
-            <Box
-              bg="white"
-              p="20px"
-              width="full"
-              minWidth="700px"
-              marginY="50px"
-            >
-              <Table
-                variant="striped"
-                colorScheme="gray"
+            {showcase.length !== 0 && (
+              <Box
+                bg="white"
+                p="20px"
                 width="full"
-                fontSize="18px"
+                minWidth="700px"
+                marginY="50px"
               >
-                <TableCaption fontSize="20px" color="#84904B">
-                  Showcase Content Slugs
-                </TableCaption>
-                <Thead>
-                  <Tr>
-                    <Th fontSize="20px" color="#84904B">
-                      Type
-                    </Th>
-                    <Th fontSize="20px" color="#84904B">
-                      Slug
-                    </Th>
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  <Tr>
-                    <Td>Popular</Td>
-                    <Td>{showcase[0].popular.slug}</Td>
-                  </Tr>
-                  <Tr>
-                    <Td>Large</Td>
-                    <Td>{showcase[0].featured_big.slug}</Td>
-                  </Tr>
-                  <Tr>
-                    <Td>Medium first</Td>
-                    <Td>{showcase[0].featured_small_one.slug}</Td>
-                  </Tr>
-                  <Tr>
-                    <Td>Medium second</Td>
-                    <Td>{showcase[0].featured_small_two.slug}</Td>
-                  </Tr>
-                  <Tr>
-                    <Td>Small first</Td>
-                    <Td>{showcase[0].featured_smallest_one.slug}</Td>
-                  </Tr>
-                  <Tr>
-                    <Td>Small second</Td>
-                    <Td>{showcase[0].featured_smallest_two.slug}</Td>
-                  </Tr>
-                  <Tr>
-                    <Td>Small third</Td>
-                    <Td>{showcase[0].featured_smallest_three.slug}</Td>
-                  </Tr>
-                </Tbody>
-              </Table>
-            </Box>
+                <Table
+                  variant="striped"
+                  colorScheme="gray"
+                  width="full"
+                  fontSize="18px"
+                >
+                  <TableCaption fontSize="20px" color="#84904B">
+                    Showcase Content Slugs
+                  </TableCaption>
+                  <Thead>
+                    <Tr>
+                      <Th fontSize="20px" color="#84904B">
+                        Type
+                      </Th>
+                      <Th fontSize="20px" color="#84904B">
+                        Slug
+                      </Th>
+                    </Tr>
+                  </Thead>
+                  <Tbody>
+                    <Tr>
+                      <Td>Popular</Td>
+                      <Td>{showcase[0].popular.slug}</Td>
+                    </Tr>
+                    <Tr>
+                      <Td>Large</Td>
+                      <Td>{showcase[0].featured_big.slug}</Td>
+                    </Tr>
+                    <Tr>
+                      <Td>Medium first</Td>
+                      <Td>{showcase[0].featured_small_one.slug}</Td>
+                    </Tr>
+                    <Tr>
+                      <Td>Medium second</Td>
+                      <Td>{showcase[0].featured_small_two.slug}</Td>
+                    </Tr>
+                    <Tr>
+                      <Td>Small first</Td>
+                      <Td>{showcase[0].featured_smallest_one.slug}</Td>
+                    </Tr>
+                    <Tr>
+                      <Td>Small second</Td>
+                      <Td>{showcase[0].featured_smallest_two.slug}</Td>
+                    </Tr>
+                    <Tr>
+                      <Td>Small third</Td>
+                      <Td>{showcase[0].featured_smallest_three.slug}</Td>
+                    </Tr>
+                  </Tbody>
+                </Table>
+              </Box>
+            )}
             <Box>
               <Heading
                 as="h1"
