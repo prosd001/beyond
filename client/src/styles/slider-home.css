@@ -6,6 +6,7 @@
   position: absolute;
   bottom: 280px;
   left: 41%;
+  z-index: 100;
 }
 
 .button__bar li {
@@ -182,6 +183,19 @@
     display: inline-block;
     width: 36px;
     height: 5px;
+  }
+
+  .home__sbg_p {
+    background-position: 55%;
+  }
+  .home__sbg2_p {
+    background-position: 39%;
+  }
+  .home__sbg3_p {
+    background-position: 65%;
+  }
+  .home__sbg4_p {
+    background-position: 38%;
   }
 
   .home__sbg2 {

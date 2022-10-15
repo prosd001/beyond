@@ -2,7 +2,6 @@ import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
 
 const RichEditor = ({ setContent, content }) => {
-  console.log(content);
   function handleBlur(event, editorContents) {
     setContent(editorContents);
   }

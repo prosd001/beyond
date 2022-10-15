@@ -8,6 +8,7 @@ import CreateArticale from "./Pages/CreateArticale";
 import EditArticale from "./Pages/EditArticale";
 import GuideList from "./Pages/GuideList";
 import Home from "./Pages/Home";
+import Settings from "./Pages/Settings";
 import Showcase from "./Pages/Showcase";
 import Signin from "./Pages/Signin";
 import UploadImage from "./Pages/UploadImage";
@@ -45,6 +46,7 @@ const App = () => {
               <Route path="/create-articale" element={<CreateArticale />} />
               <Route path="/edit-articale/:slug" element={<EditArticale />} />
               <Route path="/showcase" element={<Showcase />} />
+              <Route path="/settings" element={<Settings />} />
               <Route path="/waiting-list" element={<WaitingList />} />
               <Route path="/download-list" element={<GuideList />} />
             </Routes>

@@ -32,8 +32,6 @@ const EditArticale = () => {
   const params = useParams();
   const toast = useToast();
 
-  console.log(params.slug);
-
   // Fetching articales
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_BASE_URL}/api/articale/${params.slug}`)

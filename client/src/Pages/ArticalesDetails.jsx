@@ -113,26 +113,26 @@ const ArticalesDetails = () => {
         )}
         {!loading && (
           <div>
-            <div className="bg-[#F2F4F5] max-w-[1300px] flex mx-auto p-10 gap-x-8">
+            <div className="bg-[#F2F4F5] max-w-[1300px] flex mx-auto p-10 gap-x-8 flex-col xl:flex-row">
               <img
                 src={articale.banner_url}
                 alt=""
-                className="w-[60%] object-cover"
+                className="xl:w-[60%] w-full object-cover"
               />
               <div className="flex flex-col justify-center">
-                <p className="text-[#9AA098] tracking-[6px]">
+                <p className="text-[#9AA098] tracking-[6px] mt-2">
                   {articale.type === "Resource" ? "GUIDE RESOURCE" : "ARTICLE"}
                 </p>
-                <h2 className="text-[40px] leading-[45px] my-4">
+                <h2 className="xl:text-[40px] leading-[45px] xl:my-4 text-[30px] my-3">
                   {articale.title}
                 </h2>
-                <p className="text-[#393B3F] text-xl">
+                <p className="text-[#393B3F] xl:text-xl text-lg">
                   {format(new Date(articale.updatedAt), "MMMM dd, yyyy")}
                 </p>
               </div>
             </div>
 
-            <div className="blog max-w-[1100px] mx-auto mt-6">
+            <div className="blog max-w-[1100px] mx-auto mt-6 p-4">
               {parse(content.content)}
             </div>
 

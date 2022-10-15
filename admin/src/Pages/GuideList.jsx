@@ -94,7 +94,7 @@ const GuideList = () => {
             mb="30px"
             color="#604945"
           >
-            WAITING LIST
+            DOWNLOAD LIST
           </Heading>
           <Box bgColor={"white"} py={"15px"}>
             <Box>
@@ -309,6 +309,7 @@ const GuideList = () => {
                     </Box>
                   ))}
                 </TabPanel>
+
                 <TabPanel>
                   {newWaitings.map((waiting) => (
                     <Box
@@ -327,6 +328,19 @@ const GuideList = () => {
                           }}
                         >
                           {waiting.name}
+                        </span>
+                      </Text>
+                      <Text color={"#84904B"} fontWeight="bold">
+                        Downloads: <br />
+                        <span
+                          style={{
+                            color: "black",
+                            fontWeight: "500",
+                          }}
+                        >
+                          {waiting.downloaded_resources.map((down) => (
+                            <Text>{down}</Text>
+                          ))}
                         </span>
                       </Text>
                       <Box
@@ -452,6 +466,7 @@ const GuideList = () => {
                     </Box>
                   ))}
                 </TabPanel>
+
                 <TabPanel>
                   {archivedWaitings.map((waiting) => (
                     <Box
@@ -470,6 +485,19 @@ const GuideList = () => {
                           }}
                         >
                           {waiting.name}
+                        </span>
+                      </Text>
+                      <Text color={"#84904B"} fontWeight="bold">
+                        Downloads: <br />
+                        <span
+                          style={{
+                            color: "black",
+                            fontWeight: "500",
+                          }}
+                        >
+                          {waiting.downloaded_resources.map((down) => (
+                            <Text>{down}</Text>
+                          ))}
                         </span>
                       </Text>
                       <Box

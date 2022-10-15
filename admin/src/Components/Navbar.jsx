@@ -21,11 +21,16 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { useRecoilState } from "recoil";
+import { adminAuthState } from "../atoms/authAtom";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+  // Global states
+  const [adminToken, setAdminToken] = useRecoilState(adminAuthState);
+  const navigate = useNavigate();
 
   return (
     <Box>
@@ -77,10 +82,30 @@ export default function Navbar() {
             fontSize={"sm"}
             fontWeight={600}
             color={"white"}
+            bg={"green.500"}
+            href={"#"}
+            _hover={{
+              bg: "green.600",
+            }}
+            onClick={() => {
+              navigate("/settings");
+            }}
+          >
+            Update Profile
+          </Button>
+          <Button
+            display={{ base: "none", md: "inline-flex" }}
+            fontSize={"sm"}
+            fontWeight={600}
+            color={"white"}
             bg={"red.500"}
             href={"#"}
             _hover={{
               bg: "red.600",
+            }}
+            onClick={() => {
+              localStorage.removeItem("ADT__BEYOND__WORLDZ");
+              setAdminToken(null);
             }}
           >
             Log Out

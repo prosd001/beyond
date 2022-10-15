@@ -52,8 +52,10 @@ const About = () => {
   const [wmTabIndex, setWmTabIndex] = useState(2);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({
       duration: 2000,
+      once: true,
     });
   }, []);
 
@@ -69,15 +71,15 @@ const About = () => {
           {!lang && (
             <p
               className="absolute xl:top-[35%] xl:left-[45%] top-[39%] left-[35%] xl:text-[64px] text-white font-bold text-[44px]"
-              data-aos="fade-up"
+              data-aos="zoom-in"
             >
               About
             </p>
           )}
           {lang && (
             <p
-              className="absolute xl:top-[35%] xl:left-[45%] top-[39%] left-[35%] xl:text-[64px] text-white font-bold text-[44px] capitalize"
-              data-aos="fade-up"
+              className="absolute xl:top-[35%] xl:left-[42%] top-[39%] left-[27%] xl:text-[64px] text-white font-bold text-[44px] capitalize"
+              data-aos="zoom-in"
             >
               À propos
             </p>
@@ -284,14 +286,14 @@ const About = () => {
                 src={horseImg}
                 alt=""
                 className="w-full"
-                data-aos="fade-right"
+                data-aos="zoom-in"
               />
             </div>
             <div className="xl:w-[600px] mt-4 xl:-mt-3">
               {!lang && (
                 <h3
                   className="font-bold xl:text-[54px] xl:mb-3 text-[40px]"
-                  data-aos="zoom-in"
+                  data-aos="fade-left"
                 >
                   Why <br />
                   <span className="text-[#84904B]">Beyond Wordz</span>
@@ -300,19 +302,16 @@ const About = () => {
               {lang && (
                 <h3
                   className="font-bold xl:text-[54px] xl:mb-3 text-[40px]"
-                  data-aos="zoom-in"
+                  data-aos="fade-left"
                 >
-                  Why <br />
+                  Pourquoi <br />
                   <span className="text-[#84904B]">Beyond Wordz</span>
                 </h3>
               )}
-              <div
-                className="xl:flex text-[#393B3F] xl:gap-10 mt-4 grid grid-cols-2 gap-x-4"
-                data-aos="fade-left"
-              >
+              <div className="xl:flex text-[#393B3F] xl:gap-10 mt-4 grid grid-cols-2 gap-x-4">
                 <div className="flex flex-col gap-y-6">
                   <div className="xl:w-[220px]">
-                    <PersonIcon />
+                    <PersonIcon data-aos="zoom-in" />
                     {!lang && (
                       <p className="mt-2">
                         Because my approach is unique, inspiring, tailored to
@@ -326,8 +325,8 @@ const About = () => {
                       </p>
                     )}
                   </div>
-                  <div className="xl:w-[220px]">
-                    <PersonHeartIcon />
+                  <div className={`xl:w-[220px] ${lang && "xl:mt-6"}`}>
+                    <PersonHeartIcon data-aos="zoom-in" />
                     {!lang && (
                       <p className="mt-2">
                         Because of the effectiveness and impact of experiential,
@@ -343,8 +342,8 @@ const About = () => {
                     )}
                   </div>
                   {lang && (
-                    <div className="xl:w-[220px] xl:mt-7 mt-6">
-                      <CareIcon />
+                    <div className="xl:w-[220px] xl:mt-2 mt-12">
+                      <CareIcon data-aos="zoom-in" />
                       {lang && (
                         <p className="mt-2">
                           Parce que votre croissance aidera également d'autres
@@ -355,7 +354,7 @@ const About = () => {
                   )}
                   {!lang && (
                     <div className="xl:w-[220px]">
-                      <CareIcon />
+                      <CareIcon data-aos="zoom-in" />
                       {!lang && (
                         <p className="mt-2">
                           Because your growth will help other causes grow too.
@@ -367,7 +366,7 @@ const About = () => {
                 </div>
                 <div className="flex flex-col gap-y-6">
                   <div className="xl:w-[220px]">
-                    <HorseIcon />
+                    <HorseIcon data-aos="zoom-in" />
                     {!lang && (
                       <p className="mt-2">
                         Because partnering with horses will accelerate insights
@@ -383,7 +382,7 @@ const About = () => {
                     )}
                   </div>
                   <div className="xl:w-[220px]">
-                    <TreesIcon />
+                    <TreesIcon data-aos="zoom-in" />
                     {!lang && (
                       <p className="mt-2">
                         Because my environment allows you to disconnect in order
@@ -399,7 +398,7 @@ const About = () => {
                     )}
                   </div>
                   <div className="xl:w-[220px] mt-6 xl:mt-0">
-                    <PersonVipIcon />
+                    <PersonVipIcon data-aos="zoom-in" />
                     {!lang && (
                       <p className="mt-2">
                         Simply because you deserve it! Take time for yourself.
@@ -446,20 +445,23 @@ const About = () => {
                   </h3>
                 )}
                 {!lang && (
-                  <p className="text-[#393B3F]">
+                  <p className="text-[#393B3F]" data-aos="zoom-in">
                     Multiple roles but a shared passion that connects them all;
                     that of unleashing human potential and inspiring tomorrow’s
                     leaders, one heart at a time!
                   </p>
                 )}
                 {lang && (
-                  <p className="text-[#393B3F]">
+                  <p className="text-[#393B3F]" data-aos="zoom-in">
                     Plusieurs rôles mais une passion commune qui les relient
                     tous; celle de valoriser le potentiel humain et d'inspirer
                     les leaders de demain, un cœur à la fois !
                   </p>
                 )}
-                <div className="grid xl:grid-cols-3 gap-2 mt-5 grid-cols-2">
+                <div
+                  className="grid xl:grid-cols-3 gap-2 mt-5 grid-cols-2"
+                  data-aos="zoom-in"
+                >
                   <div className="bg-[#252C08] text-[#9AA098] xl:w-full p-8 text-center flex items-center justify-center">
                     {!lang
                       ? "Certified professional NLP coach"
@@ -499,7 +501,7 @@ const About = () => {
               <img src={whyMeBanner} alt="" data-aos="fade-right" />
               <div
                 className="flex justify-center items-center xl:w-[60%]"
-                data-aos="fade-left"
+                data-aos="zoom-in"
               >
                 <div className="">
                   {!lang && (

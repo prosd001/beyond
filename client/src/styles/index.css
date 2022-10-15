@@ -11,6 +11,10 @@
     color: #05040d;
     -webkit-tap-highlight-color: transparent;
   }
+  body {
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
 }
 
 @layer components {
@@ -44,7 +48,11 @@
     display: inline-block;
     width: 1em;
   }
-  .blog {
+  .blog iframe {
+    @apply min-h-[400px];
+  }
+  .blog .se-video-container {
+    @apply !max-h-fit;
   }
   .blog p:first-child {
     @apply first-letter:font-bold leading-9;

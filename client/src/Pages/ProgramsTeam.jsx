@@ -28,6 +28,7 @@ const ProgramsTeam = () => {
     window.scrollTo(0, 0);
     AOS.init({
       duration: 2000,
+      once: true,
     });
   }, []);
 
@@ -37,7 +38,7 @@ const ProgramsTeam = () => {
         <div className="relative w-full max-w-[2000px] mx-auto bg__programs_business xl:h-[1000px] h-[600px]">
           <div
             className="absolute xl:top-[38%] top-[30%] xl:left-[26%] text-center font-bold"
-            data-aos="fade-up"
+            data-aos="zoom-in"
           >
             {lang && (
               <>
@@ -53,7 +54,7 @@ const ProgramsTeam = () => {
           {!lang && (
             <div
               className="absolute xl:top-[38%] top-[30%] xl:left-[32%] text-center font-bold"
-              data-aos="fade-up"
+              data-aos="zoom-in"
             >
               <p className="xl:text-[64px] text-[40px] text-white">
                 Professional Coaching &
@@ -88,7 +89,7 @@ const ProgramsTeam = () => {
                 )}
                 {lang && (
                   <h3 className="text-[#604945] xl:text-[40px] font-bold">
-                    RACCORDEMENT
+                    CONNECTION
                   </h3>
                 )}
               </div>
@@ -126,11 +127,15 @@ const ProgramsTeam = () => {
               )}
             </div>
             <div
-              className="md:w-[50%] p-4 xl:min-h-[300px]"
+              className="md:w-[50%] p-4 xl:min-h-[410px]"
               data-aos="fade-left"
             >
               <iframe
-                src={`https://www.youtube.com/embed/rokGy0huYEA`}
+                src={`${
+                  !lang
+                    ? "https://www.youtube.com/embed/BiWWpDP7qVY"
+                    : "https://www.youtube.com/embed/gkxZXV-VT40"
+                }`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -141,7 +146,10 @@ const ProgramsTeam = () => {
           </div>
 
           <div className="flex xl:justify-center items-center xl:mt-10 p-2 xl:gap-24 justify-around">
-            <div className="text-center xl:w-[300px] flex flex-col justify-center items-center">
+            <div
+              className="text-center xl:w-[300px] flex flex-col justify-center items-center"
+              data-aos="zoom-in"
+            >
               <PersonBrown />
               <p className="text-[#9AA098] text-sm my-2">
                 {!lang ? "Program designed for" : "Ce programme s’adresse à"}
@@ -152,7 +160,7 @@ const ProgramsTeam = () => {
             </div>
             <div
               className="text-center xl:w-[300px] flex flex-col justify-center items-center"
-              data-aos="fade-left"
+              data-aos="zoom-in"
             >
               <WebBrown />
               <p className="text-[#9AA098] text-sm my-2">
@@ -362,105 +370,18 @@ const ProgramsTeam = () => {
           </div>
         </div>
 
-        {/* <div className="max-w-[1400px] mx-auto xl:my-24 bg-[#604945] first__package text-white md:p-5 xl:p-8 p-4 my-4">
-          <p className="text-xl font-bold my-3">
-            {!lang ? "This package includes:" : "Ce forfait inclut:"}
-          </p>
-          {!lang && (
-            <ul className="grid xl:grid-cols-2 gap-x-5 gap-y-3">
-              <li data-aos="fade-left">
-                30-minute virtual call and preliminary questionnaire to clarify
-                your goals and expectations
-              </li>
-              <li data-aos="fade-left">
-                Follow up 45-60 minutes virtual coaching call 7 days after the
-                experience; to circle back on the experience and anchor the
-                insights for a long lasting impact
-              </li>
-              <li data-aos="fade-left">
-                Personalized coaching session focused on a project, an objective
-                or a personal or professional issue/challenge
-              </li>
-              <li data-aos="fade-left">
-                Document to deepen your personal reflection
-              </li>
-              <li data-aos="fade-left">
-                The coaching approach combines both NLP (neuro-linguistic
-                programming) and horse-assisted coaching (which includes
-                observation and interaction with 2 horses)
-              </li>
-
-              <li data-aos="fade-left">Snack and drink</li>
-            </ul>
-          )}
-
-          {lang && (
-            <ul className="grid xl:grid-cols-2 gap-x-5 gap-y-3">
-              <li data-aos="fade-left">
-                Rencontre virtuelle de 30 minutes et questionnaire préliminaire
-                afin de bien cibler les besoins et attentes
-              </li>
-              <li data-aos="fade-left">
-                Coaching virtuel de 45-60 minutes 7 jours après la séance;
-                retour sur l’expérience et ancrage des prises de conscience afin
-                de faire perdurer leur impact
-              </li>
-              <li data-aos="fade-left">
-                Séance de coaching personnalisé axée sur un projet, un objectif
-                ou un enjeu/défi personnel ou professionnel
-              </li>
-              <li data-aos="fade-left">
-                Document pour approfondir votre réflexion personnelle
-              </li>
-              <li data-aos="fade-left">
-                L’approche de coaching combine à la fois la PNL (programmation
-                neuro-linguistique) et le coaching assisté par les chevaux (ce
-                qui inclut observation et interaction avec 2 chevaux)
-              </li>
-
-              <li data-aos="fade-left">Collation et breuvage</li>
-            </ul>
-          )}
-
-          <p className="text-xl font-bold my-3">
-            {!lang
-              ? "Additional options - à-la-carte (coming soon)"
-              : "Peuvent être ajoutées  - à-la-carte"}
-          </p>
-          {!lang && (
-            <ul className="grid grid-cols-2 gap-x-5" data-aos="fade-left">
-              <li>Retreat and walk in nature, discovery trail</li>
-              <li>Healthy meal</li>
-            </ul>
-          )}
-          {lang && (
-            <ul className="grid grid-cols-2 gap-x-5" data-aos="fade-left">
-              <li>Retraite et marche en nature, sentier découverte</li>
-              <li>Repas santé</li>
-            </ul>
-          )}
-          {!lang && (
-            <p className="text-xl font-bold my-3" data-aos="fade-up">
-              No riding experience required. Interactions with horses are done
-              on the ground, and in complete safety
-            </p>
-          )}
-          {lang && (
-            <p className="text-xl font-bold my-3" data-aos="fade-up">
-              Aucune expérience équestre requise. Les intéractions avec le
-              cheval se font au sol, et en toute sécurité.
-            </p>
-          )}
-        </div> */}
-
         <div className="max-w-[1400px] mx-auto xl:my-24">
           <div className="xl:flex justify-between">
             <div
-              className="md:w-[50%] p-4 xl:min-h-[300px]"
+              className="md:w-[50%] p-4 xl:min-h-[410px]"
               data-aos="fade-right"
             >
               <iframe
-                src={`https://www.youtube.com/embed/rokGy0huYEA`}
+                src={`${
+                  !lang
+                    ? "https://www.youtube.com/embed/VWYpEwl9wWU"
+                    : "https://www.youtube.com/embed/MvZyrEw9rNI"
+                }`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -502,7 +423,7 @@ const ProgramsTeam = () => {
                 <div className="xl:flex justify-start gap-4 items-center">
                   <TreeIcon className="w-14 h-14" />
                   <h3 className="text-[#84904B] xl:text-[40px] font-bold">
-                    EVOLUTION
+                    ÉVOLUTION
                   </h3>
                 </div>
                 <p className="text-[#393B3F] xl:text-[24px] xl:ml-4 font-semibold my-2">
@@ -523,7 +444,7 @@ const ProgramsTeam = () => {
           <div className="flex justify-around items-center xl:mt-10 p-4">
             <div
               className="text-center xl:w-[300px] flex flex-col justify-center items-center"
-              data-aos="fade-right"
+              data-aos="zoom-in"
             >
               <TimeGreen />
               <p className="text-[#9AA098] text-sm my-2">
@@ -534,7 +455,10 @@ const ProgramsTeam = () => {
               </p>
             </div>
 
-            <div className="text-center xl:w-[300px] flex flex-col justify-center items-center">
+            <div
+              className="text-center xl:w-[300px] flex flex-col justify-center items-center"
+              data-aos="zoom-in"
+            >
               <PersonGreen />
               <p className="text-[#9AA098] text-sm my-2">
                 {!lang ? "Program designed for" : "Ce programme s’adresse à"}
@@ -547,7 +471,7 @@ const ProgramsTeam = () => {
             </div>
             <div
               className="text-center xl:w-[300px] flex flex-col justify-center items-center"
-              data-aos="fade-left"
+              data-aos="zoom-in"
             >
               <WebGreen />
               <p className="text-[#9AA098] text-sm my-2">
@@ -764,11 +688,15 @@ const ProgramsTeam = () => {
               )}
             </div>
             <div
-              className="md:w-[50%] p-4 xl:min-h-[300px]"
+              className="md:w-[50%] p-4 xl:min-h-[410px]"
               data-aos="fade-left"
             >
               <iframe
-                src={`https://www.youtube.com/embed/rokGy0huYEA`}
+                src={`${
+                  !lang
+                    ? "https://www.youtube.com/embed/DjPh4NA2TGU"
+                    : "https://www.youtube.com/embed/kN-IQmEAxMM"
+                }`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -781,7 +709,7 @@ const ProgramsTeam = () => {
           <div className="flex justify-around items-center xl:mt-10 p-2">
             <div
               className="text-center xl:w-[300px] flex flex-col justify-center items-center"
-              data-aos="fade-right"
+              data-aos="zoom-in"
             >
               <TimeYellow />
               <p className="text-[#9AA098] text-sm my-2">
@@ -791,7 +719,10 @@ const ProgramsTeam = () => {
                 {!lang ? "6 months, every 2 weeks" : "6 mois, aux 2 semaines"}
               </p>
             </div>
-            <div className="text-center xl:w-[300px] flex flex-col justify-center items-center">
+            <div
+              className="text-center xl:w-[300px] flex flex-col justify-center items-center"
+              data-aos="zoom-in"
+            >
               <PersonYellow />
               <p className="text-[#9AA098] text-sm my-2">
                 {!lang ? "Program designed for" : "Ce programme s’adresse à"}
@@ -804,7 +735,7 @@ const ProgramsTeam = () => {
             </div>
             <div
               className="text-center xl:w-[300px] flex flex-col justify-center items-center"
-              data-aos="fade-left"
+              data-aos="zoom-in"
             >
               <WebYellow />
               <p className="text-[#9AA098] text-sm my-2">

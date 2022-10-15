@@ -83,7 +83,6 @@ const ContactMe = () => {
         </div>
         <button
           className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
-          data-aos="fade-up"
           onClick={click}
         >
           {loading ? "Contactez moi..." : "Contactez moi"}
@@ -137,7 +136,6 @@ const ContactMe = () => {
         </div>
         <button
           className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
-          data-aos="fade-up"
           onClick={click}
         >
           {loading ? "SENDING..." : "CONTACT ME"}

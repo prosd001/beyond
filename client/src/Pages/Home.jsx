@@ -27,8 +27,10 @@ const Home = () => {
   const lang = useRecoilValue(localizationState);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({
       duration: 2000,
+      once: true,
     });
   }, []);
 
@@ -38,7 +40,7 @@ const Home = () => {
         <SliderHomePersonal />
         <div className="flex flex-col items-center max-w-[2000px] mx-auto">
           <h2
-            className="xl:text-[54px] text-[40px] font-bold mt-4 xl:mt-0"
+            className="xl:text-[54px] text-[40px] font-bold mt-4 xl:mt-4"
             data-aos="zoom-in"
           >
             Mes <span className="text-[#84904B]">programmes</span>
@@ -46,7 +48,7 @@ const Home = () => {
           <div className="flex justify-center gap-10 mt-[140px] flex-col xl:flex-row">
             <div
               className="relative bg-[#604945] w-[380px] px-6 pb-3"
-              data-aos="flip-left"
+              data-aos="zoom-in"
             >
               <HorseIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase text-white font-bold text-[24px] mt-[90px]">
@@ -63,7 +65,7 @@ const Home = () => {
             </div>
             <div
               className="relative bg-[#84904B] w-[380px] px-6 mt-[90px] xl:mt-0 pb-3"
-              data-aos="flip-up"
+              data-aos="zoom-in"
             >
               <TreeIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase text-white font-bold text-[24px] mt-[90px]">
@@ -79,7 +81,7 @@ const Home = () => {
             </div>
             <div
               className="relative bg-[#E0CF6F] w-[380px] px-6 mt-[70px] xl:mt-0 pb-3"
-              data-aos="flip-right"
+              data-aos="zoom-in"
             >
               <HiveIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase font-bold text-[24px] mt-[90px]">
@@ -99,7 +101,9 @@ const Home = () => {
             className="uppercase btn-gradient-bg text-white text-sm font-bold w-[187px] mt-9 py-3"
             data-aos="fade-up"
           >
-            <Link to={"/programs"}>Learn More</Link>
+            <Link to={"/programs"}>
+              {!lang ? "Learn More" : "Apprendre encore plus"}
+            </Link>
           </button>
         </div>
 
@@ -260,7 +264,7 @@ const Home = () => {
         <SliderHomePersonal />
         <div className="flex flex-col items-center max-w-[2000px] mx-auto">
           <h2
-            className="xl:text-[54px] text-[40px] font-bold mt-4 xl:mt-0"
+            className="xl:text-[54px] text-[40px] font-bold mt-4 xl:mt-4"
             data-aos="zoom-in"
           >
             My <span className="text-[#84904B]">Programs</span>
@@ -268,7 +272,7 @@ const Home = () => {
           <div className="flex justify-center gap-10 mt-[140px] flex-col xl:flex-row">
             <div
               className="relative bg-[#604945] w-[380px] px-6 pb-3"
-              data-aos="flip-left"
+              data-aos="zoom-in"
             >
               <HorseIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase text-white font-bold text-[24px] mt-[90px]">
@@ -285,7 +289,7 @@ const Home = () => {
             </div>
             <div
               className="relative bg-[#84904B] w-[380px] px-6 mt-[90px] xl:mt-0 pb-3"
-              data-aos="flip-up"
+              data-aos="zoom-in"
             >
               <TreeIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase text-white font-bold text-[24px] mt-[90px]">
@@ -301,7 +305,7 @@ const Home = () => {
             </div>
             <div
               className="relative bg-[#E0CF6F] w-[380px] px-6 mt-[70px] xl:mt-0 pb-3"
-              data-aos="flip-right"
+              data-aos="zoom-in"
             >
               <HiveIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase font-bold text-[24px] mt-[90px]">
@@ -364,18 +368,18 @@ const Home = () => {
             <span className="font-bold">let’s grow</span>, all together!
           </p>
           <div className="xl:flex items-center justify-center xl:gap-16 mt-10 grid grid-cols-4 gap-3 p-2">
-            <img src={partnerOne} alt="" data-aos="fade-right" />
-            <img src={partnerTwo} alt="" data-aos="fade-right" />
+            <img src={partnerOne} alt="" data-aos="zoom-in" />
+            <img src={partnerTwo} alt="" data-aos="zoom-in" />
             <img
               src={partnerThree}
               alt=""
-              data-aos="fade-right"
+              data-aos="zoom-in"
               className="col-span-2"
             />
-            <img src={partnerFour} alt="" />
-            <img src={partnerFive} alt="" data-aos="fade-left" />
-            <img src={partnerSix} alt="" data-aos="fade-left" />
-            <img src={partnerSeven} alt="" data-aos="fade-left" />
+            <img src={partnerFour} alt="" data-aos="zoom-in" />
+            <img src={partnerFive} alt="" data-aos="zoom-in" />
+            <img src={partnerSix} alt="" data-aos="zoom-in" />
+            <img src={partnerSeven} alt="" data-aos="zoom-in" />
           </div>
         </div>
 

@@ -62,5 +62,33 @@ const signinAdminUser = async (req, res) => {
     });
 };
 
+// Update admin user info
+const updateAdminUser = async (req, res) => {
+    const { username, password } = req.body;
 
-module.exports = { signinAdminUser };
+    if (!username && !password)
+        return res
+            .status(400)
+            .json({ success: false, message: "At least one field is required" });
+
+    try {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        const updatedProfile = await AdminModel.findOneAndUpdate(req.userId, {
+            username,
+            password: hashedPassword,
+        });
+
+        if (updatedProfile)
+            return res.status(200).json({
+                success: true,
+                message: "Admin profile updated successfully",
+                updatedProfile,
+            });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: "Server error" });
+    }
+};
+
+module.exports = { signinAdminUser, updateAdminUser };

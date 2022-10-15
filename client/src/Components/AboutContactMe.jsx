@@ -68,57 +68,73 @@ const AboutContactMe = () => {
               <p className="text-[#9AA098]">Carignan, QC</p>
             </div>
             <div className="flex items-center justify-start gap-x-6 ml-1 mt-7">
-              <FacebookIcon className="cursor-pointer" />
-              <LinkedinIcon className="cursor-pointer" />
+              <a
+                href="https://www.facebook.com/karine.roy.7543/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FacebookIcon className="cursor-pointer" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/beyond-wordz-coaching"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedinIcon className="cursor-pointer" />
+              </a>
             </div>
           </div>
         </div>
         <div className="flex flex-col mt-6 xl:mt-0" data-aos="fade-left">
           <div>
             <p className="font-semibold text-lg mb-3 text-[#9AA098]">
-              Your Info
+              {!lang ? "Your Info" : "Vos Informations"}
             </p>
             <div className="grid grid-cols-2 gap-x-2">
               <input
                 ref={emailRef}
                 type="email"
-                placeholder="Email"
+                placeholder={`${!lang ? "Email" : "Email"}`}
                 className="py-2 bg-[#223F1D] border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50"
               />
               <input
                 ref={nameRef}
                 type="text"
-                placeholder="Name"
+                placeholder={`${!lang ? "Name" : "Nom"}`}
                 className="py-2 bg-[#223F1D] border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50"
               />
             </div>
           </div>
           <div>
             <p className="font-semibold text-lg mb-3 mt-2 text-[#9AA098]">
-              Subject
+              {!lang ? "Subject" : "Sujet"}
             </p>
             <input
               ref={subRef}
               type="text"
-              placeholder="Insert your subject"
+              placeholder={`${
+                !lang ? "Insert your subject" : "Insérez votre sujet"
+              }`}
               className="py-2 bg-[#223F1D] w-full border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50"
             />
           </div>
           <div>
             <p className="font-semibold text-lg mb-3 mt-2 text-[#9AA098]">
-              Message
+              {!lang ? "Message" : "Message"}
             </p>
             <textarea
               ref={msgRef}
               className="py-2 bg-[#223F1D] w-full min-h-[100px] border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50"
-              placeholder="Your message"
+              placeholder={`${!lang ? "Your message" : "Votre Message"}`}
             />
           </div>
           <button
             className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
             onClick={click}
           >
-            {loading ? "SENDING..." : "SEND YOUR MESSAGE"}
+            {loading
+              ? `${!lang ? "SENDING..." : "ENVOI EN COURS..."}`
+              : `${!lang ? "SEND YOUR MESSAGE" : "ENVOYEZ VOTRE MESSAGE"}`}
           </button>
         </div>
       </div>

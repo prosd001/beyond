@@ -163,24 +163,18 @@ const Home = () => {
                       display={"flex"}
                       justifyContent={"space-between"}
                     >
-                      <Text color={"#84904B"} fontWeight="bold">
-                        Name: <br />
-                        <span
-                          style={{
-                            color: "black",
-                            fontWeight: "500",
-                          }}
-                        >
-                          {waiting.name}
-                        </span>
-                      </Text>
-                      <Box
-                        display={"flex"}
-                        width={"350px"}
-                        justifyContent={"center"}
-                        gap={"30px"}
-                        alignItems="center"
-                      >
+                      <Box>
+                        <Text color={"#84904B"} fontWeight="bold">
+                          Name: <br />
+                          <span
+                            style={{
+                              color: "black",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {waiting.name}
+                          </span>
+                        </Text>
                         <Text color={"#84904B"} fontWeight="bold">
                           Subject: <br />
                           <span
@@ -203,142 +197,7 @@ const Home = () => {
                             {waiting.message}
                           </span>
                         </Text>
-                        <Text color={"#84904B"} fontWeight="bold">
-                          Email: <br />
-                          <span
-                            style={{
-                              color: "black",
-                              fontWeight: "500",
-                            }}
-                          >
-                            {waiting.email}
-                          </span>
-                        </Text>
-
-                        <Button
-                          variant={"outline"}
-                          onClick={() => {
-                            navigator.clipboard.writeText(waiting.email);
-                            toast({
-                              title: "Copied to clipboard!",
-                              status: "success",
-                              isClosable: true,
-                              position: "top",
-                              duration: 2000,
-                            });
-                          }}
-                        >
-                          Copy
-                        </Button>
                       </Box>
-                      <Box display={"flex"} gap={"30px"}>
-                        <Button
-                          variant={"outline"}
-                          colorScheme={"yellow"}
-                          onClick={async () => {
-                            setLoading(true);
-                            const response = await fetch(
-                              `${process.env.REACT_APP_API_BASE_URL}/api/contacts/edit-contact`,
-                              {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({
-                                  id: waiting._id,
-                                  data: { archived: true },
-                                }),
-                              }
-                            );
-
-                            const responseData = await response.json();
-                            if (responseData.success) {
-                              setLoading(false);
-                              toast({
-                                title: "Updated successfully!",
-                                status: "success",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                              setRefetch((prev) => !prev);
-                            } else {
-                              setLoading(false);
-                              toast({
-                                title: "Something went wrong!",
-                                status: "error",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                            }
-                          }}
-                        >
-                          Archive
-                        </Button>
-                        <Button
-                          variant={"outline"}
-                          colorScheme={"red"}
-                          onClick={async () => {
-                            setLoading(true);
-                            const response = await fetch(
-                              `${process.env.REACT_APP_API_BASE_URL}/api/contacts/remove-contact`,
-                              {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({
-                                  id: waiting._id,
-                                }),
-                              }
-                            );
-
-                            const responseData = await response.json();
-                            if (responseData.success) {
-                              setLoading(false);
-                              toast({
-                                title: "Removed successfully!",
-                                status: "success",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                              setRefetch((prev) => !prev);
-                            } else {
-                              setLoading(false);
-                              toast({
-                                title: "Something went wrong!",
-                                status: "error",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                            }
-                          }}
-                        >
-                          Delete
-                        </Button>
-                      </Box>
-                    </Box>
-                  ))}
-                </TabPanel>
-                <TabPanel>
-                  {newWaitings.map((waiting) => (
-                    <Box
-                      boxShadow={"sm"}
-                      py={"15px"}
-                      px="20px"
-                      display={"flex"}
-                      justifyContent={"space-between"}
-                    >
-                      <Text color={"#84904B"} fontWeight="bold">
-                        Name: <br />
-                        <span
-                          style={{
-                            color: "black",
-                            fontWeight: "500",
-                          }}
-                        >
-                          {waiting.name}
-                        </span>
-                      </Text>
                       <Box
                         display={"flex"}
                         width={"350px"}
@@ -374,6 +233,7 @@ const Home = () => {
                           Copy
                         </Button>
                       </Box>
+
                       <Box display={"flex"} gap={"30px"}>
                         <Button
                           variant={"outline"}
@@ -462,6 +322,176 @@ const Home = () => {
                     </Box>
                   ))}
                 </TabPanel>
+
+                <TabPanel>
+                  {newWaitings.map((waiting) => (
+                    <Box
+                      boxShadow={"sm"}
+                      py={"15px"}
+                      px="20px"
+                      display={"flex"}
+                      justifyContent={"space-between"}
+                    >
+                      <Box>
+                        <Text color={"#84904B"} fontWeight="bold">
+                          Name: <br />
+                          <span
+                            style={{
+                              color: "black",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {waiting.name}
+                          </span>
+                        </Text>
+                        <Text color={"#84904B"} fontWeight="bold">
+                          Subject: <br />
+                          <span
+                            style={{
+                              color: "black",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {waiting.subject}
+                          </span>
+                        </Text>
+                        <Text color={"#84904B"} fontWeight="bold">
+                          Message: <br />
+                          <span
+                            style={{
+                              color: "black",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {waiting.message}
+                          </span>
+                        </Text>
+                      </Box>
+                      <Box
+                        display={"flex"}
+                        width={"350px"}
+                        justifyContent={"center"}
+                        gap={"30px"}
+                        alignItems="center"
+                      >
+                        <Text color={"#84904B"} fontWeight="bold">
+                          Email:
+                          <br />
+                          <span
+                            style={{
+                              color: "black",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {waiting.email}
+                          </span>
+                        </Text>
+                        <Button
+                          variant={"outline"}
+                          onClick={() => {
+                            navigator.clipboard.writeText(waiting.email);
+                            toast({
+                              title: "Copied to clipboard!",
+                              status: "success",
+                              isClosable: true,
+                              position: "top",
+                              duration: 2000,
+                            });
+                          }}
+                        >
+                          Copy
+                        </Button>
+                      </Box>
+
+                      <Box display={"flex"} gap={"30px"}>
+                        <Button
+                          variant={"outline"}
+                          colorScheme={"yellow"}
+                          onClick={async () => {
+                            setLoading(true);
+                            const response = await fetch(
+                              `${process.env.REACT_APP_API_BASE_URL}/api/contacts/edit-contact`,
+                              {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                  id: waiting._id,
+                                  data: { archived: true },
+                                }),
+                              }
+                            );
+
+                            const responseData = await response.json();
+                            if (responseData.success) {
+                              setLoading(false);
+                              toast({
+                                title: "Updated successfully!",
+                                status: "success",
+                                isClosable: true,
+                                position: "top",
+                                duration: 2000,
+                              });
+                              setRefetch((prev) => !prev);
+                            } else {
+                              setLoading(false);
+                              toast({
+                                title: "Something went wrong!",
+                                status: "error",
+                                isClosable: true,
+                                position: "top",
+                                duration: 2000,
+                              });
+                            }
+                          }}
+                        >
+                          Archive
+                        </Button>
+                        <Button
+                          variant={"outline"}
+                          colorScheme={"red"}
+                          onClick={async () => {
+                            setLoading(true);
+                            const response = await fetch(
+                              `${process.env.REACT_APP_API_BASE_URL}/api/contacts/remove-contact`,
+                              {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                  id: waiting._id,
+                                }),
+                              }
+                            );
+
+                            const responseData = await response.json();
+                            if (responseData.success) {
+                              setLoading(false);
+                              toast({
+                                title: "Removed successfully!",
+                                status: "success",
+                                isClosable: true,
+                                position: "top",
+                                duration: 2000,
+                              });
+                              setRefetch((prev) => !prev);
+                            } else {
+                              setLoading(false);
+                              toast({
+                                title: "Something went wrong!",
+                                status: "error",
+                                isClosable: true,
+                                position: "top",
+                                duration: 2000,
+                              });
+                            }
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      </Box>
+                    </Box>
+                  ))}
+                </TabPanel>
+
                 <TabPanel>
                   {archivedWaitings.map((waiting) => (
                     <Box
@@ -471,17 +501,41 @@ const Home = () => {
                       display={"flex"}
                       justifyContent={"space-between"}
                     >
-                      <Text color={"#84904B"} fontWeight="bold">
-                        Name: <br />
-                        <span
-                          style={{
-                            color: "black",
-                            fontWeight: "500",
-                          }}
-                        >
-                          {waiting.name}
-                        </span>
-                      </Text>
+                      <Box>
+                        <Text color={"#84904B"} fontWeight="bold">
+                          Name: <br />
+                          <span
+                            style={{
+                              color: "black",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {waiting.name}
+                          </span>
+                        </Text>
+                        <Text color={"#84904B"} fontWeight="bold">
+                          Subject: <br />
+                          <span
+                            style={{
+                              color: "black",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {waiting.subject}
+                          </span>
+                        </Text>
+                        <Text color={"#84904B"} fontWeight="bold">
+                          Message: <br />
+                          <span
+                            style={{
+                              color: "black",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {waiting.message}
+                          </span>
+                        </Text>
+                      </Box>
                       <Box
                         display={"flex"}
                         width={"350px"}

@@ -5,15 +5,20 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import Footer from "../Components/Footer";
+import { useRecoilValue } from "recoil";
+import { localizationState } from "../atoms/localizationAtom";
 
 const Articales = () => {
   const [loading, setLoading] = useState(true);
   const [articales, setArticales] = useState([]);
   const [showcase, setShowcase] = useState({});
+  const lang = useRecoilValue(localizationState);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({
       duration: 2000,
+      once: true,
     });
   }, []);
 
@@ -41,6 +46,10 @@ const Articales = () => {
       setLoading(false);
     }
   }, [articales, showcase]);
+
+  if (!(articales.length !== 0 && showcase.popular)) {
+    return <></>;
+  }
 
   return (
     <>
@@ -142,7 +151,10 @@ const Articales = () => {
                 backgroundPosition: "center",
               }}
             >
-              <div className="xl:p-24 flex w-full h-full justify-center flex-col p-4">
+              <div
+                className="xl:p-24 flex w-full h-full justify-center flex-col p-4 z-50"
+                data-aos="zoom-in"
+              >
                 <h3 className="uppercase text-white xl:text-xl xl:tracking-[15px] tracking-[5px]">
                   popular
                 </h3>
@@ -153,7 +165,7 @@ const Articales = () => {
                   <span
                     className="text-[#E0CF6F] font-bold xl:text-2xl cursor-pointer z-50"
                     onClick={() => {
-                      navigate(`/articales/${showcase.popular.slug}`);
+                      navigate(`/articles/${showcase.popular.slug}`);
                     }}
                   >
                     Read More
@@ -161,16 +173,32 @@ const Articales = () => {
                   <ChevronRightIcon className="xl:w-8 xl:h-8 w-4 h-4 text-[#E0CF6F] xl:ml-2 ml-1" />
                 </div>
               </div>
-              <img src={smoke} alt="" className="absolute bottom-0 w-full" />
+              <img src={smoke} alt="" className="absolute -bottom-2 w-full" />
             </div>
 
-            <div className="max-w-[1700px] mx-auto py-8 p-4">
-              <h2 className="font-bold xl:text-[54px] xl:mb-8 text-[40px] mb-4">
-                Featured <span className="text-[#84904B]">Content</span>
-              </h2>
+            <div className="max-w-[1400px] mx-auto py-8 p-4">
+              {!lang && (
+                <h2
+                  className="font-bold xl:text-[54px] xl:mb-8 text-[40px] mb-4"
+                  data-aos="zoom-in"
+                >
+                  Featured <span className="text-[#84904B]">Content</span>
+                </h2>
+              )}
+              {lang && (
+                <h2
+                  className="font-bold xl:text-[54px] xl:mb-8 text-[40px] mb-4 capitalize"
+                  data-aos="zoom-in"
+                >
+                  Contenu en <span className="text-[#84904B]">vedette</span>
+                </h2>
+              )}
 
               <div className="grid xl:grid-cols-3 xl:gap-x-6">
-                <div className="xl:col-span-2 flex flex-col">
+                <div
+                  className="xl:col-span-2 flex flex-col"
+                  data-aos="fade-right"
+                >
                   <div>
                     <img
                       src={showcase.featured_big.banner_url}
@@ -191,9 +219,7 @@ const Articales = () => {
                         <span
                           className="text-[#84904B] font-bold xl:text-lg cursor-pointer z-50 text-sm"
                           onClick={() => {
-                            navigate(
-                              `/articales/${showcase.featured_big.slug}`
-                            );
+                            navigate(`/articles/${showcase.featured_big.slug}`);
                           }}
                         >
                           {showcase.featured_big.type === "Resource"
@@ -212,7 +238,7 @@ const Articales = () => {
                         alt=""
                         className="object-cover w-full"
                       />
-                      <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-2">
+                      <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-3">
                         {showcase.featured_small_one.type === "Resource"
                           ? "GUIDE RESOURCE"
                           : "ARTICLE"}
@@ -223,10 +249,10 @@ const Articales = () => {
                         </p>
                         <div className="flex justify-start cursor-pointer items-center gap-2">
                           <span
-                            className="text-[#84904B] font-bold xl:text-md text-sm cursor-pointer z-50"
+                            className="text-[#84904B] font-bold cursor-pointer z-50 xl:text-lg"
                             onClick={() => {
                               navigate(
-                                `/articales/${showcase.featured_small_one.slug}`
+                                `/articles/${showcase.featured_small_one.slug}`
                               );
                             }}
                           >
@@ -245,7 +271,7 @@ const Articales = () => {
                         alt=""
                         className="object-cover w-full"
                       />
-                      <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-2">
+                      <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-3">
                         {showcase.featured_small_two.type === "Resource"
                           ? "GUIDE RESOURCE"
                           : "ARTICLE"}
@@ -259,7 +285,7 @@ const Articales = () => {
                             className="text-[#84904B] font-bold text-md cursor-pointer z-50"
                             onClick={() => {
                               navigate(
-                                `/articales/${showcase.featured_small_two.slug}`
+                                `/articles/${showcase.featured_small_two.slug}`
                               );
                             }}
                           >
@@ -274,14 +300,14 @@ const Articales = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-y-4">
+                <div className="flex flex-col gap-y-4" data-aos="fade-left">
                   <div className="">
                     <img
                       src={showcase.featured_smallest_one.banner_url}
                       alt=""
                       className="object-cover w-full"
                     />
-                    <p className="uppercase text-[#84904B] text-xs tracking-[5px] my-2">
+                    <p className="uppercase text-[#84904B] text-xs tracking-[5px] my-3">
                       {showcase.featured_smallest_one.type === "Resource"
                         ? "GUIDE RESOURCE"
                         : "ARTICLE"}
@@ -295,7 +321,7 @@ const Articales = () => {
                           className="text-[#84904B] font-bold text-sm cursor-pointer z-50"
                           onClick={() => {
                             navigate(
-                              `/articales/${showcase.featured_smallest_one.slug}`
+                              `/articles/${showcase.featured_smallest_one.slug}`
                             );
                           }}
                         >
@@ -314,7 +340,7 @@ const Articales = () => {
                       alt=""
                       className="object-cover w-full"
                     />
-                    <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-2">
+                    <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-3">
                       {showcase.featured_smallest_two.type === "Resource"
                         ? "GUIDE RESOURCE"
                         : "ARTICLE"}
@@ -328,7 +354,7 @@ const Articales = () => {
                           className="text-[#84904B] font-bold text-md cursor-pointer z-50"
                           onClick={() => {
                             navigate(
-                              `/articales/${showcase.featured_smallest_two.slug}`
+                              `/articles/${showcase.featured_smallest_two.slug}`
                             );
                           }}
                         >
@@ -347,7 +373,7 @@ const Articales = () => {
                       alt=""
                       className="object-cover w-full"
                     />
-                    <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-2">
+                    <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-3">
                       {showcase.featured_smallest_three.type === "Resource"
                         ? "GUIDE RESOURCE"
                         : "ARTICLE"}
@@ -361,7 +387,7 @@ const Articales = () => {
                           className="text-[#84904B] font-bold text-md cursor-pointer z-50"
                           onClick={() => {
                             navigate(
-                              `/articales/${showcase.featured_smallest_three.slug}`
+                              `/articles/${showcase.featured_smallest_three.slug}`
                             );
                           }}
                         >
@@ -377,10 +403,26 @@ const Articales = () => {
               </div>
 
               <div>
-                <h2 className="font-bold xl:text-[54px] xl:my-10 text-[40px] my-8">
-                  All <span className="text-[#84904B]">Content</span>
-                </h2>
-                <div className="grid xl:grid-cols-3 gap-x-8 gap-y-10">
+                {!lang && (
+                  <h2
+                    className="font-bold xl:text-[54px] xl:my-10 text-[40px] my-8"
+                    data-aos="zoom-in"
+                  >
+                    All <span className="text-[#84904B]">Content</span>
+                  </h2>
+                )}
+                {lang && (
+                  <h2
+                    className="font-bold xl:text-[54px] xl:my-10 text-[40px] my-8"
+                    data-aos="zoom-in"
+                  >
+                    Tout le <span className="text-[#84904B]">contenu</span>
+                  </h2>
+                )}
+                <div
+                  className="grid xl:grid-cols-3 gap-x-8 gap-y-10"
+                  data-aos="fade-left"
+                >
                   {articales.map((articale) => (
                     <div className="">
                       <img
@@ -388,7 +430,7 @@ const Articales = () => {
                         alt=""
                         className="object-cover w-full"
                       />
-                      <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-2">
+                      <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-3">
                         {articale.type === "Resource"
                           ? "GUIDE RESOURCE"
                           : "ARTICLE"}
@@ -401,7 +443,7 @@ const Articales = () => {
                           <span
                             className="text-[#84904B] font-bold text-md cursor-pointer z-50"
                             onClick={() => {
-                              navigate(`/articales/${articale.slug}`);
+                              navigate(`/articles/${articale.slug}`);
                             }}
                           >
                             {articale.type === "Resource"
@@ -416,7 +458,7 @@ const Articales = () => {
                 </div>
                 <div className="w-full flex justify-center my-5">
                   <button className="capitalize btn-gradient-bg text-white font-bold xl:px-10 xl:py-4 mx-auto px-4 py-2 mt-6">
-                    Show more
+                    {!lang ? "Show more" : "Montre plus"}
                   </button>
                 </div>
               </div>

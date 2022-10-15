@@ -28,6 +28,7 @@ const Programs = () => {
     window.scrollTo(0, 0);
     AOS.init({
       duration: 2000,
+      once: true,
     });
   }, []);
 
@@ -37,7 +38,7 @@ const Programs = () => {
         <div className="relative w-full max-w-[2000px] mx-auto bg__programs xl:h-[1000px] h-[600px]">
           <div
             className="absolute xl:top-[38%] top-[30%] xl:left-[26%] text-center font-bold"
-            data-aos="fade-up"
+            data-aos="zoom-in"
           >
             {lang && (
               <>
@@ -53,7 +54,7 @@ const Programs = () => {
           {!lang && (
             <div
               className="absolute xl:top-[38%] top-[30%] xl:left-[32%] text-center font-bold"
-              data-aos="fade-up"
+              data-aos="zoom-in"
             >
               <p className="xl:text-[64px] text-[40px] text-white">
                 Professional Coaching &
@@ -88,7 +89,7 @@ const Programs = () => {
                 )}
                 {lang && (
                   <h3 className="text-[#604945] xl:text-[40px] font-bold">
-                    RACCORDEMENT
+                    CONNECTION
                   </h3>
                 )}
               </div>
@@ -124,12 +125,17 @@ const Programs = () => {
                 </p>
               )}
             </div>
+
             <div
-              className="md:w-[50%] p-4 xl:min-h-[300px]"
+              className="md:w-[50%] p-4 xl:min-h-[410px]"
               data-aos="fade-left"
             >
               <iframe
-                src={`https://www.youtube.com/embed/rokGy0huYEA`}
+                src={`${
+                  !lang
+                    ? "https://www.youtube.com/embed/5HqTrv7hbGU"
+                    : "https://www.youtube.com/embed/gpazUxcCc6Y"
+                }`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -138,10 +144,11 @@ const Programs = () => {
               />
             </div>
           </div>
+
           <div className="flex justify-around items-center xl:mt-10 p-2">
             <div
               className="text-center xl:w-[300px] flex flex-col justify-center items-center"
-              data-aos="fade-right"
+              data-aos="zoom-in"
             >
               <TimeBrown />
               <p className="text-[#9AA098] text-sm my-2">
@@ -151,7 +158,10 @@ const Programs = () => {
                 {!lang ? "3 to 3.5 hours" : "3 à 3.5 heures"}
               </p>
             </div>
-            <div className="text-center xl:w-[300px] flex flex-col justify-center items-center">
+            <div
+              className="text-center xl:w-[300px] flex flex-col justify-center items-center"
+              data-aos="zoom-in"
+            >
               <PersonBrown />
               <p className="text-[#9AA098] text-sm my-2">
                 {!lang ? "Program designed for" : "Ce programme s’adresse à"}
@@ -162,7 +172,7 @@ const Programs = () => {
             </div>
             <div
               className="text-center xl:w-[300px] flex flex-col justify-center items-center"
-              data-aos="fade-left"
+              data-aos="zoom-in"
             >
               <WebBrown />
               <p className="text-[#9AA098] text-sm my-2">
@@ -269,11 +279,15 @@ const Programs = () => {
         <div className="max-w-[1400px] mx-auto xl:my-24">
           <div className="xl:flex justify-between">
             <div
-              className="md:w-[50%] p-4 xl:min-h-[300px]"
+              className="md:w-[50%] p-4 xl:min-h-[410px]"
               data-aos="fade-right"
             >
               <iframe
-                src={`https://www.youtube.com/embed/rokGy0huYEA`}
+                src={`${
+                  !lang
+                    ? "https://www.youtube.com/embed/u86l8kO1Y0g"
+                    : "https://www.youtube.com/embed/iwCGhZGZLDw"
+                }`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -281,6 +295,7 @@ const Programs = () => {
                 className="w-full h-full"
               />
             </div>
+
             {!lang && (
               <div
                 className="md:w-[43%] flex flex-col justify-center p-4"
@@ -310,7 +325,7 @@ const Programs = () => {
                 <div className="xl:flex justify-start gap-4 items-center">
                   <TreeIcon className="w-14 h-14" />
                   <h3 className="text-[#84904B] xl:text-[40px] font-bold">
-                    EVOLUTION
+                    ÉVOLUTION
                   </h3>
                 </div>
                 <p className="text-[#393B3F] xl:text-[24px] xl:ml-4 font-semibold my-2">
@@ -329,7 +344,7 @@ const Programs = () => {
           <div className="flex justify-around items-center xl:mt-10 p-4">
             <div
               className="text-center xl:w-[300px] flex flex-col justify-center items-center"
-              data-aos="fade-right"
+              data-aos="zoom-in"
             >
               <TimeGreen />
               <p className="text-[#9AA098] text-sm my-2">
@@ -339,7 +354,11 @@ const Programs = () => {
                 {!lang ? "3 months, Every 2 weeks" : "3 mois, aux 2 semaines"}
               </p>
             </div>
-            <div className="text-center xl:w-[300px] flex flex-col justify-center items-center">
+
+            <div
+              className="text-center xl:w-[300px] flex flex-col justify-center items-center"
+              data-aos="zoom-in"
+            >
               <PersonGreen />
               <p className="text-[#9AA098] text-sm my-2">
                 {!lang ? "Program designed for" : "Ce programme s’adresse à"}
@@ -352,7 +371,7 @@ const Programs = () => {
             </div>
             <div
               className="text-center xl:w-[300px] flex flex-col justify-center items-center"
-              data-aos="fade-left"
+              data-aos="zoom-in"
             >
               <WebGreen />
               <p className="text-[#9AA098] text-sm my-2">
@@ -558,11 +577,15 @@ const Programs = () => {
               )}
             </div>
             <div
-              className="md:w-[50%] p-4 xl:min-h-[300px]"
+              className="md:w-[50%] p-4 xl:min-h-[410px]"
               data-aos="fade-left"
             >
               <iframe
-                src={`https://www.youtube.com/embed/rokGy0huYEA`}
+                src={`${
+                  !lang
+                    ? "https://www.youtube.com/embed/DjPh4NA2TGU"
+                    : "https://www.youtube.com/embed/kN-IQmEAxMM"
+                }`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -575,7 +598,7 @@ const Programs = () => {
           <div className="flex justify-around items-center xl:mt-10 p-2">
             <div
               className="text-center xl:w-[300px] flex flex-col justify-center items-center"
-              data-aos="fade-right"
+              data-aos="zoom-in"
             >
               <TimeYellow />
               <p className="text-[#9AA098] text-sm my-2">
@@ -585,7 +608,10 @@ const Programs = () => {
                 {!lang ? "6 months, every 2 weeks" : "6 mois, aux 2 semaines"}
               </p>
             </div>
-            <div className="text-center xl:w-[300px] flex flex-col justify-center items-center">
+            <div
+              className="text-center xl:w-[300px] flex flex-col justify-center items-center"
+              data-aos="zoom-in"
+            >
               <PersonYellow />
               <p className="text-[#9AA098] text-sm my-2">
                 {!lang ? "Program designed for" : "Ce programme s’adresse à"}
@@ -596,7 +622,7 @@ const Programs = () => {
             </div>
             <div
               className="text-center xl:w-[300px] flex flex-col justify-center items-center"
-              data-aos="fade-left"
+              data-aos="zoom-in"
             >
               <WebYellow />
               <p className="text-[#9AA098] text-sm my-2">

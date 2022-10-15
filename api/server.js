@@ -6,6 +6,7 @@ const logger = require('morgan');
 const authRoute = require('./routes/auth.route')
 const articaleRoute = require('./routes/articale.route')
 const listsRoute = require('./routes/lists.route')
+const bodyParser = require('body-parser');
 // const corsOptions = require("./config/cors.config.js");
 
 // Constants
@@ -19,12 +20,8 @@ dotenv.config();
 // Middlewares
 app.use(cors());
 app.use(logger('dev'));
-app.use(express.json());
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
+app.use(bodyParser.json({ limit: '100mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '100mb' }));
 
 
 // Routes

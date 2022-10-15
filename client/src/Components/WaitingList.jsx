@@ -29,7 +29,7 @@ const WaitingList = () => {
   };
   return (
     <div className="max-w-[1220px] flex justify-center items-center bg-[#252C08] mx-auto my-8 p-4">
-      <div className="w-[90%]">
+      <div className="xl:w-[90%]">
         <h2 className="font-bold xl:text-[54px]  text-[40px] mt-8 text-[#84904B] text-center">
           Join My <span className="text-[#fff]">Waiting List</span>
         </h2>
@@ -37,7 +37,7 @@ const WaitingList = () => {
           Be The First To Learn About
           <span className="text-[#fff]"> Upcoming Events</span>
         </p>
-        <div className="grid grid-cols-3 gap-x-2 items-center my-8">
+        <div className="grid xl:grid-cols-3 gap-x-2 items-center my-8 grid-cols-1 gap-y-4">
           <input
             required
             ref={emailRef}

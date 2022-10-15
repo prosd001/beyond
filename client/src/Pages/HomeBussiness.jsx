@@ -20,22 +20,24 @@ import ContactMe from "../Components/ContactMe";
 import Footer from "../Components/Footer";
 import { useRecoilValue } from "recoil";
 import { localizationState } from "../atoms/localizationAtom";
-import SliderHomePersonal from "../Components/SliderHomePersonal";
 import { Link } from "react-router-dom";
+import SliderHome from "../Components/SliderHome";
 
 const Home = () => {
   const lang = useRecoilValue(localizationState);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     AOS.init({
       duration: 2000,
+      once: true,
     });
   }, []);
 
   return lang ? (
     <>
       <section className="">
-        <SliderHomePersonal />
+        <SliderHome />
         <div className="flex flex-col items-center max-w-[2000px] mx-auto">
           <h2
             className="xl:text-[54px] text-[40px] font-bold mt-4 xl:mt-0"
@@ -99,7 +101,9 @@ const Home = () => {
             className="uppercase btn-gradient-bg text-white text-sm font-bold w-[187px] mt-9 py-3"
             data-aos="fade-up"
           >
-            <Link to={"/programs-businesses"}>Learn More</Link>
+            <Link to={"/programs-businesses"}>
+              {!lang ? "Learn More" : "Apprendre encore plus"}
+            </Link>
           </button>
         </div>
 
@@ -257,7 +261,7 @@ const Home = () => {
   ) : (
     <>
       <section className="">
-        <SliderHomePersonal />
+        <SliderHome />
         <div className="flex flex-col items-center max-w-[2000px] mx-auto">
           <h2
             className="xl:text-[54px] text-[40px] font-bold mt-4 xl:mt-0"
