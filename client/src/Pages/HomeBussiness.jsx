@@ -48,8 +48,8 @@ const Home = () => {
           </h2>
           <div className="flex justify-center gap-10 mt-[140px] flex-col xl:flex-row">
             <div
-              className="relative bg-[#604945] w-[380px] px-6 pb-3"
-              data-aos="flip-left"
+              className="relative bg-[#604945] w-[380px] px-6 pb-3 h-[390px]"
+              data-aos="zoom-in"
             >
               <HorseIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase text-white font-bold text-[24px] mt-[90px]">
@@ -61,12 +61,12 @@ const Home = () => {
                 compétences de leadership personnel et professionnel, de
                 communication et de collaboration. En solo ou en groupe, cette
                 expérience a été conçue afin d'avoir un impact certain et
-                immédiat sur les participants.
+                immédiat sur les participants
               </p>
             </div>
             <div
-              className="relative bg-[#84904B] w-[380px] px-6 mt-[90px] xl:mt-0 pb-3"
-              data-aos="flip-up"
+              className="relative bg-[#84904B] w-[380px] px-6 mt-[90px] xl:mt-0 pb-3 h-[390px]"
+              data-aos="zoom-in"
             >
               <TreeIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase text-white font-bold text-[24px] mt-[90px]">
@@ -81,8 +81,8 @@ const Home = () => {
               </p>
             </div>
             <div
-              className="relative bg-[#E0CF6F] w-[380px] px-6 mt-[70px] xl:mt-0 pb-8"
-              data-aos="flip-right"
+              className="relative bg-[#E0CF6F] w-[380px] px-6 mt-[70px] xl:mt-0 pb-8 h-[390px]"
+              data-aos="zoom-in"
             >
               <HiveIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase font-bold text-[24px] mt-[90px]">
@@ -93,8 +93,8 @@ const Home = () => {
                 un accompagnement en coaching unique et diversifié, combinant la
                 PNL, le coaching orienté solutions, et le coaching assisté par
                 les chevaux. Ce programme vous permet de travailler sur un but,
-                projet ou défi important pour vous et qui sera transformateur
-                pour votre vie
+                projet ou défi important et qui sera transformateur pour votre
+                vie.
               </p>
             </div>
           </div>
@@ -103,7 +103,7 @@ const Home = () => {
               className="uppercase btn-gradient-bg text-white text-sm font-bold w-[187px] mt-9 py-3"
               data-aos="fade-up"
             >
-              {!lang ? "Learn More" : "Apprendre encore plus"}
+              {!lang ? "Learn More" : "EN SAVOIR PLUS"}
             </button>
           </Link>
         </div>
@@ -145,21 +145,77 @@ const Home = () => {
           </h2>
           <p className="text-[#393B3F] text-center" data-aos="zoom-in">
             Les causes que nous soutiendrons
-            <span className="font-bold"> ...cultivons</span>, tous ensemble!
+            <span className="font-bold"> ...grandissons</span>, tous ensemble!
           </p>
           <div className="lg:flex items-center justify-center xl:gap-16 mt-10  grid-cols-4 gap-3 p-2 hidden">
-            <img src={partnerOne} alt="" data-aos="fade-right" />
-            <img src={partnerTwo} alt="" data-aos="fade-right" />
+            <img
+              src={partnerOne}
+              alt=""
+              className="cursor-pointer"
+              data-aos="fade-right"
+              onClick={() => {
+                window.open(
+                  "https://www.nature.org/en-us/get-involved/how-to-help/plant-a-billion/",
+                  "_blank"
+                );
+              }}
+            />
+            <img
+              src={partnerTwo}
+              alt=""
+              className="cursor-pointer"
+              data-aos="fade-right"
+              onClick={() => {
+                window.open(
+                  "https://www.equi-sens.ca/qui-sommes-nous",
+                  "_blank"
+                );
+              }}
+            />
             <img
               src={partnerThree}
               alt=""
+              className="cursor-pointer col-span-2"
               data-aos="fade-right"
-              className="col-span-2"
+              onClick={() => {
+                window.open("https://mielmontreal.com/", "_blank");
+              }}
             />
-            <img src={partnerFour} alt="" />
-            <img src={partnerFive} alt="" data-aos="fade-left" />
-            <img src={partnerSix} alt="" data-aos="fade-left" />
-            <img src={partnerSeven} alt="" data-aos="fade-left" />
+            <img
+              src={partnerFour}
+              alt=""
+              className="cursor-pointer"
+              onClick={() => {
+                window.open("https://tenirpromesse.org/wp/apropos/", "_blank");
+              }}
+            />
+            <img
+              src={partnerFive}
+              alt=""
+              className="cursor-pointer"
+              data-aos="fade-left"
+              onClick={() => {
+                window.open("https://evolutrek.com/", "_blank");
+              }}
+            />
+            <img
+              src={partnerSix}
+              alt=""
+              className="cursor-pointer"
+              data-aos="fade-left"
+              onClick={() => {
+                window.open("https://ecuriesunnybreeze.com/", "_blank");
+              }}
+            />
+            <img
+              src={partnerSeven}
+              alt=""
+              className="cursor-pointer"
+              data-aos="fade-left"
+              onClick={() => {
+                window.open("https://equssleadership.com/", "_blank");
+              }}
+            />
           </div>
           <HowItWorks />
         </div>
@@ -226,7 +282,7 @@ const Home = () => {
               <h4 className="text-[#E0CF6F] font-bold text-xl mt-3">
                 Daniele F.
               </h4>
-              <p className="text-[#9AA098] text-lg mt-2">Naturopath</p>
+              <p className="text-[#9AA098] text-lg mt-2">Naturopathe</p>
               <p className="text-[#9AA098] text-sm mt-4">
                 Quelle prise de conscience guidée extraordinaire! Ça changé ma
                 vie! L’expérience privilégiée avec le cheval m’a tellement
@@ -273,8 +329,8 @@ const Home = () => {
           </h2>
           <div className="flex justify-center gap-10 mt-[140px] flex-col xl:flex-row">
             <div
-              className="relative bg-[#604945] w-[380px] px-6 pb-8"
-              data-aos="flip-left"
+              className="relative bg-[#604945] w-[380px] px-6 pb-8 h-[390px]"
+              data-aos="zoom-in"
             >
               <HorseIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase text-white font-bold text-[24px] mt-[90px]">
@@ -290,8 +346,8 @@ const Home = () => {
               </p>
             </div>
             <div
-              className="relative bg-[#84904B] w-[380px] px-6 mt-[90px] xl:mt-0 pb-3"
-              data-aos="flip-up"
+              className="relative bg-[#84904B] w-[380px] px-6 mt-[90px] xl:mt-0 pb-3 h-[390px]"
+              data-aos="zoom-in"
             >
               <TreeIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase text-white font-bold text-[24px] mt-[90px]">
@@ -306,8 +362,8 @@ const Home = () => {
               </p>
             </div>
             <div
-              className="relative bg-[#E0CF6F] w-[380px] px-6 mt-[70px] xl:mt-0 pb-3"
-              data-aos="flip-right"
+              className="relative bg-[#E0CF6F] w-[380px] px-6 mt-[70px] xl:mt-0 pb-3 h-[390px]"
+              data-aos="zoom-in"
             >
               <HiveIcon className="absolute -top-[100px] left-[100px]" />
               <h3 className="uppercase font-bold text-[24px] mt-[90px]">
@@ -327,7 +383,7 @@ const Home = () => {
               className="uppercase btn-gradient-bg text-white text-sm font-bold w-[187px] mt-9 py-3"
               data-aos="fade-up"
             >
-              {!lang ? "Learn More" : "Apprendre encore plus"}
+              {!lang ? "Learn More" : "EN SAVOIR PLUS"}
             </button>
           </Link>
         </div>
@@ -372,18 +428,74 @@ const Home = () => {
             <span className="font-bold">let’s grow</span>, all together!
           </p>
           <div className="lg:flex items-center justify-center xl:gap-16 mt-10 hidden grid-cols-4 gap-3 p-2">
-            <img src={partnerOne} alt="" data-aos="zoom-in" />
-            <img src={partnerTwo} alt="" data-aos="zoom-in" />
+            <img
+              src={partnerOne}
+              alt=""
+              className="cursor-pointer"
+              data-aos="fade-right"
+              onClick={() => {
+                window.open(
+                  "https://www.nature.org/en-us/get-involved/how-to-help/plant-a-billion/",
+                  "_blank"
+                );
+              }}
+            />
+            <img
+              src={partnerTwo}
+              alt=""
+              className="cursor-pointer"
+              data-aos="fade-right"
+              onClick={() => {
+                window.open(
+                  "https://www.equi-sens.ca/qui-sommes-nous",
+                  "_blank"
+                );
+              }}
+            />
             <img
               src={partnerThree}
               alt=""
-              data-aos="zoom-in"
-              className="col-span-2"
+              className="cursor-pointer col-span-2"
+              data-aos="fade-right"
+              onClick={() => {
+                window.open("https://mielmontreal.com/", "_blank");
+              }}
             />
-            <img src={partnerFour} alt="" data-aos="zoom-in" />
-            <img src={partnerFive} alt="" data-aos="zoom-in" />
-            <img src={partnerSix} alt="" data-aos="zoom-in" />
-            <img src={partnerSeven} alt="" data-aos="zoom-in" />
+            <img
+              src={partnerFour}
+              alt=""
+              className="cursor-pointer"
+              onClick={() => {
+                window.open("https://tenirpromesse.org/wp/apropos/", "_blank");
+              }}
+            />
+            <img
+              src={partnerFive}
+              alt=""
+              className="cursor-pointer"
+              data-aos="fade-left"
+              onClick={() => {
+                window.open("https://evolutrek.com/", "_blank");
+              }}
+            />
+            <img
+              src={partnerSix}
+              alt=""
+              className="cursor-pointer"
+              data-aos="fade-left"
+              onClick={() => {
+                window.open("https://ecuriesunnybreeze.com/", "_blank");
+              }}
+            />
+            <img
+              src={partnerSeven}
+              alt=""
+              className="cursor-pointer"
+              data-aos="fade-left"
+              onClick={() => {
+                window.open("https://equssleadership.com/", "_blank");
+              }}
+            />
           </div>
           <HowItWorks />
         </div>

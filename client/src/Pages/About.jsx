@@ -504,7 +504,7 @@ const About = () => {
               <img src={aboutKarineBanner} alt="" data-aos="fade-left" />
             </div>
 
-            <div className="xl:flex justify-around w-full p-4 gap-8 xl:mb-10 max-w-[1200px] mx-auto mb-[280px] xl:pb-8">
+            <div className="xl:flex justify-around w-full p-4 gap-8 xl:mb-10 max-w-[1200px] mx-auto pb-[280px] xl:pb-8">
               <img src={whyMeBanner} alt="" data-aos="fade-right" />
               <div
                 className="flex justify-center items-center xl:w-[60%]"

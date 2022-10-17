@@ -69,7 +69,7 @@ const PreviousBtn = (props) => {
     <div
       className="xl:w-[50px] xl:h-[50px] h-[40px] w-[40px] rounded-full bg-[#84904B] inline-flex items-center justify-center prev-arrow text-white p-3 cursor-pointer"
       onClick={onClick}
-      data-aos="fade-right"
+      data-aos="zoom-in"
     >
       <ChevronLeftIcon />
     </div>
@@ -82,52 +82,58 @@ const NextBtn = (props) => {
     <div
       className="xl:w-[50px] xl:h-[50px] h-[40px] w-[40px] rounded-full bg-[#84904B] inline-flex items-center justify-center next-arrow text-white p-3 cursor-pointer"
       onClick={onClick}
-      data-aos="fade-left"
+      data-aos="zoom-in"
     >
       <ChevronRightIcon />
     </div>
   );
 };
 
+// slider
+const worksettings = {
+  dots: false,
+  infinite: true,
+  lazyLoad: false,
+  speed: 500,
+  slidesToShow: 4,
+  autoplaySpeed: 3000,
+  autoplay: true,
+  slidesToScroll: 1,
+  nextArrow: <NextBtn />,
+  prevArrow: <PreviousBtn />,
+  responsive: [
+    {
+      breakpoint: 640,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 1900,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
+
 const WorksSlider = () => {
   const [lang, setLang] = useRecoilState(localizationState);
-  // slider
-  const worksettings = {
-    dots: false,
-    infinite: true,
-    lazyLoad: false,
-    speed: 500,
-    slidesToShow: 4,
-    autoplay: true,
-    slidesToScroll: 1,
-    nextArrow: <NextBtn />,
-    prevArrow: <PreviousBtn />,
-    responsive: [
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 1900,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+
   return (
-    <div className="p-4 relative mt-[100px] 2xl:max-w-[1700px] max-w-[1300px] mx-auto">
+    <div
+      className="p-4 relative mt-[100px] 2xl:max-w-[1700px] max-w-[1300px] mx-auto"
+      data-aos="zoom-in"
+    >
       <Slider {...worksettings}>
         {data.map((single) => (
           <div className="max-w-[400px]" key={single.title}>

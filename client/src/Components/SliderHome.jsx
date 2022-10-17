@@ -17,7 +17,7 @@ const SliderHome = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 6000,
     dotsClass: "button__bar",
     arrows: false,
     lazyLoad: false,
@@ -42,14 +42,30 @@ const SliderHome = () => {
             <span className="text-[#E0CF6F]">Un coeur</span> À la fois
           </h2>
           <h3 className="xl:text-[24px] max-w-[700px] mx-auto xl:mt-4 xl:mb-6 text-sm p-3 xl:p-0 xl:leading-8">
-            Offrez-vous et à votre équipe une expérience de coaching, au-delà
-            des mots!
+            Offrez-vous et à votre équipe une expérience de coaching, <br />
+            au-delàdes mots!
           </h3>
           <div className="flex justify-between items-center max-w-[720px] mx-auto p-2 flex-col xl:flex-row gap-y-2">
-            <button className="btn-gradient-bg xl:w-[284px] w-[320px] h-[54px] font-bold uppercase text-sm">
+            <button
+              className="btn-gradient-bg xl:w-[284px] w-[320px] h-[54px] font-bold uppercase text-sm"
+              onClick={() => {
+                window.open(
+                  "https://www.eventbrite.com/cc/webinaires-1213099",
+                  "_blank"
+                );
+              }}
+            >
               Assistez à un webinaire gratuit
             </button>
-            <button className="bg-white xl:w-[390px] w-[320px] h-[54px] text-[#84904B] font-bold uppercase text-sm">
+            <button
+              className="bg-white xl:w-[390px] w-[320px] h-[54px] text-[#84904B] font-bold uppercase text-sm"
+              onClick={() => {
+                window.open(
+                  "https://calendly.com/beyondwordz/rencontre-exploratoire-30min",
+                  "_blank"
+                );
+              }}
+            >
               Réservez votre appel découverte gratuit
             </button>
           </div>
@@ -57,7 +73,7 @@ const SliderHome = () => {
         <div className="h-[100px] xl:h-0"></div>
         <img
           src={smoke}
-          className="w-full object-cover mt-4 absolute -bottom-1 h-[130px] xl:h-auto"
+          className="w-full object-cover mt-4 absolute -bottom-1 h-[130px] xl:h-auto xl:max-h-[300px]"
           alt=""
         />
       </div>
@@ -84,10 +100,26 @@ const SliderHome = () => {
             Gift yourself and your team a coaching experience, beyond the words!
           </h3>
           <div className="flex justify-between items-center max-w-[650px] mx-auto p-2 flex-col xl:flex-row gap-y-2">
-            <button className="btn-gradient-bg xl:w-[284px] w-[320px] h-[54px] font-bold uppercase text-sm">
+            <button
+              className="btn-gradient-bg xl:w-[284px] w-[320px] h-[54px] font-bold uppercase text-sm"
+              onClick={() => {
+                window.open(
+                  "https://www.eventbrite.com/cc/webinaires-1213099",
+                  "_blank"
+                );
+              }}
+            >
               Attend a free webinar
             </button>
-            <button className="bg-white w-[320px] h-[54px] text-[#84904B] font-bold uppercase text-sm">
+            <button
+              className="bg-white w-[320px] h-[54px] text-[#84904B] font-bold uppercase text-sm"
+              onClick={() => {
+                window.open(
+                  "https://calendly.com/beyondwordz/exploratory-with-karine-roy",
+                  "_blank"
+                );
+              }}
+            >
               Book your free discovery call
             </button>
           </div>
@@ -95,7 +127,7 @@ const SliderHome = () => {
         <div className="h-[100px] xl:h-0"></div>
         <img
           src={smoke}
-          className="w-full object-cover mt-4 absolute -bottom-1 h-[130px] xl:h-auto"
+          className="w-full object-cover mt-4 absolute -bottom-1 h-[130px] xl:h-auto xl:max-h-[300px]"
           alt=""
         />
       </div>

@@ -155,9 +155,14 @@ const Articales = () => {
                     Articles et Ressources
                   </p>
                 )}
-                <img src={smoke} alt="" className="absolute -bottom-1 w-full" />
+                <img
+                  src={smoke}
+                  alt=""
+                  className="absolute xl:-bottom-2 -bottom-1 w-full"
+                />
               </div>
             )}
+
             <div>
               {showcase?.popular && (
                 <div

@@ -116,13 +116,14 @@ const ProgramsTeam = () => {
               )}
               {lang && (
                 <p className="text-[#393B3F] xl:text-lg xl:ml-4">
-                  Ce programme, offert en collaboration avec Equss Leadership, a
+                  Ce programme est offert en privé ou en groupe, en
+                  collaboration avec Equss Leadership. Le programme de groupe a
                   été conçu à des fins de consolidation d’équipe et
                   développement du leadership. Il comprend des ateliers et du
                   coaching de groupe sur la communication, la collaboration, la
                   confiance et le leadership, et est jumelé à des jeux et défis
                   avec les chevaux. Pour un apprentissage expérientiel,
-                  inspirant, créatif, et efficace!
+                  inspirant, créatif, et efficace
                 </p>
               )}
             </div>
@@ -266,13 +267,13 @@ const ProgramsTeam = () => {
               </ul>
             )}
             {!lang && (
-              <p className="text-xl font-bold my-3" data-aos="fade-up">
+              <p className="font-bold my-5" data-aos="fade-up">
                 No riding experience required. Interactions with horses are done
                 on the ground, and in complete safety
               </p>
             )}
             {lang && (
-              <p className="text-xl font-bold my-3" data-aos="fade-up">
+              <p className=" font-bold my-5" data-aos="fade-up">
                 Aucune expérience équestre requise. Les intéractions avec le
                 cheval se font au sol, et en toute sécurité.
               </p>
@@ -345,7 +346,7 @@ const ProgramsTeam = () => {
                   Ateliers de formation et moments créatifs, entremêlés de défis
                   avec les chevaux
                 </li>
-                <li>Retour sur expérience et coaching de</li>
+                <li>Retour sur expérience et coaching de groupe</li>
                 <li>Appel de suivi une semaine après l'événement</li>
                 <li>
                   Collations, breuvage et viennoiseries. Service de traiteur
@@ -356,13 +357,13 @@ const ProgramsTeam = () => {
             )}
 
             {!lang && (
-              <p className="text-xl font-bold my-3" data-aos="fade-up">
+              <p className=" font-bold my-5" data-aos="fade-up">
                 No riding experience required. Interactions with horses are done
                 on the ground, and in complete safety
               </p>
             )}
             {lang && (
-              <p className="text-xl font-bold my-3" data-aos="fade-up">
+              <p className="font-bold my-5" data-aos="fade-up">
                 Aucune expérience équestre requise. Les intéractions avec le
                 cheval se font au sol, et en toute sécurité.
               </p>
@@ -604,7 +605,8 @@ const ProgramsTeam = () => {
                   préliminaire afin de bien cibler les besoins et attentes
                 </li>
                 <li>
-                  6 ateliers virtuels portant sur le développement personnel
+                  6 ateliers de groupe virtuels portant sur le développement du
+                  leadership
                 </li>
                 <li>
                   2 séances de coaching individuel en PNL (programmation

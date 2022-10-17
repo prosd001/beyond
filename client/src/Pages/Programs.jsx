@@ -263,13 +263,13 @@ const Programs = () => {
             </ul>
           )}
           {!lang && (
-            <p className="text-xl font-bold my-3" data-aos="fade-up">
+            <p className="font-bold my-5" data-aos="fade-up">
               No riding experience required. Interactions with horses are done
               on the ground, and in complete safety
             </p>
           )}
           {lang && (
-            <p className="text-xl font-bold my-3" data-aos="fade-up">
+            <p className="font-bold my-5" data-aos="fade-up">
               Aucune expérience équestre requise. Les intéractions avec le
               cheval se font au sol, et en toute sécurité.
             </p>
@@ -493,7 +493,8 @@ const Programs = () => {
                   préliminaire afin de bien cibler les besoins et attentes
                 </li>
                 <li>
-                  6 ateliers virtuels portant sur le développement personnel
+                  6 ateliers de groupe virtuels portant sur le développement du
+                  leadership
                 </li>
                 <li>
                   2 séances de coaching individuel en PNL (programmation

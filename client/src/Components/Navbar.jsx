@@ -1,8 +1,12 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import logoWhite from "../assets/logo-nav-white.png";
-import logoDark from "../assets/contact-me-logo.png";
 import { ReactComponent as Hamopen } from "../assets/hamburger-open.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { localizationState } from "../atoms/localizationAtom";
 import MobileNav from "./MobileNav";
@@ -14,6 +18,13 @@ const Navbar = () => {
   // Instances
   const location = useLocation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("language") === "EN") {
+      setLang(false);
+    }
+  }, []);
 
   // Mobile nav opened
   if (mobileNavOpen) {
