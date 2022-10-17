@@ -22,6 +22,7 @@ import { useRecoilValue } from "recoil";
 import { localizationState } from "../atoms/localizationAtom";
 import SliderHomePersonal from "../Components/SliderHomePersonal";
 import { Link } from "react-router-dom";
+import HowItWorks from "../Components/HowItWorks";
 
 const Home = () => {
   const lang = useRecoilValue(localizationState);
@@ -80,7 +81,7 @@ const Home = () => {
               </p>
             </div>
             <div
-              className="relative bg-[#E0CF6F] w-[380px] px-6 mt-[70px] xl:mt-0 pb-3"
+              className="relative bg-[#E0CF6F] w-[380px] px-6 mt-[70px] xl:mt-0 pb-8"
               data-aos="zoom-in"
             >
               <HiveIcon className="absolute -top-[100px] left-[100px]" />
@@ -97,14 +98,14 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <button
-            className="uppercase btn-gradient-bg text-white text-sm font-bold w-[187px] mt-9 py-3"
-            data-aos="fade-up"
-          >
-            <Link to={"/programs"}>
+          <Link to={"/programs"}>
+            <button
+              className="uppercase btn-gradient-bg text-white text-sm font-bold w-[187px] mt-9 py-3"
+              data-aos="fade-up"
+            >
               {!lang ? "Learn More" : "Apprendre encore plus"}
-            </Link>
-          </button>
+            </button>
+          </Link>
         </div>
 
         <div className="flex flex-col items-center mt-[85px]">
@@ -134,7 +135,7 @@ const Home = () => {
         </div>
         <WorksSlider />
 
-        <div className="flex flex-col items-center mt-[100px]">
+        <div className="flex flex-col items-center xl:mt-[100px] mt-[50px]">
           <h2
             className="xl:text-[54px] text-[40px] text-center font-bold px-2"
             data-aos="zoom-in"
@@ -146,7 +147,7 @@ const Home = () => {
             Les causes que nous soutiendrons
             <span className="font-bold"> ...cultivons</span>, tous ensemble!
           </p>
-          <div className="xl:flex items-center justify-center xl:gap-16 mt-10 grid grid-cols-4 gap-3 p-2">
+          <div className="lg:flex items-center justify-center xl:gap-16 mt-10  grid-cols-4 gap-3 p-2 hidden">
             <img src={partnerOne} alt="" data-aos="fade-right" />
             <img src={partnerTwo} alt="" data-aos="fade-right" />
             <img
@@ -160,9 +161,10 @@ const Home = () => {
             <img src={partnerSix} alt="" data-aos="fade-left" />
             <img src={partnerSeven} alt="" data-aos="fade-left" />
           </div>
+          <HowItWorks />
         </div>
 
-        <div className="flex flex-col items-center mt-[100px] bg-[#252C08] py-4 pb-8">
+        <div className="flex flex-col items-center xl:mt-[100px] bg-[#252C08] py-4 pb-8 mt-[50px]">
           <h2
             className="text-white xl:text-[54px] text-[40px] font-bold my-8"
             data-aos="zoom-in"
@@ -271,7 +273,7 @@ const Home = () => {
           </h2>
           <div className="flex justify-center gap-10 mt-[140px] flex-col xl:flex-row">
             <div
-              className="relative bg-[#604945] w-[380px] px-6 pb-3"
+              className="relative bg-[#604945] w-[380px] px-6 pb-8"
               data-aos="zoom-in"
             >
               <HorseIcon className="absolute -top-[100px] left-[100px]" />
@@ -320,12 +322,14 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <button
-            className="uppercase btn-gradient-bg text-white text-sm font-bold w-[187px] mt-9 py-3"
-            data-aos="fade-up"
-          >
-            Learn More
-          </button>
+          <Link to={"/programs"}>
+            <button
+              className="uppercase btn-gradient-bg text-white text-sm font-bold w-[187px] mt-9 py-3"
+              data-aos="fade-up"
+            >
+              {!lang ? "Learn More" : "Apprendre encore plus"}
+            </button>
+          </Link>
         </div>
 
         <div className="flex flex-col items-center mt-[85px]">
@@ -355,7 +359,7 @@ const Home = () => {
         </div>
         <WorksSlider />
 
-        <div className="flex flex-col items-center mt-[100px]">
+        <div className="flex flex-col items-center xl:mt-[100px] mt-[50px]">
           <h2
             className="xl:text-[54px] text-[40px] text-center font-bold px-2"
             data-aos="zoom-in"
@@ -367,7 +371,7 @@ const Home = () => {
             Causes we will support …{" "}
             <span className="font-bold">let’s grow</span>, all together!
           </p>
-          <div className="xl:flex items-center justify-center xl:gap-16 mt-10 grid grid-cols-4 gap-3 p-2">
+          <div className="lg:flex items-center justify-center xl:gap-16 mt-10 hidden grid-cols-4 gap-3 p-2">
             <img src={partnerOne} alt="" data-aos="zoom-in" />
             <img src={partnerTwo} alt="" data-aos="zoom-in" />
             <img
@@ -381,9 +385,10 @@ const Home = () => {
             <img src={partnerSix} alt="" data-aos="zoom-in" />
             <img src={partnerSeven} alt="" data-aos="zoom-in" />
           </div>
+          <HowItWorks />
         </div>
 
-        <div className="flex flex-col items-center mt-[100px] bg-[#252C08] py-4 pb-8">
+        <div className="flex flex-col items-center xl:mt-[100px] mt-[50px] bg-[#252C08] py-4 pb-8">
           <h2
             className="text-white xl:text-[54px] text-[40px] font-bold my-8"
             data-aos="zoom-in"

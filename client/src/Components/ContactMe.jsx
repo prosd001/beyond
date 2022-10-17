@@ -2,10 +2,14 @@ import { useRef, useState } from "react";
 import contactLogo from "../assets/contact-me-logo.png";
 import { useRecoilState } from "recoil";
 import { localizationState } from "../atoms/localizationAtom";
+import { CheckBadgeIcon } from "@heroicons/react/24/outline";
 
 const ContactMe = () => {
   const [loading, setLoading] = useState(false);
   const [lang, setLang] = useRecoilState(localizationState);
+
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -13,13 +17,13 @@ const ContactMe = () => {
   const msgRef = useRef();
 
   const click = async () => {
-    setLoading(true);
     const name = nameRef.current.value;
     const email = emailRef.current.value;
     const subject = subRef.current.value;
     const message = msgRef.current.value;
 
-    if ((name, email)) {
+    if ((name, email, subject, message)) {
+      setLoading(true);
       const response = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}/api/contacts/add-contact`,
         {
@@ -32,7 +36,10 @@ const ContactMe = () => {
       const responseData = await response.json();
       if (responseData.success) {
         setLoading(false);
+        setSuccess(true);
       }
+    } else {
+      setError(true);
     }
   };
 
@@ -81,12 +88,24 @@ const ContactMe = () => {
             placeholder="Votre Message"
           />
         </div>
-        <button
-          className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
-          onClick={click}
-        >
-          {loading ? "Contactez moi..." : "Contactez moi"}
-        </button>
+        {success && (
+          <button className="btn-gradient-bg w-full text-white font-bold py-3 mt-4">
+            <CheckBadgeIcon className="h-6 w-6 mx-auto" />
+          </button>
+        )}
+        {!success && (
+          <button
+            className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
+            onClick={click}
+          >
+            {loading ? "Contactez moi..." : "Contactez moi"}
+          </button>
+        )}
+        {error && !success && (
+          <div className="w-full text-red-500 font-bold my-2 text-center">
+            Tous les champs sont requis!
+          </div>
+        )}
       </div>
     </div>
   ) : (
@@ -134,12 +153,24 @@ const ContactMe = () => {
             placeholder="Your message"
           />
         </div>
-        <button
-          className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
-          onClick={click}
-        >
-          {loading ? "SENDING..." : "CONTACT ME"}
-        </button>
+        {success && (
+          <button className="btn-gradient-bg w-full text-white font-bold py-3 mt-4 text-center">
+            <CheckBadgeIcon className="h-6 w-6 mx-auto" />
+          </button>
+        )}
+        {!success && (
+          <button
+            className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
+            onClick={click}
+          >
+            {loading ? "SENDING..." : "CONTACT ME"}
+          </button>
+        )}
+        {error && !success && (
+          <div className="w-full text-red-500 font-bold my-2 text-center">
+            All fields are required!
+          </div>
+        )}
       </div>
     </div>
   );

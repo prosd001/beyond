@@ -111,7 +111,7 @@ const WorksSlider = () => {
         },
       },
       {
-        breakpoint: 1500,
+        breakpoint: 1900,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -127,7 +127,7 @@ const WorksSlider = () => {
     ],
   };
   return (
-    <div className="p-4 relative mt-[100px] max-w-[1700px] mx-auto">
+    <div className="p-4 relative mt-[100px] 2xl:max-w-[1700px] max-w-[1300px] mx-auto">
       <Slider {...worksettings}>
         {data.map((single) => (
           <div className="max-w-[400px]" key={single.title}>

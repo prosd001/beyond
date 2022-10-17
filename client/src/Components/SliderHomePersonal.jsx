@@ -12,13 +12,15 @@ const SliderHomePersonal = () => {
   const sliderHomeSettings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    fade: true,
+    speed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 4000,
     dotsClass: "button__bar",
     arrows: false,
+    lazyLoad: false,
   };
 
   return lang ? (
@@ -30,7 +32,7 @@ const SliderHomePersonal = () => {
         <div className=" bg-no-repeat xl:bg-cover home__sbg4_p relative w-full xl:h-[950px] h-[700px]"></div>
       </Slider>
 
-      <div className="absolute top-0 text-white w-screen">
+      <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px]">
         <div
           className="max-w-[1000px] mx-auto text-center xl:mt-[250px] mt-[150px]"
           data-aos="zoom-in"
@@ -55,7 +57,7 @@ const SliderHomePersonal = () => {
         <div className="h-[100px] xl:h-0"></div>
         <img
           src={smoke}
-          className="w-full object-cover mt-4 absolute -bottom-1 xl:static h-[130px] xl:h-auto"
+          className="w-full object-cover mt-4 absolute -bottom-1  h-[130px] xl:h-auto"
           alt=""
         />
       </div>
@@ -69,7 +71,7 @@ const SliderHomePersonal = () => {
         <div className=" bg-no-repeat xl:bg-cover home__sbg4_p relative w-full xl:h-[950px] h-[700px]"></div>
       </Slider>
 
-      <div className="absolute top-0 text-white w-screen">
+      <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px]">
         <div
           className="max-w-[1000px] mx-auto text-center xl:mt-[250px] mt-[150px]"
           data-aos="zoom-in"
@@ -93,7 +95,7 @@ const SliderHomePersonal = () => {
         <div className="h-[100px] xl:h-0"></div>
         <img
           src={smoke}
-          className="w-full object-cover mt-4 absolute -bottom-1 xl:static h-[130px] xl:h-auto"
+          className="w-full object-cover mt-4 absolute -bottom-1  h-[130px] xl:h-auto"
           alt=""
         />
       </div>

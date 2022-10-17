@@ -1,17 +1,20 @@
+import { CheckBadgeIcon } from "@heroicons/react/24/outline";
 import { useRef, useState } from "react";
 
 const WaitingList = () => {
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const nameRef = useRef();
   const emailRef = useRef();
 
   const subscribe = async () => {
-    setLoading(true);
     const name = nameRef.current.value;
     const email = emailRef.current.value;
 
     if ((name, email)) {
+      setLoading(true);
       const response = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}/api/waitings/add-waiting`,
         {
@@ -24,7 +27,11 @@ const WaitingList = () => {
       const responseData = await response.json();
       if (responseData.success) {
         setLoading(false);
+        setSuccess(true);
       }
+    } else {
+      setLoading(false);
+      setError(true);
     }
   };
   return (
@@ -37,6 +44,11 @@ const WaitingList = () => {
           Be The First To Learn About
           <span className="text-[#fff]"> Upcoming Events</span>
         </p>
+        {error && !success && (
+          <div className="w-full text-red-500 font-bold my-2 text-center">
+            All fields are required!
+          </div>
+        )}
         <div className="grid xl:grid-cols-3 gap-x-2 items-center my-8 grid-cols-1 gap-y-4">
           <input
             required
@@ -52,12 +64,19 @@ const WaitingList = () => {
             placeholder="Name"
             className="py-2 bg-[#223F1D] border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50"
           />
-          <button
-            className="btn-gradient-bg w-full text-white font-bold py-2"
-            onClick={subscribe}
-          >
-            {loading ? "SUBSCRIBING..." : "SUBSCRIBE"}
-          </button>
+          {success && (
+            <button className="btn-gradient-bg w-full text-white font-bold py-3 mt-4 text-center">
+              <CheckBadgeIcon className="h-6 w-6 mx-auto" />
+            </button>
+          )}
+          {!success && (
+            <button
+              className="btn-gradient-bg w-full text-white font-bold py-2"
+              onClick={subscribe}
+            >
+              {loading ? "SUBSCRIBING..." : "SUBSCRIBE"}
+            </button>
+          )}
         </div>
       </div>
     </div>

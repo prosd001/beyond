@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 
 const Download = ({ url }) => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -15,6 +16,7 @@ const Download = ({ url }) => {
 
     if (check) {
       if ((name, email)) {
+        setError(false);
         const response = await fetch(
           `${process.env.REACT_APP_API_BASE_URL}/api/waitings/add-waiting`,
           {
@@ -28,10 +30,13 @@ const Download = ({ url }) => {
         if (responseData.success) {
           setLoading(false);
         }
+      } else {
+        setError(true);
       }
     }
 
     if ((name, email)) {
+      setError(false);
       const response = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}/api/downloads/add-downloads`,
         {
@@ -68,6 +73,8 @@ const Download = ({ url }) => {
             link.parentNode.removeChild(link);
           });
       }
+    } else {
+      setError(true);
     }
   };
 
@@ -104,6 +111,11 @@ const Download = ({ url }) => {
           >
             {loading ? "PLEASE WAIT..." : "DOWNLOAD"}
           </button>
+          {error && (
+            <div className="w-full text-red-500 font-bold my-2 text-center">
+              All fields are required!
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -35,9 +35,9 @@ const Programs = () => {
   return (
     <>
       <section className="">
-        <div className="relative w-full max-w-[2000px] mx-auto bg__programs xl:h-[1000px] h-[600px]">
+        <div className="relative w-full max-w-[2000px] mx-auto bg__programs 2xl:h-[1000px] xl:h-[800px] h-[600px]">
           <div
-            className="absolute xl:top-[38%] top-[30%] xl:left-[26%] text-center font-bold"
+            className="absolute 2xl:top-[38%] xl:top-[38%] top-[30%] 2xl:left-[23%] xl:left-[17%] text-center font-bold"
             data-aos="zoom-in"
           >
             {lang && (
@@ -53,7 +53,7 @@ const Programs = () => {
           </div>
           {!lang && (
             <div
-              className="absolute xl:top-[38%] top-[30%] xl:left-[32%] text-center font-bold"
+              className="absolute 2xl:top-[38%] xl:top-[40%] top-[30%] 2xl:left-[30%] xl:left-[23%] text-center font-bold"
               data-aos="zoom-in"
             >
               <p className="xl:text-[64px] text-[40px] text-white">

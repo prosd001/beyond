@@ -65,8 +65,14 @@ const Navbar = () => {
                   : "uppercase cursor-pointer"
               }`}
             >
-              <Link to="/">
-                <Link to="/">{!lang ? "Home" : "Accueil"}</Link>
+              <Link
+                to={`${
+                  location.pathname === "/programs-businesses"
+                    ? "/home-businesses"
+                    : "/"
+                }`}
+              >
+                {!lang ? "Home" : "Accueil"}
               </Link>
             </p>
             <p className="uppercase cursor-pointer">
@@ -80,7 +86,15 @@ const Navbar = () => {
                   : "uppercase cursor-pointer"
               }`}
             >
-              <Link to="/programs">{!lang ? "Programs" : "Programmes"}</Link>
+              <Link
+                to={`${
+                  location.pathname === "/home-businesses"
+                    ? "/programs-businesses"
+                    : "/programs"
+                }`}
+              >
+                {!lang ? "Programs" : "Programmes"}
+              </Link>
             </p>
 
             <p
@@ -190,8 +204,14 @@ const Navbar = () => {
                 : "uppercase cursor-pointer"
             }`}
           >
-            <Link to="/">
-              <Link to="/">{!lang ? "Home" : "Accueil"}</Link>
+            <Link
+              to={`${
+                location.pathname === "/programs-businesses"
+                  ? "/home-businesses"
+                  : "/"
+              }`}
+            >
+              {!lang ? "Home" : "Accueil"}
             </Link>
           </p>
           <p className="uppercase cursor-pointer">
@@ -205,7 +225,15 @@ const Navbar = () => {
                 : "uppercase cursor-pointer"
             }`}
           >
-            <Link to="/programs">{!lang ? "Programs" : "Programmes"}</Link>
+            <Link
+              to={`${
+                location.pathname === "/home-businesses"
+                  ? "/programs-businesses"
+                  : "/programs"
+              }`}
+            >
+              {!lang ? "Programs" : "Programmes"}
+            </Link>
           </p>
           <p
             className={`${
@@ -270,9 +298,9 @@ const Navbar = () => {
   ) : (
     // For other nav white
     <>
-      <section className="absolute top-0 xl:hidden flex justify-between items-center bg-transparent z-50 w-full px-3 py-2">
+      <section className="absolute top-4 xl:hidden flex justify-between items-center bg-transparent z-50 w-full px-3">
         <img
-          src={logoDark}
+          src={logoWhite}
           alt=""
           className="cursor-pointer h-[80px]"
           onClick={() => {
@@ -288,9 +316,9 @@ const Navbar = () => {
         </span>
       </section>
 
-      <section className="absolute bg-white top-0 z-50 px-10 xl:flex hidden justify-evenly w-full text-[#604945] py-5">
+      <section className="absolute bg-transparent top-4 z-50 px-10 xl:flex hidden justify-evenly w-full text-white">
         <img
-          src={logoDark}
+          src={logoWhite}
           alt=""
           className="cursor-pointer"
           onClick={() => {
@@ -306,7 +334,7 @@ const Navbar = () => {
           <p
             className={`${
               location.pathname === "/about"
-                ? "uppercase cursor-pointer font-bold text-[#E0CF6F]"
+                ? "uppercase cursor-pointer font-bold"
                 : "uppercase cursor-pointer"
             }`}
           >
@@ -318,7 +346,7 @@ const Navbar = () => {
           <p
             className={`${
               location.pathname.includes("/articles")
-                ? "uppercase cursor-pointer font-bold text-[#E0CF6F]"
+                ? "uppercase cursor-pointer font-bold"
                 : "uppercase cursor-pointer"
             }`}
           >
@@ -328,12 +356,12 @@ const Navbar = () => {
           </p>
         </div>
         <div className="flex items-center">
-          <div className="divide-x flex divide-[#393B3F]">
+          <button className="w-[156px] cursor-none"></button>
+          <button className="w-[156px] cursor-none"></button>
+          <div className="text-white divide-x flex xl:ml-3">
             <p
               className={`${
-                !lang
-                  ? "font-bold mr-1 cursor-pointer text-[#E0CF6F]"
-                  : " mr-1 cursor-pointer"
+                !lang ? "font-bold mr-1 cursor-pointer" : " mr-1 cursor-pointer"
               }`}
               onClick={() => {
                 setLang(false);
@@ -343,9 +371,7 @@ const Navbar = () => {
             </p>
             <p
               className={`${
-                lang
-                  ? "font-bold pl-1 cursor-pointer text-[#E0CF6F]"
-                  : "pl-1 cursor-pointer"
+                lang ? "font-bold pl-1 cursor-pointer" : "pl-1 cursor-pointer"
               }`}
               onClick={() => {
                 setLang(true);

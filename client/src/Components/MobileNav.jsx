@@ -27,7 +27,15 @@ const MobileNav = ({ lang, setMobileNavOpen, setLang }) => {
               setMobileNavOpen(false);
             }}
           >
-            <Link to="/">{!lang ? "Home" : "Accueil"}</Link>
+            <Link
+              to={`${
+                location.pathname === "/programs-businesses"
+                  ? "/home-businesses"
+                  : "/"
+              }`}
+            >
+              {!lang ? "Home" : "Accueil"}
+            </Link>
           </p>
           <p
             className="uppercase cursor-pointer mb-4"
@@ -43,7 +51,15 @@ const MobileNav = ({ lang, setMobileNavOpen, setLang }) => {
               setMobileNavOpen(false);
             }}
           >
-            <Link to="/programs">{!lang ? "Programs" : "Programmes"}</Link>
+            <Link
+              to={`${
+                location.pathname === "/home-businesses"
+                  ? "/programs-businesses"
+                  : "/programs"
+              }`}
+            >
+              {!lang ? "Programs" : "Programmes"}
+            </Link>
           </p>
           <p
             className={`${
@@ -140,7 +156,15 @@ const MobileNav = ({ lang, setMobileNavOpen, setLang }) => {
               setMobileNavOpen(false);
             }}
           >
-            <Link to="/">{!lang ? "Home" : "Accueil"}</Link>
+            <Link
+              to={`${
+                location.pathname === "/programs-businesses"
+                  ? "/home-businesses"
+                  : "/"
+              }`}
+            >
+              {!lang ? "Home" : "Accueil"}
+            </Link>
           </p>
           <p
             className="uppercase cursor-pointer mb-4"
@@ -156,7 +180,15 @@ const MobileNav = ({ lang, setMobileNavOpen, setLang }) => {
               setMobileNavOpen(false);
             }}
           >
-            <Link to="/programs">{!lang ? "Programs" : "Programmes"}</Link>
+            <Link
+              to={`${
+                location.pathname === "/home-businesses"
+                  ? "/programs-businesses"
+                  : "/programs"
+              }`}
+            >
+              {!lang ? "Programs" : "Programmes"}
+            </Link>
           </p>
           <p
             className={`${
@@ -270,7 +302,15 @@ const MobileNav = ({ lang, setMobileNavOpen, setLang }) => {
             setMobileNavOpen(false);
           }}
         >
-          <Link to="/programs">{!lang ? "Programs" : "Programmes"}</Link>
+          <Link
+            to={`${
+              location.pathname === "/home-businesses"
+                ? "/programs-businesses"
+                : "/programs"
+            }`}
+          >
+            {!lang ? "Programs" : "Programmes"}
+          </Link>
         </p>
         <p
           className={`${
@@ -288,26 +328,6 @@ const MobileNav = ({ lang, setMobileNavOpen, setLang }) => {
         </p>
       </div>
       <div className="flex items-center flex-col mt-4 gap-y-3">
-        <button
-          className="nav-btn-inactive w-[80%]"
-          onClick={() => {
-            setMobileNavOpen(false);
-          }}
-        >
-          <Link to={"/programs-businesses"}>
-            {!lang ? "BUSINESSES & MANAGERS" : "ENTREPRISES & GESTIONNAIRES"}
-          </Link>
-        </button>
-        <button
-          className="nav-btn-active w-[80%]"
-          onClick={() => {
-            setMobileNavOpen(false);
-          }}
-        >
-          <Link to={"/programs"}>
-            {!lang ? "PERSONAL DEVELOPMENT" : "DÉVELOPPEMENT PERSONNEL"}
-          </Link>
-        </button>
         <div className="text-white divide-x flex mb-8">
           <p
             className={`${

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "../styles/about.css";
-import aboutBanner from "../assets/about_banner.png";
 import smoke from "../assets/smoke.png";
 import { ReactComponent as HorseArrow } from "../assets/why_horses_arrow.svg";
 import { ReactComponent as TressArrow } from "../assets/why_trees_arrow.svg";
@@ -25,16 +24,16 @@ const tabContents = [
   {
     index: 1,
     content:
-      "My values ​​are health, evolution, nature, respect and harmony. They are also embedded in everything I do, and therefore in all the programs I offer. Respect for self, for others, for the environment, continuous growth and development, living in harmony with your values, and caring for your mental, physical, spiritual and emotional health are at the heart of my approach.",
+      "My life mission is quite simple: follow my heart and intuition. My goal is to inspire tomorrow’s leaders and touch a thousand hearts to transform a million lives. In doing so we will build a better tomorrow for generations to come. My logo is representative of the key elements required to achieve this, in my humble opinion.",
     content_fr:
-      "Mes valeurs sont la santé, l’évolution, la nature, le respect et l’harmonie.  Elles sont d’ailleurs omniprésentes dans tout ce que je fais, et donc dans tous les programmes offerts.  Le respect de soi, de l’autre, de l’environnement, croître et évoluer de façon continue, vivre en harmonie avec ses propres valeurs, et protéger sa santé mentale, physique, spirituelle et émotionnelle sont au coeur de mon approche.",
+      "Ma mission de vie est très simple: suivre mon coeur et mon intuition. Mon but: inspirer les leaders de demain, et toucher un millier de coeurs afin de transformer un millions de vies. Ce faisant, nous bâtirons un meilleur demain pour les générations à venir. Mon logo est d’ailleurs représentatif des éléments qui selon moi sont importants pour y arriver.",
   },
   {
     index: 2,
     content:
-      "My values ​​are health, evolution, nature, respect and harmony. They are also embedded in everything I do, and therefore in all the programs I offer. Respect for self, for others, for the environment, continuous growth and development, living in harmony with your values, and caring for your mental, physical, spiritual and emotional health are at the heart of my approach.",
+      "As part of the technology industry for over 25 years, I have worked for multinationals and start-ups, occupying various roles in project, programs, people and team management and for over 10 years now, in talent, leadership and organizational development. With my unique toolbox, I am now able to support professionals and managers in their own personal and professional growth and development. I do it by pursuing my passion, and with my most powerful and impactful tool, equine assisted coaching. I provide coaching experiences beyond the words, to inspire tomorrow's leaders, one heart at a time!",
     content_fr:
-      "Mes valeurs sont la santé, l’évolution, la nature, le respect et l’harmonie.  Elles sont d’ailleurs omniprésentes dans tout ce que je fais, et donc dans tous les programmes offerts.  Le respect de soi, de l’autre, de l’environnement, croître et évoluer de façon continue, vivre en harmonie avec ses propres valeurs, et protéger sa santé mentale, physique, spirituelle et émotionnelle sont au coeur de mon approche.",
+      "J’œuvre dans le domaine des technologies depuis plus de 25 ans, ayant travaillé au sein de multinationales et de start-ups, dans des rôles variés en gestion de projets, de programmes, de personnel et d’équipes et depuis plus de 10 ans, en développement du talent, du leadership et des compétences organisationnelles.  Avec une boîte à outils bien remplie, je suis aujourd'hui en mesure d’accompagner professionnels et gestionnaires dans leur propre développement personnel et professionnel. Je le fais maintenant en poursuivant ma passion, et avec mon outil le plus puissant, le coaching assisté par les chevaux. J’offre des expériences de coaching au-delà des mots, afin d'inspirer les leaders de demain, un cœur à la fois!",
   },
   {
     index: 3,
@@ -49,7 +48,7 @@ const About = () => {
   const lang = useRecoilValue(localizationState);
 
   // Local States
-  const [wmTabIndex, setWmTabIndex] = useState(2);
+  const [wmTabIndex, setWmTabIndex] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -61,13 +60,13 @@ const About = () => {
 
   return (
     <>
-      <section className="xl:mt-[130px] mt-[100px]">
-        <div className="relative w-full max-w-[2000px] mx-auto">
-          <img
+      <section className="">
+        <div className="relative w-full max-w-[2000px]  bg__about 2xl:h-[1000px] xl:h-[800px] h-[600px] mx-auto">
+          {/* <img
             src={aboutBanner}
             alt=""
             className="object-cover w-full h-[500px] xl:h-auto"
-          />
+          /> */}
           {!lang && (
             <p
               className="absolute xl:top-[35%] xl:left-[45%] top-[39%] left-[35%] xl:text-[64px] text-white font-bold text-[44px]"
@@ -84,22 +83,24 @@ const About = () => {
               À propos
             </p>
           )}
-          <img
-            src={smoke}
-            alt=""
-            className="absolute -bottom-1 xl:bottom-0 w-full"
-          />
+          <img src={smoke} alt="" className="absolute -bottom-1 w-full" />
         </div>
 
         <div className="why-horses-bg max-w-[1400px] mx-auto w-full xl:py-10 xl:mt-4 p-3 py-5">
           <HorseArrow className="" data-aos="fade-right" />
           {!lang && (
-            <h2 className="font-bold xl:text-[54px] text-[40px] xl:my-5 my-2">
+            <h2
+              className="font-bold xl:text-[54px] text-[40px] xl:my-5 my-2"
+              data-aos="zoom-in"
+            >
               Why <span className="text-[#604945]">Horses</span>
             </h2>
           )}
           {lang && (
-            <h2 className="font-bold xl:text-[54px] text-[40px] xl:my-5 my-2">
+            <h2
+              className="font-bold xl:text-[54px] text-[40px] xl:my-5 my-2"
+              data-aos="zoom-in"
+            >
               Pourquoi les
               <span className="text-[#604945]">chevaux?</span>
             </h2>
@@ -211,12 +212,18 @@ const About = () => {
         <div className="why-bees-bg max-w-[1400px] mx-auto w-full xl:py-10 xl:mt-4 p-3 py-5">
           <BeesArrow className="" data-aos="fade-right" />
           {!lang && (
-            <h2 className="font-bold xl:text-[54px] text-[40px] xl:my-5 my-2">
+            <h2
+              className="font-bold xl:text-[54px] text-[40px] xl:my-5 my-2"
+              data-aos="zoom-in"
+            >
               Why <span className="text-[#E0CF6F]">Bees</span>
             </h2>
           )}
           {lang && (
-            <h2 className="font-bold xl:text-[54px] text-[40px] xl:my-5 my-2">
+            <h2
+              className="font-bold xl:text-[54px] text-[40px] xl:my-5 my-2"
+              data-aos="zoom-in"
+            >
               Pourquoi les <span className="text-[#E0CF6F]">abeilles</span>
             </h2>
           )}
@@ -497,7 +504,7 @@ const About = () => {
               <img src={aboutKarineBanner} alt="" data-aos="fade-left" />
             </div>
 
-            <div className="xl:flex justify-around w-full p-4 gap-8 xl:mb-10 max-w-[1200px] mx-auto">
+            <div className="xl:flex justify-around w-full p-4 gap-8 xl:mb-10 max-w-[1200px] mx-auto mb-[280px] xl:pb-8">
               <img src={whyMeBanner} alt="" data-aos="fade-right" />
               <div
                 className="flex justify-center items-center xl:w-[60%]"
@@ -547,7 +554,7 @@ const About = () => {
                         {!lang ? "My Values" : "Mes Valeurs"}
                       </button>
                     </div>
-                    <p>
+                    <p className="h-[100px]">
                       {!lang
                         ? tabContents[wmTabIndex].content
                         : tabContents[wmTabIndex].content_fr}

@@ -6,10 +6,14 @@ import { ReactComponent as LinkedinIcon } from "../assets/contact-linkedin.svg";
 import { useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { localizationState } from "../atoms/localizationAtom";
+import { CheckBadgeIcon } from "@heroicons/react/24/outline";
 
 const AboutContactMe = () => {
   const [loading, setLoading] = useState(false);
   const lang = useRecoilValue(localizationState);
+
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -17,13 +21,13 @@ const AboutContactMe = () => {
   const msgRef = useRef();
 
   const click = async () => {
-    setLoading(true);
     const name = nameRef.current.value;
     const email = emailRef.current.value;
     const subject = subRef.current.value;
     const message = msgRef.current.value;
 
-    if ((name, email)) {
+    if ((name, email, subject, message)) {
+      setLoading(true);
       const response = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}/api/contacts/add-contact`,
         {
@@ -36,7 +40,10 @@ const AboutContactMe = () => {
       const responseData = await response.json();
       if (responseData.success) {
         setLoading(false);
+        setSuccess(true);
       }
+    } else {
+      setError(true);
     }
   };
 
@@ -128,14 +135,28 @@ const AboutContactMe = () => {
               placeholder={`${!lang ? "Your message" : "Votre Message"}`}
             />
           </div>
-          <button
-            className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
-            onClick={click}
-          >
-            {loading
-              ? `${!lang ? "SENDING..." : "ENVOI EN COURS..."}`
-              : `${!lang ? "SEND YOUR MESSAGE" : "ENVOYEZ VOTRE MESSAGE"}`}
-          </button>
+          {success && (
+            <button className="btn-gradient-bg w-full text-white font-bold py-3 mt-4">
+              <CheckBadgeIcon className="h-6 w-6 mx-auto" />
+            </button>
+          )}
+          {!success && (
+            <button
+              className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
+              onClick={click}
+            >
+              {loading
+                ? `${!lang ? "SENDING..." : "ENVOI EN COURS..."}`
+                : `${!lang ? "SEND YOUR MESSAGE" : "ENVOYEZ VOTRE MESSAGE"}`}
+            </button>
+          )}
+          {error && !success && (
+            <div className="w-full text-red-500 font-bold my-2 text-center">
+              {lang
+                ? "Tous les champs sont requis!"
+                : "All fields are required!"}
+            </div>
+          )}
         </div>
       </div>
     </div>
