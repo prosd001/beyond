@@ -3,10 +3,21 @@ import contactLogo from "../assets/contact-me-logo.png";
 import { useRecoilState } from "recoil";
 import { localizationState } from "../atoms/localizationAtom";
 import { CheckBadgeIcon } from "@heroicons/react/24/outline";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import "../styles/slider-home.css";
+
+const contentStyle = {
+  background: "#84904b",
+  borderColor: "#84904b",
+  width: "550px",
+  padding: "10px",
+};
 
 const ContactMe = () => {
   const [loading, setLoading] = useState(false);
   const [lang, setLang] = useRecoilState(localizationState);
+  const [modal, setModal] = useState(false);
 
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -37,6 +48,7 @@ const ContactMe = () => {
       if (responseData.success) {
         setLoading(false);
         setSuccess(true);
+        setModal(true);
       }
     } else {
       setError(true);
@@ -45,6 +57,41 @@ const ContactMe = () => {
 
   return lang ? (
     <div className="flex justify-center gap-10 xl:p-6 p-4 py-16 xl:flex-row flex-col xl:items-center xl:my-8">
+      <Popup
+        open={modal}
+        position="right center"
+        modal="true"
+        {...{ contentStyle }}
+      >
+        {(close) => (
+          <div className="bg-[#84904b] relative text-white min-h-[300px] ">
+            <button
+              className="bg-[#e0cf6f] text-white rounded-full w-6 h-6 flex justify-center items-center text-2xl absolute right-0"
+              onClick={close}
+            >
+              &times;
+            </button>
+
+            <h3 className="text-xl font-bold text-center py-3"> Whooo! </h3>
+            <p className="text-lg text-center">
+              Thanks for reaching out to me. I will get back to you as soon as
+              possible.{" "}
+            </p>
+            <div className="w-full flex justify-center mt-[150px]">
+              <button
+                className="font-bold text-sm btn-gradient-bg mx-auto py-1 px-4"
+                onClick={() => {
+                  console.log("modal closed ");
+                  close();
+                }}
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        )}
+      </Popup>
+
       <div className="w-[500px]" data-aos="fade-right">
         <img src={contactLogo} alt="" />
         <h2 className="xl:text-[45px] text-[26px] font-bold capitalize mt-4 xl:leading-[50px]">
@@ -110,6 +157,41 @@ const ContactMe = () => {
     </div>
   ) : (
     <div className="flex justify-center gap-10 xl:p-6 p-4 py-16 xl:flex-row flex-col xl:items-center xl:my-8">
+      <Popup
+        open={modal}
+        position="right center"
+        modal="true"
+        {...{ contentStyle }}
+      >
+        {(close) => (
+          <div className="bg-[#84904b] relative text-white min-h-[300px] ">
+            <button
+              className="bg-[#e0cf6f] text-white rounded-full w-6 h-6 flex justify-center items-center text-2xl absolute right-0"
+              onClick={close}
+            >
+              &times;
+            </button>
+
+            <h3 className="text-xl font-bold text-center py-3"> Whooo! </h3>
+            <p className="text-lg text-center">
+              Thanks for reaching out to me. I will get back to you as soon as
+              possible.{" "}
+            </p>
+            <div className="w-full flex justify-center mt-[150px]">
+              <button
+                className="font-bold text-sm btn-gradient-bg mx-auto py-1 px-4"
+                onClick={() => {
+                  console.log("modal closed ");
+                  close();
+                }}
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        )}
+      </Popup>
+
       <div className="w-[500px]" data-aos="fade-right">
         <img src={contactLogo} alt="" />
         <h2 className="xl:text-[45px] text-[26px] font-bold capitalize mt-4 xl:leading-[50px]">

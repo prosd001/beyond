@@ -5,6 +5,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import logoWhite from "../assets/logo-nav-white.png";
+import logoDark from "../assets/logo-nav-dark.svg";
 import { ReactComponent as Hamopen } from "../assets/hamburger-open.svg";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
@@ -37,12 +38,16 @@ const Navbar = () => {
     );
   }
 
-  if (location.pathname.includes("-")) {
+  if (
+    location.pathname.includes("-") &&
+    location.pathname !== "/home-businesses" &&
+    location.pathname !== "/programs-businesses"
+  ) {
     return (
       <>
         <section className="absolute top-4 xl:hidden flex justify-between items-center bg-transparent z-50 w-full px-3">
           <img
-            src={logoWhite}
+            src={logoDark}
             alt=""
             className="cursor-pointer h-[80px]"
             onClick={() => {
@@ -58,11 +63,11 @@ const Navbar = () => {
           </span>
         </section>
 
-        <section className="absolute bg-[#604945] top-0 py-2 z-50 px-10 xl:flex hidden justify-evenly w-full text-white">
+        <section className="absolute bg-[#fff] top-0 py-2 z-50 px-10 xl:flex hidden justify-evenly w-full text-[#604945]">
           <img
-            src={logoWhite}
+            src={logoDark}
             alt=""
-            className="cursor-pointer"
+            className="cursor-pointer w-[260px] h-[133px]"
             onClick={() => {
               navigate("/");
             }}
@@ -100,11 +105,11 @@ const Navbar = () => {
           <div className="flex items-center">
             <button className="w-[156px] cursor-none"></button>
             <button className="w-[156px] cursor-none"></button>
-            <div className="text-white divide-x flex xl:ml-3">
+            <div className="divide-x flex xl:ml-3">
               <p
                 className={`${
                   !lang
-                    ? "font-bold mr-1 cursor-pointer"
+                    ? "font-bold mr-1 cursor-pointer text-[#604945]"
                     : " mr-1 cursor-pointer"
                 }`}
                 onClick={() => {
@@ -115,7 +120,9 @@ const Navbar = () => {
               </p>
               <p
                 className={`${
-                  lang ? "font-bold pl-1 cursor-pointer" : "pl-1 cursor-pointer"
+                  lang
+                    ? "font-bold pl-1 cursor-pointer text-[#604945]"
+                    : "pl-1 cursor-pointer"
                 }`}
                 onClick={() => {
                   setLang(true);
@@ -156,7 +163,7 @@ const Navbar = () => {
           <img
             src={logoWhite}
             alt=""
-            className="cursor-pointer"
+            className="cursor-pointer w-[260px] h-[133px]"
             onClick={() => {
               navigate("/");
             }}
@@ -295,7 +302,7 @@ const Navbar = () => {
         <img
           src={logoWhite}
           alt=""
-          className="cursor-pointer"
+          className="cursor-pointer w-[260px] h-[133px]"
           onClick={() => {
             navigate("/");
           }}
@@ -424,7 +431,7 @@ const Navbar = () => {
         <img
           src={logoWhite}
           alt=""
-          className="cursor-pointer"
+          className="cursor-pointer w-[260px] h-[133px]"
           onClick={() => {
             navigate("/");
           }}

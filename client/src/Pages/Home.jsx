@@ -130,7 +130,7 @@ const Home = () => {
             className="xl:text-[54px] text-[31px] font-bold"
             data-aos="zoom-in"
           >
-            Comment ça <span className="text-[#84904B]">Fonctionne</span>
+            Comment ça <span className="text-[#84904B]">fonctionne?</span>
           </h2>
         </div>
         <WorksSlider />

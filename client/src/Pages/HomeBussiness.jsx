@@ -61,7 +61,7 @@ const Home = () => {
                 compétences de leadership personnel et professionnel, de
                 communication et de collaboration. En solo ou en groupe, cette
                 expérience a été conçue afin d'avoir un impact certain et
-                immédiat sur les participants
+                immédiat sur les participants.
               </p>
             </div>
             <div
@@ -130,7 +130,7 @@ const Home = () => {
             className="xl:text-[54px] text-[31px] font-bold"
             data-aos="zoom-in"
           >
-            Comment ça <span className="text-[#84904B]">Fonctionne</span>
+            Comment ça <span className="text-[#84904B]">fonctionne?</span>
           </h2>
         </div>
         <WorksSlider />
@@ -337,12 +337,11 @@ const Home = () => {
                 CONNECTION
               </h3>
               <p className="text-[#CAB8B5] mt-4">
-                Equine facilitated private coaching session. In the heart of
-                nature, with all senses wide open, and guided by 3 coaches
-                devoted to your personal growth and development, this experience
-                was designed to accelerate your insight to create an immediate
-                impact. Take the time to disconnect and reconnect to your true
-                self. A memorable moment that will propel you forward!
+                Private session or team building and horse-assisted coaching
+                activity aimed at developing self and professional leadership,
+                communication and collaboration skills. Solo or in a group
+                setting, this experience has been designed to have a definite
+                and immediate impact on its participants.
               </p>
             </div>
             <div

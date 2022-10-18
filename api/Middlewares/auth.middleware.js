@@ -1,7 +1,6 @@
 
-
 const jwt = require("jsonwebtoken");
-const AdminModel = require("../models/admin");
+const AdminModel = require("../models/Admin.model");
 
 /* Admin check middleware */
 exports.adminCheck = async (req, res, next) => {

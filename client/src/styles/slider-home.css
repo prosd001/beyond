@@ -202,6 +202,13 @@
     left: 0;
   }
 
+  .popup-content {
+    margin: auto;
+    background: #000;
+    width: 50%;
+    padding: 5px;
+  }
+
   .button__bar li button,
   .button__bar2 li button {
     color: transparent;

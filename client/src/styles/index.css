@@ -49,6 +49,7 @@
     display: inline-block;
     width: 1em;
   }
+
   .second__package ul li::before {
     content: "\2022";
     color: #e0cf6f;

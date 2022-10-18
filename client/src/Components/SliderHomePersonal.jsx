@@ -42,7 +42,7 @@ const SliderHomePersonal = () => {
             <span className="text-[#E0CF6F]">Un coeur</span> À la fois
           </h2>
           <h3 className="xl:text-[24px] max-w-[700px] mx-auto xl:mt-4 xl:mb-6 text-sm p-3 xl:p-0 xl:leading-8">
-            Offrez-vous et à votre équipe une expérience de coaching, <br />
+            Offrez-vous une expérience de coaching, <br className="xl:hidden" />{" "}
             au-delà des mots!
           </h3>
           <div className="flex justify-between items-center max-w-[720px] mx-auto p-2 flex-col xl:flex-row gap-y-2">
@@ -97,7 +97,7 @@ const SliderHomePersonal = () => {
             <span className="text-[#E0CF6F]">One Heart</span> At a time
           </h2>
           <h3 className="xl:text-[24px] max-w-[700px] mx-auto xl:mt-4 xl:mb-6 text-sm p-3 xl:p-0 xl:leading-8">
-            Gift yourself and your team a coaching experience, beyond the words!
+            Gift yourself a coaching experience, beyond the words!
           </h3>
           <div className="flex justify-between items-center max-w-[650px] mx-auto p-2 flex-col xl:flex-row gap-y-2">
             <button

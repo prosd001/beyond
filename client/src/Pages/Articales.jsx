@@ -180,7 +180,11 @@ const Articales = () => {
                 <div
                   className="relative w-full xl:h-[900px] h-[600px]"
                   style={{
-                    backgroundImage: `url("${showcase.popular.banner_url}"), linear-gradient(
+                    backgroundImage: `url("${
+                      !lang
+                        ? showcase.popular.banner_url
+                        : showcase.popular_fr?.banner_url
+                    }"), linear-gradient(
                 180deg,rgba(5, 4, 13, 0) 0%,rgba(5, 4, 13, 0.0823073) 22.35%,rgba(5, 4, 13, 0.41) 46.94%, rgba(5, 4, 13, 0.33) 79.74%, #f0f0f0 100%)`,
                     backgroundBlendMode: "overlay",
                     backgroundRepeat: "no-repeat",
@@ -193,19 +197,27 @@ const Articales = () => {
                     data-aos="zoom-in"
                   >
                     <h3 className="uppercase text-white xl:text-xl xl:tracking-[15px] tracking-[5px]">
-                      popular
+                      {lang ? "Populaire" : "popular"}
                     </h3>
                     <h2 className="text-white capitalize xl:my-10 xl:text-[64px] text-3xl my-4">
-                      {showcase.popular.title}
+                      {!lang
+                        ? showcase.popular.title
+                        : showcase.popular_fr?.title}
                     </h2>
                     <div className="flex justify-start cursor-pointer items-center">
                       <span
                         className="text-[#E0CF6F] font-bold xl:text-2xl cursor-pointer z-50"
                         onClick={() => {
-                          navigate(`/articles/${showcase.popular.slug}`);
+                          navigate(
+                            `/articles/${
+                              !lang
+                                ? showcase.popular.slug
+                                : showcase.popular_fr?.slug
+                            }`
+                          );
                         }}
                       >
-                        Read More
+                        {!lang ? "Read More" : "voir plus"}
                       </span>
                       <ChevronRightIcon className="xl:w-8 xl:h-8 w-4 h-4 text-[#E0CF6F] xl:ml-2 ml-1" />
                     </div>
@@ -243,7 +255,11 @@ const Articales = () => {
                     >
                       <div>
                         <img
-                          src={showcase.featured_big.banner_url}
+                          src={
+                            !lang
+                              ? showcase.featured_big.banner_url
+                              : showcase.featured_big_fr?.banner_url
+                          }
                           alt=""
                           className="object-cover w-full"
                         />
@@ -254,7 +270,9 @@ const Articales = () => {
                         </p>
                         <div className="flex items-center justify-between">
                           <p className="text-[#05040D] xl:text-4xl text-xl">
-                            {showcase.featured_big.title}
+                            {!lang
+                              ? showcase.featured_big.title
+                              : showcase.featured_big_fr?.title}
                           </p>
 
                           <div className="flex justify-start cursor-pointer items-center gap-2 xl:gap-0">
@@ -262,13 +280,17 @@ const Articales = () => {
                               className="text-[#84904B] font-bold xl:text-lg cursor-pointer z-50 text-sm"
                               onClick={() => {
                                 navigate(
-                                  `/articles/${showcase.featured_big.slug}`
+                                  `/articles/${
+                                    !lang
+                                      ? showcase.featured_big.slug
+                                      : showcase.featured_big_fr?.slug
+                                  }`
                                 );
                               }}
                             >
                               {showcase.featured_big.type === "Resource"
-                                ? "Download"
-                                : "See more"}
+                                ? `${!lang ? "Download" : "Télécharger"}`
+                                : `${!lang ? "See more" : "voir plus"}`}
                             </span>
                             <ChevronRightIcon className="xl:w-7 xl:h-7 w-4 h-4 text-[#84904B] xl:ml-2" />
                           </div>
@@ -278,7 +300,11 @@ const Articales = () => {
                       <div className="xl:flex mt-8 justify-between">
                         <div className="xl:w-[47%]">
                           <img
-                            src={showcase.featured_small_one.banner_url}
+                            src={
+                              !lang
+                                ? showcase.featured_small_one.banner_url
+                                : showcase.featured_small_one_fr?.banner_url
+                            }
                             alt=""
                             className="object-cover w-full"
                           />
@@ -289,20 +315,26 @@ const Articales = () => {
                           </p>
                           <div className="flex items-center justify-between">
                             <p className="text-[#05040D] text-xl">
-                              {showcase.featured_small_one.title}
+                              {!lang
+                                ? showcase.featured_small_one.title
+                                : showcase.featured_small_one_fr?.title}
                             </p>
                             <div className="flex justify-start cursor-pointer items-center gap-2">
                               <span
                                 className="text-[#84904B] font-bold cursor-pointer z-50 xl:text-lg"
                                 onClick={() => {
                                   navigate(
-                                    `/articles/${showcase.featured_small_one.slug}`
+                                    `/articles/${
+                                      !lang
+                                        ? showcase.featured_small_one.slug
+                                        : showcase.featured_small_one_fr?.slug
+                                    }`
                                   );
                                 }}
                               >
                                 {showcase.featured_small_one.type === "Resource"
-                                  ? "Download"
-                                  : "See more"}
+                                  ? `${!lang ? "Download" : "Télécharger"}`
+                                  : `${!lang ? "See more" : "voir plus"}`}
                               </span>
                               <ChevronRightIcon className="w-6 h-6 text-[#84904B] xl:ml-2" />
                             </div>
@@ -311,7 +343,11 @@ const Articales = () => {
 
                         <div className="xl:w-[47%] my-4 xl:my-0">
                           <img
-                            src={showcase.featured_small_two.banner_url}
+                            src={
+                              !lang
+                                ? showcase.featured_small_two.banner_url
+                                : showcase.featured_small_two_fr?.banner_url
+                            }
                             alt=""
                             className="object-cover w-full"
                           />
@@ -322,20 +358,26 @@ const Articales = () => {
                           </p>
                           <div className="flex items-center justify-between">
                             <p className="text-[#05040D] text-xl">
-                              {showcase.featured_small_two.title}
+                              {!lang
+                                ? showcase.featured_small_two.title
+                                : showcase.featured_small_two_fr?.title}
                             </p>
                             <div className="flex justify-start cursor-pointer items-center">
                               <span
                                 className="text-[#84904B] font-bold text-md cursor-pointer z-50"
                                 onClick={() => {
                                   navigate(
-                                    `/articles/${showcase.featured_small_two.slug}`
+                                    `/articles/${
+                                      !lang
+                                        ? showcase.featured_small_two.slug
+                                        : showcase.featured_small_two_fr?.slug
+                                    }`
                                   );
                                 }}
                               >
                                 {showcase.featured_small_two.type === "Resource"
-                                  ? "Download"
-                                  : "See more"}
+                                  ? `${!lang ? "Download" : "Télécharger"}`
+                                  : `${!lang ? "See more" : "voir plus"}`}
                               </span>
                               <ChevronRightIcon className="w-6 h-6 text-[#84904B] ml-2" />
                             </div>
@@ -347,9 +389,13 @@ const Articales = () => {
                     <div className="flex flex-col gap-y-4" data-aos="fade-left">
                       <div className="">
                         <img
-                          src={showcase.featured_smallest_one.banner_url}
+                          src={
+                            !lang
+                              ? showcase.featured_smallest_one.banner_url
+                              : showcase.featured_smallest_one_fr?.banner_url
+                          }
                           alt=""
-                          className="object-cover w-full"
+                          className="object-cover w-full max-h-[195px]"
                         />
                         <p className="uppercase text-[#84904B] text-xs tracking-[5px] my-3">
                           {showcase.featured_smallest_one.type === "Resource"
@@ -358,21 +404,27 @@ const Articales = () => {
                         </p>
                         <div className="flex items-center justify-between">
                           <p className="text-[#05040D] text-xl">
-                            {showcase.featured_smallest_one.title}
+                            {!lang
+                              ? showcase.featured_smallest_one.title
+                              : showcase.featured_smallest_one_fr?.title}
                           </p>
                           <div className="flex justify-start cursor-pointer items-center">
                             <span
                               className="text-[#84904B] font-bold text-sm cursor-pointer z-50"
                               onClick={() => {
                                 navigate(
-                                  `/articles/${showcase.featured_smallest_one.slug}`
+                                  `/articles/${
+                                    !lang
+                                      ? showcase.featured_smallest_one.slug
+                                      : showcase.featured_smallest_one_fr?.slug
+                                  }`
                                 );
                               }}
                             >
                               {showcase.featured_smallest_one.type ===
                               "Resource"
-                                ? "Download"
-                                : "See more"}
+                                ? `${!lang ? "Download" : "Télécharger"}`
+                                : `${!lang ? "See more" : "voir plus"}`}
                             </span>
                             <ChevronRightIcon className="w-6 h-6 text-[#84904B] ml-2" />
                           </div>
@@ -381,9 +433,13 @@ const Articales = () => {
 
                       <div className="">
                         <img
-                          src={showcase.featured_smallest_two.banner_url}
+                          src={
+                            !lang
+                              ? showcase.featured_smallest_two.banner_url
+                              : showcase.featured_smallest_two_fr?.banner_url
+                          }
                           alt=""
-                          className="object-cover w-full"
+                          className="object-cover w-full max-h-[195px]"
                         />
                         <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-3">
                           {showcase.featured_smallest_two.type === "Resource"
@@ -392,21 +448,27 @@ const Articales = () => {
                         </p>
                         <div className="flex items-center justify-between">
                           <p className="text-[#05040D] text-xl">
-                            {showcase.featured_smallest_two.title}
+                            {!lang
+                              ? showcase.featured_smallest_two.title
+                              : showcase.featured_smallest_two_fr?.title}
                           </p>
                           <div className="flex justify-start cursor-pointer items-center">
                             <span
                               className="text-[#84904B] font-bold text-md cursor-pointer z-50"
                               onClick={() => {
                                 navigate(
-                                  `/articles/${showcase.featured_smallest_two.slug}`
+                                  `/articles/${
+                                    !lang
+                                      ? showcase.featured_smallest_two.slug
+                                      : showcase.featured_smallest_two_fr?.slug
+                                  }`
                                 );
                               }}
                             >
                               {showcase.featured_smallest_two.type ===
                               "Resource"
-                                ? "Download"
-                                : "See more"}
+                                ? `${!lang ? "Download" : "Télécharger"}`
+                                : `${!lang ? "See more" : "voir plus"}`}
                             </span>
                             <ChevronRightIcon className="w-6 h-6 text-[#84904B] ml-2" />
                           </div>
@@ -415,9 +477,13 @@ const Articales = () => {
 
                       <div className="">
                         <img
-                          src={showcase.featured_smallest_three.banner_url}
+                          src={
+                            !lang
+                              ? showcase.featured_smallest_three.banner_url
+                              : showcase.featured_smallest_three_fr?.banner_url
+                          }
                           alt=""
-                          className="object-cover w-full"
+                          className="object-cover w-full max-h-[195px]"
                         />
                         <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-3">
                           {showcase.featured_smallest_three.type === "Resource"
@@ -426,21 +492,28 @@ const Articales = () => {
                         </p>
                         <div className="flex items-center justify-between">
                           <p className="text-[#05040D] text-xl">
-                            {showcase.featured_smallest_three.title}
+                            {!lang
+                              ? showcase.featured_smallest_three.title
+                              : showcase.featured_smallest_three_fr?.title}
                           </p>
                           <div className="flex justify-start cursor-pointer items-center">
                             <span
                               className="text-[#84904B] font-bold text-md cursor-pointer z-50"
                               onClick={() => {
                                 navigate(
-                                  `/articles/${showcase.featured_smallest_three.slug}`
+                                  `/articles/${
+                                    !lang
+                                      ? showcase.featured_smallest_three.slug
+                                      : showcase.featured_smallest_three_fr
+                                          ?.slug
+                                  }`
                                 );
                               }}
                             >
                               {showcase.featured_smallest_three.type ===
                               "Resource"
-                                ? "Download"
-                                : "See more"}
+                                ? `${!lang ? "Download" : "Télécharger"}`
+                                : `${!lang ? "See more" : "voir plus"}`}
                             </span>
                             <ChevronRightIcon className="w-6 h-6 text-[#84904B] ml-2" />
                           </div>

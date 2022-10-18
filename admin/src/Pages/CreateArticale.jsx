@@ -61,6 +61,7 @@ const CreateArticale = () => {
       guide_url: guideUrl,
       privacy,
       content,
+      lang,
     };
 
     const response = await fetch(
