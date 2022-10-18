@@ -1,10 +1,13 @@
 import { CheckBadgeIcon } from "@heroicons/react/24/outline";
 import { useRef, useState } from "react";
+import { useRecoilState } from "recoil";
+import { localizationState } from "../atoms/localizationAtom";
 
 const WaitingList = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [lang, setLang] = useRecoilState(localizationState);
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -37,16 +40,34 @@ const WaitingList = () => {
   return (
     <div className="max-w-[1220px] flex justify-center items-center bg-[#252C08] mx-auto my-8 p-4">
       <div className="xl:w-[90%]">
-        <h2 className="font-bold xl:text-[54px]  text-[40px] mt-8 text-[#84904B] text-center">
-          Join My <span className="text-[#fff]">Waiting List</span>
-        </h2>
-        <p className="font-bold xl:text-[20px] my-2 text-[#84904B] text-center">
-          Be The First To Learn About
-          <span className="text-[#fff]"> Upcoming Events</span>
-        </p>
+        {!lang && (
+          <h2 className="font-bold xl:text-[54px]  text-[40px] mt-8 text-[#84904B] text-center">
+            Join My <span className="text-[#fff]">Waiting List</span>
+          </h2>
+        )}
+        {lang && (
+          <h2 className="font-bold xl:text-[54px]  text-[40px] mt-8 text-[#84904B] text-center capitalize">
+            Rejoindre ma <span className="text-[#fff]">liste d'attente</span>
+          </h2>
+        )}
+        {!lang && (
+          <p className="font-bold xl:text-[20px] my-2 text-[#84904B] text-center">
+            Be The First To Learn About
+            <span className="text-[#fff]"> Upcoming Events</span>
+          </p>
+        )}
+        {lang && (
+          <p className="font-bold xl:text-[20px] my-2 text-[#84904B] text-center capitalize">
+            Soyez le premier informé des
+            <span className="text-[#fff]"> événements à venir</span>
+          </p>
+        )}
+
         {error && !success && (
           <div className="w-full text-red-500 font-bold my-2 text-center">
-            All fields are required!
+            {!lang
+              ? "All fields are required!"
+              : "Tous les champs sont requis!"}
           </div>
         )}
         <div className="grid xl:grid-cols-3 gap-x-2 items-center my-8 grid-cols-1 gap-y-4">
@@ -61,7 +82,7 @@ const WaitingList = () => {
             required
             ref={nameRef}
             type="text"
-            placeholder="Name"
+            placeholder={`${!lang ? "Name" : "Nom"}`}
             className="py-2 bg-[#223F1D] border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50"
           />
           {success && (
@@ -71,10 +92,12 @@ const WaitingList = () => {
           )}
           {!success && (
             <button
-              className="btn-gradient-bg w-full text-white font-bold py-2"
+              className="btn-gradient-bg w-full text-white font-bold py-2 uppercase"
               onClick={subscribe}
             >
-              {loading ? "SUBSCRIBING..." : "SUBSCRIBE"}
+              {loading
+                ? `${!lang ? "SUBSCRIBING..." : "s'abonner..."}`
+                : `${!lang ? "SUBSCRIBE" : "s'abonner"}`}
             </button>
           )}
         </div>

@@ -83,7 +83,11 @@ const About = () => {
               À propos
             </p>
           )}
-          <img src={smoke} alt="" className="absolute -bottom-1 w-full" />
+          <img
+            src={smoke}
+            alt=""
+            className="absolute -bottom-1 xl:-bottom-2 w-full"
+          />
         </div>
 
         <div className="why-horses-bg max-w-[1400px] mx-auto w-full xl:py-10 xl:mt-4 p-3 py-5">
@@ -102,7 +106,7 @@ const About = () => {
               data-aos="zoom-in"
             >
               Pourquoi les
-              <span className="text-[#604945]">chevaux?</span>
+              <span className="text-[#604945]"> chevaux?</span>
             </h2>
           )}
           {!lang && (
@@ -166,7 +170,7 @@ const About = () => {
                   data-aos="fade-right"
                 >
                   Pourquoi les
-                  <span className="text-[#84904B]">arbres?</span>
+                  <span className="text-[#84904B]"> arbres?</span>
                 </h2>
               )}
               <TressArrow className="ml-auto" data-aos="fade-left" />
@@ -448,7 +452,7 @@ const About = () => {
                     data-aos="zoom-in"
                   >
                     À propos de
-                    <span className="text-[#84904B]">Karine</span>
+                    <span className="text-[#84904B]"> Karine</span>
                   </h3>
                 )}
                 {!lang && (

@@ -27,6 +27,10 @@ const articaleSchema = new mongoose.Schema(
             type: String,
             default: 'Private'
         },
+        lang: {
+            type: String,
+            default: 'FR'
+        },
     },
     {
         versionKey: false,

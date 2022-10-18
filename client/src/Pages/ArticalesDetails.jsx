@@ -26,7 +26,7 @@ const ArticalesDetails = () => {
 
   return (
     <>
-      <section className="mt-[130px]">
+      <section className="mt-[180px]">
         {loading && (
           <div className="flex w-full justify-center items-center mt-[20%]">
             <div aria-label="Loading..." role="status">

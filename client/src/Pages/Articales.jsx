@@ -38,15 +38,27 @@ const Articales = () => {
   }, [setArticales]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/public-articales`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          setArticales(data.articales);
-        }
-        setLoading(false);
-      });
-  }, [setArticales]);
+    if (lang) {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/api/public-articales`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            setArticales(data.articales);
+          }
+          setLoading(false);
+        });
+    } else {
+      setLoading(true);
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/api/public-eng-articales`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            setArticales(data.articales);
+          }
+          setLoading(false);
+        });
+    }
+  }, [setArticales, lang]);
 
   return (
     <>
@@ -517,9 +529,11 @@ const Articales = () => {
                       ))}
                     </div>
                     <div className="w-full flex justify-center my-5">
-                      <button className="capitalize btn-gradient-bg text-white font-bold xl:px-10 xl:py-4 mx-auto px-4 py-2 mt-6">
-                        {!lang ? "Show more" : "Montre plus"}
-                      </button>
+                      {articales.length > 20 && (
+                        <button className="capitalize btn-gradient-bg text-white font-bold xl:px-10 xl:py-4 mx-auto px-4 py-2 mt-6">
+                          {!lang ? "Show more" : "Montre plus"}
+                        </button>
+                      )}
                     </div>
                   </div>
                 )}

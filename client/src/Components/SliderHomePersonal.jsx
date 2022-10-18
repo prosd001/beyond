@@ -73,7 +73,7 @@ const SliderHomePersonal = () => {
         <div className="h-[100px] xl:h-0"></div>
         <img
           src={smoke}
-          className="w-full object-cover mt-4 absolute -bottom-1  h-[130px] xl:h-auto xl:max-h-[300px]"
+          className="w-full object-cover mt-4 absolute -bottom-1 xl:-bottom-[14px] h-[130px] xl:h-auto xl:max-h-[300px]"
           alt=""
         />
       </div>
@@ -127,7 +127,7 @@ const SliderHomePersonal = () => {
         <div className="h-[100px] xl:h-0"></div>
         <img
           src={smoke}
-          className="w-full object-cover mt-4 absolute -bottom-1  h-[130px] xl:h-auto xl:max-h-[300px]"
+          className="w-full object-cover mt-4 absolute -bottom-1 xl:-bottom-[14px] h-[130px] xl:h-auto xl:max-h-[300px]"
           alt=""
         />
       </div>

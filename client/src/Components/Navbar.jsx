@@ -37,8 +37,101 @@ const Navbar = () => {
     );
   }
 
-  // switch between personal and business for home
+  if (location.pathname.includes("-")) {
+    return (
+      <>
+        <section className="absolute top-4 xl:hidden flex justify-between items-center bg-transparent z-50 w-full px-3">
+          <img
+            src={logoWhite}
+            alt=""
+            className="cursor-pointer h-[80px]"
+            onClick={() => {
+              navigate("/");
+            }}
+          />
+          <span
+            onClick={() => {
+              setMobileNavOpen(true);
+            }}
+          >
+            <Hamopen className="w-7 h-7 mr-2" />
+          </span>
+        </section>
+
+        <section className="absolute bg-[#604945] top-0 py-2 z-50 px-10 xl:flex hidden justify-evenly w-full text-white">
+          <img
+            src={logoWhite}
+            alt=""
+            className="cursor-pointer"
+            onClick={() => {
+              navigate("/");
+            }}
+          />
+          <div className="flex items-center gap-8 ml-[100px]">
+            <p className="uppercase cursor-pointer">
+              <Link to="/">
+                <Link to="/">{!lang ? "Home" : "Accueil"}</Link>
+              </Link>
+            </p>
+            <p
+              className={`${
+                location.pathname === "/about"
+                  ? "uppercase cursor-pointer font-bold"
+                  : "uppercase cursor-pointer"
+              }`}
+            >
+              <Link to="/about">{!lang ? "About" : "À Propos"}</Link>
+            </p>
+            <p className="uppercase cursor-pointer">
+              <Link to="/programs">{!lang ? "Programs" : "Programmes"}</Link>
+            </p>
+            <p
+              className={`${
+                location.pathname.includes("/articles")
+                  ? "uppercase cursor-pointer font-bold"
+                  : "uppercase cursor-pointer"
+              }`}
+            >
+              <Link to={"/articles"}>
+                {!lang ? "ARTICLES & RESOURCES" : "Articles et Ressources"}
+              </Link>
+            </p>
+          </div>
+          <div className="flex items-center">
+            <button className="w-[156px] cursor-none"></button>
+            <button className="w-[156px] cursor-none"></button>
+            <div className="text-white divide-x flex xl:ml-3">
+              <p
+                className={`${
+                  !lang
+                    ? "font-bold mr-1 cursor-pointer"
+                    : " mr-1 cursor-pointer"
+                }`}
+                onClick={() => {
+                  setLang(false);
+                }}
+              >
+                EN
+              </p>
+              <p
+                className={`${
+                  lang ? "font-bold pl-1 cursor-pointer" : "pl-1 cursor-pointer"
+                }`}
+                onClick={() => {
+                  setLang(true);
+                }}
+              >
+                FR
+              </p>
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  }
+
   if (location.pathname === "/" || location.pathname === "/home-businesses") {
+    // switch between personal and business for home
     return (
       <>
         <section className="absolute top-0 xl:hidden flex justify-between items-center bg-transparent z-50 w-full px-3 py-2">

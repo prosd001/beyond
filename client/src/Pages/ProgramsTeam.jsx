@@ -35,7 +35,7 @@ const ProgramsTeam = () => {
   return (
     <>
       <section className="">
-        <div className="relative w-full max-w-[2000px] mx-auto bg__programs 2xl:h-[1000px] xl:h-[800px] h-[600px]">
+        <div className="relative w-full max-w-[2000px] mx-auto bg__programs_business 2xl:h-[1000px] xl:h-[800px] h-[600px]">
           <div
             className="absolute 2xl:top-[38%] xl:top-[38%] top-[30%] 2xl:left-[23%] xl:left-[17%] text-center font-bold"
             data-aos="zoom-in"
@@ -228,11 +228,7 @@ const ProgramsTeam = () => {
                 </li>
                 <li>
                   Séance de coaching personnalisé axée sur un projet, un
-                  objectif ou un enjeu/défi personnel ou professionnel
-                </li>
-                <li>
-                  5 séance personnalisées, combinant contenu éducatif, mentorat
-                  et coaching en PNL (programmation neuro-linguistique)
+                  objectif ou un enjeu/défi professionnel
                 </li>
                 <li>
                   L’approche de coaching combine à la fois la PNL (programmation

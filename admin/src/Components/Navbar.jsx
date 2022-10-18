@@ -319,16 +319,16 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: "Articales",
+    label: "Articles",
     children: [
       {
-        label: "All Articales",
-        subLabel: "View all Articales",
+        label: "All Articles",
+        subLabel: "View all Articles",
         href: "/articales",
       },
       {
-        label: "Create Articale",
-        subLabel: "Create a new Articale",
+        label: "Create Article",
+        subLabel: "Create a new Article",
         href: "/create-articale",
       },
     ],

@@ -18,7 +18,7 @@ const SliderHome = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 6000,
-    dotsClass: "button__bar",
+    dotsClass: "button__bar2",
     arrows: false,
     lazyLoad: false,
   };
@@ -29,7 +29,7 @@ const SliderHome = () => {
         <div className=" bg-no-repeat xl:bg-cover home__sbg relative w-full xl:h-[950px] h-[700px]"></div>
         <div className=" bg-no-repeat xl:bg-cover home__sbg2 relative w-full xl:h-[950px] h-[700px]"></div>
         <div className=" bg-no-repeat xl:bg-cover home__sbg3 relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg4 relative w-full xl:h-[950px] h-[700px]"></div>
+        {/* <div className=" bg-no-repeat xl:bg-cover home__sbg4 relative w-full xl:h-[950px] h-[700px]"></div> */}
       </Slider>
 
       <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px]">
@@ -73,7 +73,7 @@ const SliderHome = () => {
         <div className="h-[100px] xl:h-0"></div>
         <img
           src={smoke}
-          className="w-full object-cover mt-4 absolute -bottom-1 h-[130px] xl:h-auto xl:max-h-[300px]"
+          className="w-full object-cover mt-4 absolute -bottom-1 xl:-bottom-[14px] h-[130px] xl:h-auto xl:max-h-[300px]"
           alt=""
         />
       </div>
@@ -84,7 +84,7 @@ const SliderHome = () => {
         <div className=" bg-no-repeat xl:bg-cover home__sbg relative w-full xl:h-[950px] h-[700px]"></div>
         <div className=" bg-no-repeat xl:bg-cover home__sbg2 relative w-full xl:h-[950px] h-[700px]"></div>
         <div className=" bg-no-repeat xl:bg-cover home__sbg3 relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg4 relative w-full xl:h-[950px] h-[700px]"></div>
+        {/* <div className=" bg-no-repeat xl:bg-cover home__sbg4 relative w-full xl:h-[950px] h-[700px]"></div> */}
       </Slider>
 
       <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px]">
@@ -127,7 +127,7 @@ const SliderHome = () => {
         <div className="h-[100px] xl:h-0"></div>
         <img
           src={smoke}
-          className="w-full object-cover mt-4 absolute -bottom-1 h-[130px] xl:h-auto xl:max-h-[300px]"
+          className="w-full object-cover mt-4 absolute -bottom-1 xl:-bottom-[14px] h-[130px] xl:h-auto xl:max-h-[300px]"
           alt=""
         />
       </div>

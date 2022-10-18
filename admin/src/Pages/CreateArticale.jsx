@@ -19,6 +19,7 @@ const CreateArticale = () => {
   const content = useRecoilValue(contentState);
 
   // Local states
+  const [lang, setLang] = useState("FR");
   const [type, setType] = useState("Articale");
   const [privacy, setPrivacy] = useState("Private");
   const [bannerUrl, setBannerUrl] = useState("");
@@ -235,6 +236,28 @@ const CreateArticale = () => {
         <option value="Articale">Articale</option>
         <option value="Resource">Resource</option>
       </Select>
+
+      <Text
+        fontSize="2xl"
+        color="#604945"
+        marginY="10px"
+        marginTop="20px"
+        fontWeight="bold"
+      >
+        Language:
+      </Text>
+      <Select
+        variant="filled"
+        bgColor="#fff"
+        value={type}
+        onChange={(e) => {
+          setLang(e.target.value);
+        }}
+      >
+        <option value="FR">FR</option>
+        <option value="EN">EN</option>
+      </Select>
+
       {type === "Resource" && (
         <>
           <Text

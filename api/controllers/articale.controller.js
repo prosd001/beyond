@@ -5,9 +5,9 @@ const ShowcaseModel = require('../models/Showcase.model')
 
 // Create a new articale
 const createArticale = async (req, res) => {
-    const { slug, title, banner_url, type, guide_url, privacy, content } = req.body
+    const { slug, title, banner_url, type, guide_url, privacy, content, lang } = req.body
 
-    if (!slug || !title || !banner_url || !type || !privacy || !content) {
+    if (!slug || !title || !banner_url || !type || !privacy || !content || !lang) {
         return res
             .status(400)
             .json({ success: false, message: "Required fields are missing" });
@@ -27,7 +27,7 @@ const createArticale = async (req, res) => {
         })
 
         const newArticale = await ArticaleModel.create({
-            slug, title, banner_url, type, guide_url, privacy
+            slug, title, banner_url, type, guide_url, privacy, lang
         })
 
         if (!newContent || !newArticale) {
@@ -145,7 +145,7 @@ const getAllArticales = async (req, res) => {
 // Get public articales
 const getPublicArticales = async (req, res) => {
     try {
-        const articales = await ArticaleModel.find({ privacy: 'Public' })
+        const articales = await ArticaleModel.find({ privacy: 'Public', lang: 'FR' })
 
         if (!articales) {
             res.status(500).json({ success: false, message: "Server error" });
@@ -163,6 +163,26 @@ const getPublicArticales = async (req, res) => {
     }
 }
 
+// Get public articales
+const getPublicEngArticales = async (req, res) => {
+    try {
+        const articales = await ArticaleModel.find({ privacy: 'Public', lang: 'EN' })
+
+        if (!articales) {
+            res.status(500).json({ success: false, message: "Server error" });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: 'Public articales fetched successfully!',
+            articales
+        });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: "Server error" });
+    }
+}
 
 // Add showcase
 const addShowcase = async (req, res) => {
@@ -358,4 +378,4 @@ const updateShowcase = async (req, res) => {
     }
 }
 
-module.exports = { createArticale, getArticale, editArticale, deleteArticale, getAllArticales, getPublicArticales, addShowcase, getShowcase, updateShowcase }
+module.exports = { createArticale, getArticale, editArticale, deleteArticale, getAllArticales, getPublicArticales, addShowcase, getShowcase, updateShowcase, getPublicEngArticales }
