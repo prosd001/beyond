@@ -372,7 +372,7 @@ const CreateArticale = () => {
           onClick={handleCreateArticale}
           loadingText="Saving..."
         >
-          Create Articale
+          Create Article
         </Button>
       </Box>
     </Container>

@@ -73,7 +73,7 @@ const Articales = () => {
               <ModalHeader color={"red.600"}>Delete Article</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                The articale will be deleted permenantly.This action can't be
+                The article will be deleted permenantly.This action can't be
                 reversed!
               </ModalBody>
 
@@ -324,7 +324,7 @@ const Articales = () => {
                       });
                     }}
                   >
-                    Copy Articale Slug
+                    Copy Article Slug
                   </Button>
                 </Box>
               </GridItem>

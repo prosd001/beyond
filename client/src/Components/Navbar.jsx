@@ -39,7 +39,7 @@ const Navbar = () => {
   }
 
   if (
-    location.pathname.includes("-") &&
+    location.pathname.includes("articles/") &&
     location.pathname !== "/home-businesses" &&
     location.pathname !== "/programs-businesses"
   ) {

@@ -381,7 +381,7 @@ const EditArticale = () => {
               onClick={handleCreateArticale}
               loadingText="Saving..."
             >
-              Save Articale
+              Save Article
             </Button>
           </Box>
         </>
