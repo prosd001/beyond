@@ -1,16 +1,16 @@
 import { useRef, useState } from "react";
-import contactLogo from "../assets/contact-me-logo.png";
+import contactLogo from "../assets/contact-me-logo.svg";
 import { useRecoilState } from "recoil";
 import { localizationState } from "../atoms/localizationAtom";
-import { CheckBadgeIcon } from "@heroicons/react/24/outline";
+import { CheckIcon } from "@heroicons/react/24/solid";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "../styles/slider-home.css";
 
 const contentStyle = {
-  background: "#84904b",
-  borderColor: "#84904b",
-  width: "550px",
+  background: "#fff",
+  borderColor: "#fff",
+  width: "350px",
   padding: "10px",
 };
 
@@ -49,6 +49,10 @@ const ContactMe = () => {
         setLoading(false);
         setSuccess(true);
         setModal(true);
+        msgRef.current.value = "";
+        nameRef.current.value = "";
+        emailRef.current.value = "";
+        subRef.current.value = "";
       }
     } else {
       setError(true);
@@ -64,28 +68,37 @@ const ContactMe = () => {
         {...{ contentStyle }}
       >
         {(close) => (
-          <div className="bg-[#84904b] relative text-white min-h-[300px] ">
-            <button
+          <div className="bg-[#fff] relative  min-h-[250px]">
+            {/* <button
               className="bg-[#e0cf6f] text-white rounded-full w-6 h-6 flex justify-center items-center text-2xl absolute right-0"
               onClick={close}
             >
               &times;
-            </button>
+            </button> */}
+            <div className="w-[85px] h-[85px] absolute rounded-full flex justify-center items-center text-white bg-[#604945] left-[38%] -top-[50px]">
+              <CheckIcon className="w-10 h-10" />
+            </div>
 
-            <h3 className="text-xl font-bold text-center py-3"> Whooo! </h3>
-            <p className="text-lg text-center">
-              Thanks for reaching out to me. I will get back to you as soon as
-              possible.{" "}
-            </p>
-            <div className="w-full flex justify-center mt-[150px]">
+            <div className="py-[20%]">
+              <h3 className="text-2xl font-bold text-center">
+                {!lang ? "Thank you!" : " Merci!"}
+              </h3>
+              <p className="text-center my-2">
+                {!lang
+                  ? "Thank you, your message was sent!"
+                  : "Merci, votre message a été envoyé!"}
+              </p>
+            </div>
+
+            <div className="w-full flex justify-center absolute bottom-5">
               <button
-                className="font-bold text-sm btn-gradient-bg mx-auto py-1 px-4"
+                className="font-bold text-sm bg-[#604945] mx-auto py-2 px-4 w-[90%] text-white"
                 onClick={() => {
                   console.log("modal closed ");
                   close();
                 }}
               >
-                CLOSE
+                {!lang ? "CLOSE" : "FERMER"}
               </button>
             </div>
           </div>
@@ -93,7 +106,7 @@ const ContactMe = () => {
       </Popup>
 
       <div className="w-[500px]" data-aos="fade-right">
-        <img src={contactLogo} alt="" />
+        <img src={contactLogo} alt="" className="w-[220px]" />
         <h2 className="xl:text-[45px] text-[26px] font-bold capitalize mt-4 xl:leading-[50px]">
           Offrez-vous une <br className="xl:hidden" /> expérience de coaching,{" "}
           <br />
@@ -135,19 +148,15 @@ const ContactMe = () => {
             placeholder="Votre Message"
           />
         </div>
-        {success && (
-          <button className="btn-gradient-bg w-full text-white font-bold py-3 mt-4">
-            <CheckBadgeIcon className="h-6 w-6 mx-auto" />
-          </button>
-        )}
-        {!success && (
+
+        {
           <button
             className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
             onClick={click}
           >
             {loading ? "Contactez moi..." : "Contactez moi"}
           </button>
-        )}
+        }
         {error && !success && (
           <div className="w-full text-red-500 font-bold my-2 text-center">
             Tous les champs sont requis!
@@ -164,28 +173,37 @@ const ContactMe = () => {
         {...{ contentStyle }}
       >
         {(close) => (
-          <div className="bg-[#84904b] relative text-white min-h-[300px] ">
-            <button
+          <div className="bg-[#fff] relative  min-h-[250px]">
+            {/* <button
               className="bg-[#e0cf6f] text-white rounded-full w-6 h-6 flex justify-center items-center text-2xl absolute right-0"
               onClick={close}
             >
               &times;
-            </button>
+            </button> */}
+            <div className="w-[85px] h-[85px] absolute rounded-full flex justify-center items-center text-white bg-[#604945] left-[38%] -top-[50px]">
+              <CheckIcon className="w-10 h-10" />
+            </div>
 
-            <h3 className="text-xl font-bold text-center py-3"> Whooo! </h3>
-            <p className="text-lg text-center">
-              Thanks for reaching out to me. I will get back to you as soon as
-              possible.{" "}
-            </p>
-            <div className="w-full flex justify-center mt-[150px]">
+            <div className="py-[20%]">
+              <h3 className="text-2xl font-bold text-center">
+                {!lang ? "Thank you!" : " Merci!"}
+              </h3>
+              <p className="text-center my-2">
+                {!lang
+                  ? "Thank you, your message was sent!"
+                  : "Merci, votre message a été envoyé!"}
+              </p>
+            </div>
+
+            <div className="w-full flex justify-center absolute bottom-5">
               <button
-                className="font-bold text-sm btn-gradient-bg mx-auto py-1 px-4"
+                className="font-bold text-sm bg-[#604945] mx-auto py-2 px-4 w-[90%] text-white"
                 onClick={() => {
                   console.log("modal closed ");
                   close();
                 }}
               >
-                CLOSE
+                {!lang ? "CLOSE" : "FERMER"}
               </button>
             </div>
           </div>
@@ -193,7 +211,7 @@ const ContactMe = () => {
       </Popup>
 
       <div className="w-[500px]" data-aos="fade-right">
-        <img src={contactLogo} alt="" />
+        <img src={contactLogo} alt="" className="w-[220px]" />
         <h2 className="xl:text-[45px] text-[26px] font-bold capitalize mt-4 xl:leading-[50px]">
           Gift yourself <br className="xl:hidden" /> a coaching experience,{" "}
           <br />
@@ -235,19 +253,15 @@ const ContactMe = () => {
             placeholder="Your message"
           />
         </div>
-        {success && (
-          <button className="btn-gradient-bg w-full text-white font-bold py-3 mt-4 text-center">
-            <CheckBadgeIcon className="h-6 w-6 mx-auto" />
-          </button>
-        )}
-        {!success && (
+
+        {
           <button
             className="btn-gradient-bg w-full text-white font-bold py-3 mt-4"
             onClick={click}
           >
             {loading ? "SENDING..." : "CONTACT ME"}
           </button>
-        )}
+        }
         {error && !success && (
           <div className="w-full text-red-500 font-bold my-2 text-center">
             All fields are required!

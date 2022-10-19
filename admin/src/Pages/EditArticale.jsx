@@ -136,7 +136,7 @@ const EditArticale = () => {
             mb="30px"
             color="#604945"
           >
-            EDIT ARTICALE
+            EDIT ARTICLE
           </Heading>
           <Text fontSize="2xl" color="#604945" marginY="10px" fontWeight="bold">
             Slug:
@@ -264,7 +264,7 @@ const EditArticale = () => {
               setType(e.target.value);
             }}
           >
-            <option value="Articale">Articale</option>
+            <option value="Articale">Article</option>
             <option value="Resource">Resource</option>
           </Select>
           {type === "Resource" && (

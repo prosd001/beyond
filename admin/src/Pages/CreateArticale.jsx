@@ -106,7 +106,7 @@ const CreateArticale = () => {
         mb="30px"
         color="#604945"
       >
-        CREATE A NEW ARTICALE
+        CREATE A NEW ARTICLE
       </Heading>
       <Text fontSize="2xl" color="#604945" marginY="10px" fontWeight="bold">
         Slug:
@@ -234,7 +234,7 @@ const CreateArticale = () => {
           setType(e.target.value);
         }}
       >
-        <option value="Articale">Articale</option>
+        <option value="Articale">Article</option>
         <option value="Resource">Resource</option>
       </Select>
 
@@ -250,7 +250,7 @@ const CreateArticale = () => {
       <Select
         variant="filled"
         bgColor="#fff"
-        value={type}
+        value={lang}
         onChange={(e) => {
           setLang(e.target.value);
         }}

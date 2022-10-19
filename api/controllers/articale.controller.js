@@ -508,7 +508,17 @@ const updateShowcase = async (req, res) => {
             }
         }
 
-        const updatedshowcase = ShowcaseModel.findByIdAndUpdate(id, data, { new: true })
+
+
+        const updatedshowcase = ShowcaseModel.findByIdAndUpdate(id, data, { new: true }, function (err, docs) {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                console.log("Updated User : ", docs);
+            }
+        })
+
 
         if (!updatedshowcase) {
             res.status(500).json({ success: false, message: "Server error" });
@@ -517,7 +527,7 @@ const updateShowcase = async (req, res) => {
         return res.status(200).json({
             success: true,
             message: 'Showcase created successfully!',
-            updatedshowcase
+
         });
 
     } catch (error) {

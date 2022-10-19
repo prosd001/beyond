@@ -67,7 +67,7 @@ const Navbar = () => {
           <img
             src={logoDark}
             alt=""
-            className="cursor-pointer w-[260px] h-[133px]"
+            className="cursor-pointer w-[280px] h-[133px]"
             onClick={() => {
               navigate("/");
             }}
@@ -105,12 +105,10 @@ const Navbar = () => {
           <div className="flex items-center">
             <button className="w-[156px] cursor-none"></button>
             <button className="w-[156px] cursor-none"></button>
-            <div className="divide-x flex xl:ml-3">
+            <div className="divide-x divide-white flex xl:ml-3 text-white">
               <p
                 className={`${
-                  !lang
-                    ? "font-bold mr-1 cursor-pointer text-[#604945]"
-                    : " mr-1 cursor-pointer"
+                  !lang ? "font-bold mr-1  text-[#fff]" : " mr-1 "
                 }`}
                 onClick={() => {
                   setLang(false);
@@ -119,11 +117,7 @@ const Navbar = () => {
                 EN
               </p>
               <p
-                className={`${
-                  lang
-                    ? "font-bold pl-1 cursor-pointer text-[#604945]"
-                    : "pl-1 cursor-pointer"
-                }`}
+                className={`${lang ? "font-bold pl-1  text-[#fff]" : "pl-1 "}`}
                 onClick={() => {
                   setLang(true);
                 }}
@@ -163,7 +157,7 @@ const Navbar = () => {
           <img
             src={logoWhite}
             alt=""
-            className="cursor-pointer w-[260px] h-[133px]"
+            className="cursor-pointer w-[280px] h-[133px]"
             onClick={() => {
               navigate("/");
             }}
@@ -302,7 +296,7 @@ const Navbar = () => {
         <img
           src={logoWhite}
           alt=""
-          className="cursor-pointer w-[260px] h-[133px]"
+          className="cursor-pointer w-[280px] h-[133px]"
           onClick={() => {
             navigate("/");
           }}
@@ -431,7 +425,7 @@ const Navbar = () => {
         <img
           src={logoWhite}
           alt=""
-          className="cursor-pointer w-[260px] h-[133px]"
+          className="cursor-pointer w-[280px] h-[133px]"
           onClick={() => {
             navigate("/");
           }}

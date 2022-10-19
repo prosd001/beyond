@@ -250,7 +250,7 @@ const Articales = () => {
                 {showcase.popular && (
                   <div className="grid xl:grid-cols-3 xl:gap-x-6">
                     <div
-                      className="xl:col-span-2 flex flex-col"
+                      className="xl:col-span-2 flex flex-col h-full"
                       data-aos="fade-right"
                     >
                       <div>
@@ -386,7 +386,10 @@ const Articales = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-y-4" data-aos="fade-left">
+                    <div
+                      className="flex flex-col gap-y-4 h-full justify-between"
+                      data-aos="fade-left"
+                    >
                       <div className="">
                         <img
                           src={
@@ -395,7 +398,7 @@ const Articales = () => {
                               : showcase.featured_smallest_one_fr?.banner_url
                           }
                           alt=""
-                          className="object-cover w-full max-h-[195px]"
+                          className="object-cover w-full max-h-[230px]"
                         />
                         <p className="uppercase text-[#84904B] text-xs tracking-[5px] my-3">
                           {showcase.featured_smallest_one.type === "Resource"
@@ -439,7 +442,7 @@ const Articales = () => {
                               : showcase.featured_smallest_two_fr?.banner_url
                           }
                           alt=""
-                          className="object-cover w-full max-h-[195px]"
+                          className="object-cover w-full max-h-[230px]"
                         />
                         <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-3">
                           {showcase.featured_smallest_two.type === "Resource"
@@ -483,7 +486,7 @@ const Articales = () => {
                               : showcase.featured_smallest_three_fr?.banner_url
                           }
                           alt=""
-                          className="object-cover w-full max-h-[195px]"
+                          className="object-cover w-full max-h-[230px]"
                         />
                         <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-3">
                           {showcase.featured_smallest_three.type === "Resource"

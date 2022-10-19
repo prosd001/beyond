@@ -2,12 +2,24 @@ import { CheckBadgeIcon } from "@heroicons/react/24/outline";
 import { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { localizationState } from "../atoms/localizationAtom";
+import { CheckIcon } from "@heroicons/react/24/solid";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import "../styles/slider-home.css";
+
+const contentStyle = {
+  background: "#fff",
+  borderColor: "#fff",
+  width: "350px",
+  padding: "10px",
+};
 
 const WaitingList = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [lang, setLang] = useRecoilState(localizationState);
+  const [modal, setModal] = useState(false);
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -31,6 +43,9 @@ const WaitingList = () => {
       if (responseData.success) {
         setLoading(false);
         setSuccess(true);
+        nameRef.current.value = "";
+        emailRef.current.value = "";
+        setModal(true);
       }
     } else {
       setLoading(false);
@@ -39,6 +54,50 @@ const WaitingList = () => {
   };
   return (
     <div className="max-w-[1220px] flex justify-center items-center bg-[#252C08] mx-auto my-8 p-4">
+      <Popup
+        open={modal}
+        position="right center"
+        modal="true"
+        {...{ contentStyle }}
+      >
+        {(close) => (
+          <div className="bg-[#fff] relative  min-h-[250px]">
+            {/* <button
+              className="bg-[#e0cf6f] text-white rounded-full w-6 h-6 flex justify-center items-center text-2xl absolute right-0"
+              onClick={close}
+            >
+              &times;
+            </button> */}
+            <div className="w-[85px] h-[85px] absolute rounded-full flex justify-center items-center text-white bg-[#604945] left-[38%] -top-[50px]">
+              <CheckIcon className="w-10 h-10" />
+            </div>
+
+            <div className="py-[20%]">
+              <h3 className="text-2xl font-bold text-center">
+                {!lang ? "Thank you!" : " Merci!"}
+              </h3>
+              <p className="text-center my-2">
+                {!lang
+                  ? "Thank you. You are now on my list. Stay tuned for more!"
+                  : "Merci. Vous êtes maintenant ajouté à ma liste. Restez branché!"}
+              </p>
+            </div>
+
+            <div className="w-full flex justify-center absolute bottom-5">
+              <button
+                className="font-bold text-sm bg-[#604945] mx-auto py-2 px-4 w-[90%] text-white"
+                onClick={() => {
+                  console.log("modal closed ");
+                  close();
+                }}
+              >
+                {!lang ? "CLOSE" : "FERMER"}
+              </button>
+            </div>
+          </div>
+        )}
+      </Popup>
+
       <div className="xl:w-[90%]">
         {!lang && (
           <h2 className="font-bold xl:text-[54px]  text-[40px] mt-8 text-[#84904B] text-center">
@@ -85,12 +144,7 @@ const WaitingList = () => {
             placeholder={`${!lang ? "Name" : "Nom"}`}
             className="py-2 bg-[#223F1D] border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50"
           />
-          {success && (
-            <button className="btn-gradient-bg w-full text-white font-bold py-3 mt-4 text-center">
-              <CheckBadgeIcon className="h-6 w-6 mx-auto" />
-            </button>
-          )}
-          {!success && (
+          {
             <button
               className="btn-gradient-bg w-full text-white font-bold py-2 uppercase"
               onClick={subscribe}
@@ -99,7 +153,7 @@ const WaitingList = () => {
                 ? `${!lang ? "SUBSCRIBING..." : "s'abonner..."}`
                 : `${!lang ? "SUBSCRIBE" : "s'abonner"}`}
             </button>
-          )}
+          }
         </div>
       </div>
     </div>

@@ -33,6 +33,10 @@
 }
 
 @layer components {
+  .checkbox {
+    accent-color: #84904b;
+  }
+
   .btn-gradient-bg {
     background: linear-gradient(
       90deg,
@@ -64,17 +68,29 @@
     display: inline-block;
     width: 1em;
   }
+
+  /* Blog styling */
+  .blog blockquote {
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    color: #999;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding: 0 5px 0 20px;
+    border: solid #b1b1b1;
+    border-width: 0 0 0 5px;
+  }
+  .blog a {
+    @apply underline text-[#84904B];
+  }
   .blog iframe {
     @apply min-h-[400px];
   }
   .blog .se-video-container {
     @apply !max-h-fit;
-  }
-  .blog p:first-child {
-    @apply first-letter:font-bold leading-9;
-  }
-  .blog p {
-    @apply text-xl leading-9;
   }
 
   .nav-btn-active {

@@ -143,7 +143,7 @@ const Showcase = () => {
 
     let data = {};
 
-    data.id = showcase._id;
+    data.id = showcase[0]._id;
 
     if (popular) {
       data.slug_one = popular;
@@ -218,6 +218,7 @@ const Showcase = () => {
     );
 
     const responseData = await response.json();
+    console.log(responseData);
     if (responseData.success) {
       setLoading(false);
       toast({

@@ -64,7 +64,7 @@ const Articales = () => {
             mb="30px"
             color="#604945"
           >
-            All Articales
+            All Articles
           </Heading>
 
           <Modal isOpen={isOpen} onClose={onClose} isCentered>
