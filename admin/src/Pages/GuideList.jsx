@@ -74,6 +74,24 @@ const GuideList = () => {
       });
   };
 
+  const handleDeleteAll = async () => {
+    setLoading(true);
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/downloads/remove-all`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setLoading(false);
+        toast({
+          title: "All records deleted!",
+          status: "success",
+          isClosable: true,
+          position: "top",
+          duration: 2000,
+        });
+        setRefetch((prev) => !prev);
+      });
+  };
+
   return (
     <Container width="100vw" maxWidth="1500px">
       {loading && (
@@ -136,7 +154,11 @@ const GuideList = () => {
                 >
                   Export New Records
                 </Button>
-                <Button variant={"outline"} colorScheme={"red"}>
+                <Button
+                  variant={"outline"}
+                  colorScheme={"red"}
+                  onClick={handleDeleteAll}
+                >
                   Delete All
                 </Button>
               </Box>
@@ -163,7 +185,11 @@ const GuideList = () => {
                       display={"flex"}
                       justifyContent={"space-between"}
                     >
-                      <Text color={"#84904B"} fontWeight="bold">
+                      <Text
+                        color={"#84904B"}
+                        fontWeight="bold"
+                        marginRight={"10px"}
+                      >
                         Name: <br />
                         <span
                           style={{
@@ -319,7 +345,11 @@ const GuideList = () => {
                       display={"flex"}
                       justifyContent={"space-between"}
                     >
-                      <Text color={"#84904B"} fontWeight="bold">
+                      <Text
+                        color={"#84904B"}
+                        fontWeight="bold"
+                        marginRight={"10px"}
+                      >
                         Name: <br />
                         <span
                           style={{
@@ -476,7 +506,11 @@ const GuideList = () => {
                       display={"flex"}
                       justifyContent={"space-between"}
                     >
-                      <Text color={"#84904B"} fontWeight="bold">
+                      <Text
+                        color={"#84904B"}
+                        fontWeight="bold"
+                        marginRight={"10px"}
+                      >
                         Name: <br />
                         <span
                           style={{

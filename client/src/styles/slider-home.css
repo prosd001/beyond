@@ -261,7 +261,41 @@
     padding: 0;
     text-align: center;
     position: absolute;
-    bottom: 42%;
+    bottom: 20%;
     left: 0;
+  }
+  .button__bar2 {
+    width: 100%;
+    display: flex;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 850px) {
+  .button__bar {
+    width: 100%;
+    display: flex;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+  }
+
+  .button__bar2 {
+    width: 100%;
+    display: flex;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+    position: absolute;
+    bottom: 20%;
+    left: 0%;
   }
 }

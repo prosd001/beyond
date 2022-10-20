@@ -69,7 +69,23 @@ const Home = () => {
           position: "top",
           duration: 2000,
         });
-        console.log(data);
+        setRefetch((prev) => !prev);
+      });
+  };
+
+  const handleDeleteAll = async () => {
+    setLoading(true);
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/contacts/remove-all`)
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false);
+        toast({
+          title: "All records deleted!",
+          status: "success",
+          isClosable: true,
+          position: "top",
+          duration: 2000,
+        });
         setRefetch((prev) => !prev);
       });
   };
@@ -136,7 +152,11 @@ const Home = () => {
                 >
                   Export New Records
                 </Button>
-                <Button variant={"outline"} colorScheme={"red"}>
+                <Button
+                  variant={"outline"}
+                  colorScheme={"red"}
+                  onClick={handleDeleteAll}
+                >
                   Delete All
                 </Button>
               </Box>

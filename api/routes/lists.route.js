@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-    addContact, addWaiting, editContact, editWaiting, removeContact, removeWaiting, getContacts, getWaitings, getarchivedContacts, getarchivedWaitings, archiveAllWaitings, archiveAllContacts, removeAllWaitings, removeAllContacts, getNewContacts, getNewWaitings, getdownloads, getNewdownloads, getarchiveddownloads, adddownloads, editdownloads, removedownloads, archiveAlldownloads
+    addContact, addWaiting, editContact, editWaiting, removeContact, removeWaiting, getContacts, getWaitings, getarchivedContacts, getarchivedWaitings, archiveAllWaitings, archiveAllContacts, removeAllWaitings, removeAllContacts, getNewContacts, getNewWaitings, getdownloads, getNewdownloads, getarchiveddownloads, adddownloads, editdownloads, removedownloads, archiveAlldownloads, removeAlldownloads
 } = require('../controllers/lists.controller')
 
 const router = express.Router();
@@ -38,7 +38,8 @@ router.get('/downloads/archive-all', archiveAlldownloads)
 
 router.get('/waitings/remove-all', removeAllWaitings)
 router.get('/contacts/remove-all', removeAllContacts)
-router.get('/downloads/remove-all', removedownloads)
+router.get('/downloads/remove-all', removeAlldownloads)
+
 
 
 module.exports = router;

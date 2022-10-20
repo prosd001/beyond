@@ -155,7 +155,7 @@ const Articales = () => {
                       fontSize={"sm"}
                       letterSpacing={1.1}
                     >
-                      {articale.type}
+                      {articale.type === "Articale" ? "Article" : articale.type}
                     </Text>
                     <Text color={"green.500"} fontWeight="bold">
                       {format(new Date(articale.updatedAt), "MMMM dd, yyyy")}

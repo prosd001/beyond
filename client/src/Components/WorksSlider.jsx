@@ -110,6 +110,13 @@ const worksettings = {
       },
     },
     {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
       breakpoint: 1900,
       settings: {
         slidesToShow: 3,
@@ -136,11 +143,11 @@ const WorksSlider = () => {
     >
       <Slider {...worksettings}>
         {data.map((single) => (
-          <div className="max-w-[400px]" key={single.title}>
+          <div className="lg:max-w-[400px] md:max-w-[365px]" key={single.title}>
             <img
               src={single.image}
               alt=""
-              className="object-cover w-[400px] h-[300px]"
+              className="object-cover w-[400px] h-[300px] "
             />
             <h4 className="font-bold text-lg mt-3 mb-2">
               {!lang ? single.title : single.title_fr}

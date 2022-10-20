@@ -37,7 +37,7 @@ const ProgramsTeam = () => {
       <section className="">
         <div className="relative w-full max-w-[2000px] mx-auto bg__programs_business 2xl:h-[1000px] xl:h-[800px] h-[600px]">
           <div
-            className="absolute 2xl:top-[38%] xl:top-[38%] top-[30%] 2xl:left-[23%] xl:left-[17%] text-center font-bold"
+            className="absolute 2xl:top-[38%] xl:top-[38%] top-[30%] md:left-[15%] 2xl:left-[23%] xl:left-[17%] text-center font-bold"
             data-aos="zoom-in"
           >
             {lang && (
@@ -53,7 +53,7 @@ const ProgramsTeam = () => {
           </div>
           {!lang && (
             <div
-              className="absolute 2xl:top-[38%] xl:top-[40%] top-[30%] 2xl:left-[30%] xl:left-[23%] text-center font-bold"
+              className="absolute 2xl:top-[38%] xl:top-[40%] md:left-[20%] top-[30%] 2xl:left-[30%] xl:left-[23%] text-center font-bold"
               data-aos="zoom-in"
             >
               <p className="xl:text-[64px] text-[40px] text-white">
@@ -175,7 +175,7 @@ const ProgramsTeam = () => {
         </div>
 
         <div className="max-w-[1400px] mx-auto xl:my-24 xl:flex justify-between text-white second__package mt-4">
-          <div className="bg-[#604945] p-6 md:w-[46%] my-4 xl:my-0">
+          <div className="bg-[#604945] p-6 lg:w-[46%] my-4 xl:my-0">
             <p className="text-xl font-bold my-3">
               {!lang ? "PRIVATE PACKAGE" : "FORFAIT INDIVIDUEL"}
             </p>
@@ -276,7 +276,7 @@ const ProgramsTeam = () => {
             )}
           </div>
 
-          <div className="bg-[#604945] p-6 md:w-[46%]">
+          <div className="bg-[#604945] p-6 lg:w-[46%]">
             <p className="text-xl font-bold my-3">
               {!lang ? "GROUP PACKAGE" : "FORFAIT DE GROUPE"}
             </p>
@@ -484,7 +484,7 @@ const ProgramsTeam = () => {
         </div>
 
         <div className="max-w-[1400px] mx-auto xl:my-24 xl:flex justify-between text-white second__package mt-4">
-          <div className="bg-[#84904B] p-6 md:w-[46%] my-4 xl:my-0">
+          <div className="bg-[#84904B] p-6 lg:w-[46%] my-4 xl:my-0">
             <p className="text-xl font-bold my-3">
               {!lang ? "PRIVATE PACKAGE" : "FORFAIT INDIVIDUEL"}
             </p>
@@ -549,7 +549,7 @@ const ProgramsTeam = () => {
             )}
           </div>
 
-          <div className="bg-[#84904B] p-6 md:w-[46%]">
+          <div className="bg-[#84904B] p-6 lg:w-[46%]">
             <p className="text-xl font-bold my-3">
               {!lang ? "GROUP PACKAGE" : "FORFAIT DE GROUPE"}
             </p>

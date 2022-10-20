@@ -37,7 +37,7 @@ const Programs = () => {
       <section className="">
         <div className="relative w-full max-w-[2000px] mx-auto bg__programs 2xl:h-[1000px] xl:h-[800px] h-[600px]">
           <div
-            className="absolute 2xl:top-[38%] xl:top-[38%] top-[30%] 2xl:left-[23%] xl:left-[17%] text-center font-bold"
+            className="absolute 2xl:top-[38%] xl:top-[38%] top-[30%] md:left-[15%] 2xl:left-[23%] xl:left-[17%] text-center font-bold"
             data-aos="zoom-in"
           >
             {lang && (
@@ -53,7 +53,7 @@ const Programs = () => {
           </div>
           {!lang && (
             <div
-              className="absolute 2xl:top-[38%] xl:top-[40%] top-[30%] 2xl:left-[30%] xl:left-[23%] text-center font-bold"
+              className="absolute 2xl:top-[38%] xl:top-[40%] top-[30%] md:left-[20%] 2xl:left-[30%] xl:left-[23%] text-center font-bold"
               data-aos="zoom-in"
             >
               <p className="xl:text-[64px] text-[40px] text-white">
@@ -386,8 +386,8 @@ const Programs = () => {
           </div>
         </div>
 
-        <div className="max-w-[1400px] mx-auto xl:my-24 xl:flex justify-between text-white second__package mt-4">
-          <div className="bg-[#84904B] p-6 md:w-[46%] my-4 xl:my-0">
+        <div className="max-w-[1400px] mx-auto xl:my-24 xl:flex xl:justify-between text-white second__package mt-4">
+          <div className="bg-[#84904B] p-6 lg:w-[46%] md:w-full my-4 xl:my-0">
             <p className="text-xl font-bold my-3">
               {!lang ? "PRIVATE PACKAGE" : "FORFAIT INDIVIDUEL"}
             </p>
@@ -441,7 +441,7 @@ const Programs = () => {
             )}
           </div>
 
-          <div className="bg-[#84904B] p-6 md:w-[46%]">
+          <div className="bg-[#84904B] p-6 lg:w-[46%] md:w-full">
             <p className="text-xl font-bold my-3">
               {!lang ? "GROUP PACKAGE" : "FORFAIT DE GROUPE"}
             </p>

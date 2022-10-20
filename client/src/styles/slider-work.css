@@ -19,3 +19,14 @@
     left: 53%;
   }
 }
+
+@media only screen and (min-width: 500px) and (max-width: 850px) {
+  .prev-arrow {
+    top: -100px;
+    left: 45%;
+  }
+  .next-arrow {
+    top: -100px;
+    left: 52%;
+  }
+}

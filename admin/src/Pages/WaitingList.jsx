@@ -74,6 +74,23 @@ const WaitingList = () => {
       });
   };
 
+  const handleDeleteAll = async () => {
+    setLoading(true);
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/waitings/remove-all`)
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false);
+        toast({
+          title: "All records deleted!",
+          status: "success",
+          isClosable: true,
+          position: "top",
+          duration: 2000,
+        });
+        setRefetch((prev) => !prev);
+      });
+  };
+
   return (
     <Container width="100vw" maxWidth="1500px">
       {loading && (
@@ -136,7 +153,11 @@ const WaitingList = () => {
                 >
                   Export New Records
                 </Button>
-                <Button variant={"outline"} colorScheme={"red"}>
+                <Button
+                  variant={"outline"}
+                  colorScheme={"red"}
+                  onClick={handleDeleteAll}
+                >
                   Delete All
                 </Button>
               </Box>

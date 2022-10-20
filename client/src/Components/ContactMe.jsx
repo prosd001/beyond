@@ -105,15 +105,22 @@ const ContactMe = () => {
         )}
       </Popup>
 
-      <div className="w-[500px]" data-aos="fade-right">
-        <img src={contactLogo} alt="" className="w-[220px]" />
-        <h2 className="xl:text-[45px] text-[26px] font-bold capitalize mt-4 xl:leading-[50px]">
+      <div className="w-[500px]  md:mx-auto lg:mx-0" data-aos="fade-right">
+        <img
+          src={contactLogo}
+          alt=""
+          className="w-[220px] md:mx-auto xl:mx-0"
+        />
+        <h2 className="xl:text-[45px] text-[26px] font-bold capitalize mt-4 xl:leading-[50px] md:text-center lg:text-left">
           Offrez-vous une <br className="xl:hidden" /> expérience de coaching,{" "}
           <br />
           <span className="text-[#84904B]">au-delà des mots!</span>
         </h2>
       </div>
-      <div className="flex flex-col max-w-[500px]" data-aos="fade-left">
+      <div
+        className="flex flex-col max-w-[500px] md:mx-auto lg:mx-0"
+        data-aos="fade-left"
+      >
         <div>
           <p className="font-semibold text-lg mb-3">Vos Informations</p>
           <div className="flex justify-between">
@@ -210,15 +217,22 @@ const ContactMe = () => {
         )}
       </Popup>
 
-      <div className="w-[500px]" data-aos="fade-right">
-        <img src={contactLogo} alt="" className="w-[220px]" />
-        <h2 className="xl:text-[45px] text-[26px] font-bold capitalize mt-4 xl:leading-[50px]">
+      <div className="w-[500px] md:mx-auto lg:mx-0" data-aos="fade-right">
+        <img
+          src={contactLogo}
+          alt=""
+          className="w-[220px] md:mx-auto xl:mx-0"
+        />
+        <h2 className="xl:text-[45px] text-[26px] font-bold capitalize mt-4 xl:leading-[50px] md:text-center lg:text-left">
           Gift yourself <br className="xl:hidden" /> a coaching experience,{" "}
           <br />
           <span className="text-[#84904B]">beyond the words</span>
         </h2>
       </div>
-      <div className="flex flex-col max-w-[500px]" data-aos="fade-left">
+      <div
+        className="flex flex-col max-w-[500px] md:mx-auto lg:mx-0"
+        data-aos="fade-left"
+      >
         <div>
           <p className="font-semibold text-lg mb-3">Your Info</p>
           <div className="flex justify-between">
