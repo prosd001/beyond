@@ -61,28 +61,30 @@ const About = () => {
   return (
     <>
       <section className="">
-        <div className="relative w-full max-w-[2000px]  bg__about 2xl:h-[1000px] xl:h-[800px] h-[600px] mx-auto">
-          {/* <img
+        <div className="relative w-full   bg__about 2xl:h-[1000px] xl:h-[800px] h-[600px] mx-auto">
+          <div className="xl:max-w-[2000px] relative w-full h-full mx-auto">
+            {/* <img
             src={aboutBanner}
             alt=""
             className="object-cover w-full h-[500px] xl:h-auto"
           /> */}
-          {!lang && (
-            <p
-              className="absolute xl:top-[35%] xl:left-[45%] top-[39%] left-[35%] xl:text-[64px] text-white font-bold text-[44px]"
-              data-aos="zoom-in"
-            >
-              About
-            </p>
-          )}
-          {lang && (
-            <p
-              className="absolute xl:top-[35%] xl:left-[42%] top-[39%] left-[27%] xl:text-[64px] text-white font-bold text-[44px] capitalize"
-              data-aos="zoom-in"
-            >
-              À propos
-            </p>
-          )}
+            {!lang && (
+              <p
+                className="absolute xl:top-[35%] xl:left-[45%] top-[39%] left-[35%] xl:text-[64px] text-white font-bold text-[44px]"
+                data-aos="zoom-in"
+              >
+                About
+              </p>
+            )}
+            {lang && (
+              <p
+                className="absolute xl:top-[35%] xl:left-[42%] top-[39%] left-[27%] xl:text-[64px] text-white font-bold text-[44px] capitalize"
+                data-aos="zoom-in"
+              >
+                À propos
+              </p>
+            )}
+          </div>
           <img
             src={smoke}
             alt=""

@@ -110,7 +110,7 @@ const removeContact = async (req, res) => {
 // Get all contacts
 const getContacts = async (req, res) => {
     try {
-        const contacts = await ContactModel.find({ archived: false })
+        const contacts = await ContactModel.find({ archived: false }).sort({ 'updatedAt': -1 })
         return res.status(200).json({
             success: true,
             message: "Contacts fetched successfully",
@@ -125,7 +125,7 @@ const getContacts = async (req, res) => {
 // Get archived contacts
 const getarchivedContacts = async (req, res) => {
     try {
-        const contacts = await ContactModel.find({ archived: true })
+        const contacts = await ContactModel.find({ archived: true }).sort({ 'updatedAt': -1 })
         return res.status(200).json({
             success: true,
             message: "Contacts fetched successfully",
@@ -182,7 +182,7 @@ const getNewContacts = async (req, res) => {
     try {
         let d = new Date();
         d.setDate(d.getDate() - 1);
-        const newContacts = await ContactModel.find({ "createdAt": { $gt: d }, archived: false })
+        const newContacts = await ContactModel.find({ "createdAt": { $gt: d }, archived: false }).sort({ 'updatedAt': -1 })
 
         if (!newContacts) {
             res.status(500).json({ success: false, message: "Server error" });
@@ -394,7 +394,7 @@ const removedownloads = async (req, res) => {
 // Get all Waitings
 const getWaitings = async (req, res) => {
     try {
-        const waitings = await WaitinglistModel.find({ archived: false })
+        const waitings = await WaitinglistModel.find({ archived: false }).sort({ 'updatedAt': -1 })
         return res.status(200).json({
             success: true,
             message: "Waitings fetched successfully",
@@ -408,7 +408,7 @@ const getWaitings = async (req, res) => {
 // Get all downloads
 const getdownloads = async (req, res) => {
     try {
-        const downloads = await DownloadModel.find({ archived: false })
+        const downloads = await DownloadModel.find({ archived: false }).sort({ 'updatedAt': -1 })
         return res.status(200).json({
             success: true,
             message: "downloads fetched successfully",
@@ -423,7 +423,7 @@ const getdownloads = async (req, res) => {
 // Get archived Waitings
 const getarchivedWaitings = async (req, res) => {
     try {
-        const waitings = await WaitinglistModel.find({ archived: true })
+        const waitings = await WaitinglistModel.find({ archived: true }).sort({ 'updatedAt': -1 })
         return res.status(200).json({
             success: true,
             message: "Waitings fetched successfully",
@@ -437,7 +437,7 @@ const getarchivedWaitings = async (req, res) => {
 // Get archived downloads
 const getarchiveddownloads = async (req, res) => {
     try {
-        const downloads = await DownloadModel.find({ archived: true })
+        const downloads = await DownloadModel.find({ archived: true }).sort({ 'updatedAt': -1 })
         return res.status(200).json({
             success: true,
             message: "Waitings fetched successfully",
@@ -532,7 +532,7 @@ const getNewWaitings = async (req, res) => {
     try {
         let d = new Date();
         d.setDate(d.getDate() - 1);
-        const newWaitings = await WaitinglistModel.find({ "createdAt": { $gt: d }, archived: false })
+        const newWaitings = await WaitinglistModel.find({ "createdAt": { $gt: d }, archived: false }).sort({ 'updatedAt': -1 })
 
         if (!newWaitings) {
             res.status(500).json({ success: false, message: "Server error" });
@@ -554,7 +554,7 @@ const getNewdownloads = async (req, res) => {
     try {
         let d = new Date();
         d.setDate(d.getDate() - 1);
-        const newdownloads = await DownloadModel.find({ "createdAt": { $gt: d }, archived: false })
+        const newdownloads = await DownloadModel.find({ "createdAt": { $gt: d }, archived: false }).sort({ 'updatedAt': -1 })
 
         if (!newdownloads) {
             res.status(500).json({ success: false, message: "Server error" });

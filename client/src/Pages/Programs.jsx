@@ -35,38 +35,40 @@ const Programs = () => {
   return (
     <>
       <section className="">
-        <div className="relative w-full max-w-[2000px] mx-auto bg__programs 2xl:h-[1000px] xl:h-[800px] h-[600px]">
-          <div
-            className="absolute 2xl:top-[38%] xl:top-[38%] top-[30%] md:left-[15%] 2xl:left-[23%] xl:left-[17%] text-center font-bold"
-            data-aos="zoom-in"
-          >
-            {lang && (
-              <>
-                <p className="xl:text-[64px] text-[40px] text-white capitalize">
-                  Coaching professionel et
-                </p>
-                <p className="xl:text-[64px] text-[40px] text-[#E0CF6F] capitalize">
-                  développement du leadership
-                </p>
-              </>
-            )}
-          </div>
-          {!lang && (
+        <div className="relative w-full mx-auto bg__programs 2xl:h-[1000px] xl:h-[800px] h-[600px]">
+          <div className="xl:max-w-[2000px] relative w-full h-full mx-auto">
             <div
-              className="absolute 2xl:top-[38%] xl:top-[40%] top-[30%] md:left-[20%] 2xl:left-[30%] xl:left-[23%] text-center font-bold"
+              className="absolute 2xl:top-[38%] xl:top-[38%] top-[30%] md:left-[15%] 2xl:left-[26%] xl:left-[17%] text-center font-bold"
               data-aos="zoom-in"
             >
-              <p className="xl:text-[64px] text-[40px] text-white">
-                Professional Coaching &
-              </p>
-              <p className="xl:text-[64px] text-[40px] text-[#E0CF6F]">
-                Leadership Development
-              </p>
-              <p className="xl:text-[64px] text-[40px] text-[#E0CF6F]">
-                experiences
-              </p>
+              {lang && (
+                <>
+                  <p className="xl:text-[64px] text-[40px] text-white capitalize">
+                    Coaching professionel et
+                  </p>
+                  <p className="xl:text-[64px] text-[40px] text-[#E0CF6F] capitalize">
+                    développement du leadership
+                  </p>
+                </>
+              )}
             </div>
-          )}
+            {!lang && (
+              <div
+                className="absolute 2xl:top-[38%] xl:top-[40%] top-[30%] md:left-[20%] 2xl:left-[30%] xl:left-[23%] text-center font-bold"
+                data-aos="zoom-in"
+              >
+                <p className="xl:text-[64px] text-[40px] text-white">
+                  Professional Coaching &
+                </p>
+                <p className="xl:text-[64px] text-[40px] text-[#E0CF6F]">
+                  Leadership Development
+                </p>
+                <p className="xl:text-[64px] text-[40px] text-[#E0CF6F]">
+                  experiences
+                </p>
+              </div>
+            )}
+          </div>
           <img
             src={smoke}
             alt=""

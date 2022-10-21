@@ -150,23 +150,25 @@ const Articales = () => {
         {!loading && (
           <>
             {!showcase.popular && (
-              <div className="relative w-full max-w-[2000px] why-trees-bg 2xl:h-[1000px] xl:h-[800px] h-[600px] mx-auto">
-                {!lang && (
-                  <p
-                    className="absolute xl:top-[35%] xl:left-[33%] top-[39%] left-[20%] xl:text-[64px] text-white font-bold text-[44px]"
-                    data-aos="zoom-in"
-                  >
-                    Articles & Resources
-                  </p>
-                )}
-                {lang && (
-                  <p
-                    className="absolute xl:top-[35%] xl:left-[32%] top-[39%] left-[20%] xl:text-[64px] text-white font-bold text-[44px] capitalize"
-                    data-aos="zoom-in"
-                  >
-                    Articles et Ressources
-                  </p>
-                )}
+              <div className="relative w-full why-trees-bg 2xl:h-[1000px] xl:h-[800px] h-[600px] mx-auto">
+                <div className="xl:max-w-[2000px] relative w-full h-full mx-auto">
+                  {!lang && (
+                    <p
+                      className="absolute xl:top-[35%] xl:left-[33%] top-[39%] left-[20%] xl:text-[64px] text-white font-bold text-[44px]"
+                      data-aos="zoom-in"
+                    >
+                      Articles & Resources
+                    </p>
+                  )}
+                  {lang && (
+                    <p
+                      className="absolute xl:top-[35%] xl:left-[32%] top-[39%] left-[20%] xl:text-[64px] text-white font-bold text-[44px] capitalize"
+                      data-aos="zoom-in"
+                    >
+                      Articles et Ressources
+                    </p>
+                  )}
+                </div>
                 <img
                   src={smoke}
                   alt=""
