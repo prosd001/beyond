@@ -4,6 +4,13 @@ import {
   Center,
   Container,
   Heading,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Spinner,
   Tab,
   TabList,
@@ -11,10 +18,12 @@ import {
   TabPanels,
   Tabs,
   Text,
+  useDisclosure,
   useToast,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import exportFromJSON from "export-from-json";
+import { format } from "date-fns";
 
 const GuideList = () => {
   const [loading, setLoading] = useState(true);
@@ -22,6 +31,11 @@ const GuideList = () => {
   const [archivedWaitings, setArchivedWaitings] = useState([]);
   const [waitings, setWaitings] = useState([]);
   const [refetch, setRefetch] = useState(false);
+
+  // Delete modal
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [deletableId, setDeletableId] = useState("");
+  const [deleteA, setDeleteA] = useState(false);
 
   const toast = useToast();
 
@@ -89,6 +103,7 @@ const GuideList = () => {
           duration: 2000,
         });
         setRefetch((prev) => !prev);
+        onClose();
       });
   };
 
@@ -104,6 +119,77 @@ const GuideList = () => {
 
       {!loading && (
         <>
+          {/* Individual delete */}
+          <Modal isOpen={isOpen} onClose={onClose} isCentered>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader color={"red.600"}>
+                {deleteA ? "Delete All Records" : "Delete Record"}
+              </ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                {deleteA
+                  ? "All the records will be deleted permenantly.This action can't be reversed!"
+                  : "The record will be deleted permenantly.This action can't be reversed!"}
+              </ModalBody>
+
+              <ModalFooter>
+                <Button colorScheme="green" mr={3} onClick={onClose}>
+                  Close
+                </Button>
+                <Button
+                  variant="ghost"
+                  colorScheme={"red"}
+                  onClick={async () => {
+                    if (!deleteA) {
+                      setLoading(true);
+                      const response = await fetch(
+                        `${process.env.REACT_APP_API_BASE_URL}/api/downloads/remove-downloads`,
+                        {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                            id: deletableId,
+                          }),
+                        }
+                      );
+
+                      const responseData = await response.json();
+                      if (responseData.success) {
+                        setLoading(false);
+                        toast({
+                          title: "Removed successfully!",
+                          status: "success",
+                          isClosable: true,
+                          position: "top",
+                          duration: 2000,
+                        });
+                        setRefetch((prev) => !prev);
+                      } else {
+                        setLoading(false);
+                        toast({
+                          title: "Something went wrong!",
+                          status: "error",
+                          isClosable: true,
+                          position: "top",
+                          duration: 2000,
+                        });
+                      }
+
+                      onClose();
+                    } else {
+                      handleDeleteAll();
+                    }
+                  }}
+                >
+                  Proceed
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+
+          {/* Individual delete */}
+
           <Heading
             as="h1"
             size="xl"
@@ -157,7 +243,11 @@ const GuideList = () => {
                 <Button
                   variant={"outline"}
                   colorScheme={"red"}
-                  onClick={handleDeleteAll}
+                  onClick={() => {
+                    setDeletableId("");
+                    setDeleteA(true);
+                    onOpen();
+                  }}
                 >
                   Delete All
                 </Button>
@@ -166,16 +256,160 @@ const GuideList = () => {
             <Tabs variant="enclosed" marginTop={"50px"} padding="15px">
               <TabList>
                 <Tab fontWeight={"bold"} fontSize={"18px"}>
-                  All
+                  New
                 </Tab>
                 <Tab fontWeight={"bold"} fontSize={"18px"}>
-                  New
+                  All
                 </Tab>
                 <Tab fontWeight={"bold"} fontSize={"18px"}>
                   Archived
                 </Tab>
               </TabList>
+
               <TabPanels>
+                {/* New */}
+                <TabPanel>
+                  {newWaitings.map((waiting) => (
+                    <Box
+                      boxShadow={"sm"}
+                      py={"15px"}
+                      px="20px"
+                      display={"flex"}
+                      justifyContent={"space-between"}
+                    >
+                      <Text
+                        color={"#84904B"}
+                        fontWeight="bold"
+                        marginRight={"10px"}
+                      >
+                        Name: <br />
+                        <span
+                          style={{
+                            color: "black",
+                            fontWeight: "500",
+                          }}
+                        >
+                          {waiting.name}
+                        </span>
+                      </Text>
+                      <Text color={"#84904B"} fontWeight="bold">
+                        Date: <br />
+                        <span
+                          style={{
+                            color: "black",
+                            fontWeight: "500",
+                          }}
+                        >
+                          {format(new Date(waiting.updatedAt), "MMMM dd, yyyy")}
+                        </span>
+                      </Text>
+                      <Text color={"#84904B"} fontWeight="bold">
+                        Downloads: <br />
+                        <span
+                          style={{
+                            color: "black",
+                            fontWeight: "500",
+                          }}
+                        >
+                          {waiting.downloaded_resources.map((down) => (
+                            <Text>{down}</Text>
+                          ))}
+                        </span>
+                      </Text>
+                      <Box
+                        display={"flex"}
+                        width={"350px"}
+                        justifyContent={"center"}
+                        gap={"30px"}
+                        alignItems="center"
+                      >
+                        <Text color={"#84904B"} fontWeight="bold">
+                          Email:
+                          <br />
+                          <span
+                            style={{
+                              color: "black",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {waiting.email}
+                          </span>
+                        </Text>
+                        <Button
+                          variant={"outline"}
+                          onClick={() => {
+                            navigator.clipboard.writeText(waiting.email);
+                            toast({
+                              title: "Copied to clipboard!",
+                              status: "success",
+                              isClosable: true,
+                              position: "top",
+                              duration: 2000,
+                            });
+                          }}
+                        >
+                          Copy
+                        </Button>
+                      </Box>
+                      <Box display={"flex"} gap={"30px"}>
+                        <Button
+                          variant={"outline"}
+                          colorScheme={"yellow"}
+                          onClick={async () => {
+                            setLoading(true);
+                            const response = await fetch(
+                              `${process.env.REACT_APP_API_BASE_URL}/api/downloads/edit-downloads`,
+                              {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                  id: waiting._id,
+                                  data: { archived: true },
+                                }),
+                              }
+                            );
+
+                            const responseData = await response.json();
+                            if (responseData.success) {
+                              setLoading(false);
+                              toast({
+                                title: "Updated successfully!",
+                                status: "success",
+                                isClosable: true,
+                                position: "top",
+                                duration: 2000,
+                              });
+                              setRefetch((prev) => !prev);
+                            } else {
+                              setLoading(false);
+                              toast({
+                                title: "Something went wrong!",
+                                status: "error",
+                                isClosable: true,
+                                position: "top",
+                                duration: 2000,
+                              });
+                            }
+                          }}
+                        >
+                          Archive
+                        </Button>
+                        <Button
+                          variant={"outline"}
+                          colorScheme={"red"}
+                          onClick={() => {
+                            setDeletableId(waiting._id);
+                            setDeleteA(false);
+                            onOpen();
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      </Box>
+                    </Box>
+                  ))}
+                </TabPanel>
+                {/* All */}
                 <TabPanel>
                   {waitings.map((waiting) => (
                     <Box
@@ -198,6 +432,17 @@ const GuideList = () => {
                           }}
                         >
                           {waiting.name}
+                        </span>
+                      </Text>
+                      <Text color={"#84904B"} fontWeight="bold">
+                        Date: <br />
+                        <span
+                          style={{
+                            color: "black",
+                            fontWeight: "500",
+                          }}
+                        >
+                          {format(new Date(waiting.updatedAt), "MMMM dd, yyyy")}
                         </span>
                       </Text>
                       <Text color={"#84904B"} fontWeight="bold">
@@ -293,201 +538,10 @@ const GuideList = () => {
                         <Button
                           variant={"outline"}
                           colorScheme={"red"}
-                          onClick={async () => {
-                            setLoading(true);
-                            const response = await fetch(
-                              `${process.env.REACT_APP_API_BASE_URL}/api/downloads/remove-downloads`,
-                              {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({
-                                  id: waiting._id,
-                                }),
-                              }
-                            );
-
-                            const responseData = await response.json();
-                            if (responseData.success) {
-                              setLoading(false);
-                              toast({
-                                title: "Removed successfully!",
-                                status: "success",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                              setRefetch((prev) => !prev);
-                            } else {
-                              setLoading(false);
-                              toast({
-                                title: "Something went wrong!",
-                                status: "error",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                            }
-                          }}
-                        >
-                          Delete
-                        </Button>
-                      </Box>
-                    </Box>
-                  ))}
-                </TabPanel>
-
-                <TabPanel>
-                  {newWaitings.map((waiting) => (
-                    <Box
-                      boxShadow={"sm"}
-                      py={"15px"}
-                      px="20px"
-                      display={"flex"}
-                      justifyContent={"space-between"}
-                    >
-                      <Text
-                        color={"#84904B"}
-                        fontWeight="bold"
-                        marginRight={"10px"}
-                      >
-                        Name: <br />
-                        <span
-                          style={{
-                            color: "black",
-                            fontWeight: "500",
-                          }}
-                        >
-                          {waiting.name}
-                        </span>
-                      </Text>
-                      <Text color={"#84904B"} fontWeight="bold">
-                        Downloads: <br />
-                        <span
-                          style={{
-                            color: "black",
-                            fontWeight: "500",
-                          }}
-                        >
-                          {waiting.downloaded_resources.map((down) => (
-                            <Text>{down}</Text>
-                          ))}
-                        </span>
-                      </Text>
-                      <Box
-                        display={"flex"}
-                        width={"350px"}
-                        justifyContent={"center"}
-                        gap={"30px"}
-                        alignItems="center"
-                      >
-                        <Text color={"#84904B"} fontWeight="bold">
-                          Email:
-                          <br />
-                          <span
-                            style={{
-                              color: "black",
-                              fontWeight: "500",
-                            }}
-                          >
-                            {waiting.email}
-                          </span>
-                        </Text>
-                        <Button
-                          variant={"outline"}
                           onClick={() => {
-                            navigator.clipboard.writeText(waiting.email);
-                            toast({
-                              title: "Copied to clipboard!",
-                              status: "success",
-                              isClosable: true,
-                              position: "top",
-                              duration: 2000,
-                            });
-                          }}
-                        >
-                          Copy
-                        </Button>
-                      </Box>
-                      <Box display={"flex"} gap={"30px"}>
-                        <Button
-                          variant={"outline"}
-                          colorScheme={"yellow"}
-                          onClick={async () => {
-                            setLoading(true);
-                            const response = await fetch(
-                              `${process.env.REACT_APP_API_BASE_URL}/api/downloads/edit-downloads`,
-                              {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({
-                                  id: waiting._id,
-                                  data: { archived: true },
-                                }),
-                              }
-                            );
-
-                            const responseData = await response.json();
-                            if (responseData.success) {
-                              setLoading(false);
-                              toast({
-                                title: "Updated successfully!",
-                                status: "success",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                              setRefetch((prev) => !prev);
-                            } else {
-                              setLoading(false);
-                              toast({
-                                title: "Something went wrong!",
-                                status: "error",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                            }
-                          }}
-                        >
-                          Archive
-                        </Button>
-                        <Button
-                          variant={"outline"}
-                          colorScheme={"red"}
-                          onClick={async () => {
-                            setLoading(true);
-                            const response = await fetch(
-                              `${process.env.REACT_APP_API_BASE_URL}/api/downloads/remove-downloads`,
-                              {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({
-                                  id: waiting._id,
-                                }),
-                              }
-                            );
-
-                            const responseData = await response.json();
-                            if (responseData.success) {
-                              setLoading(false);
-                              toast({
-                                title: "Removed successfully!",
-                                status: "success",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                              setRefetch((prev) => !prev);
-                            } else {
-                              setLoading(false);
-                              toast({
-                                title: "Something went wrong!",
-                                status: "error",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                            }
+                            setDeletableId(waiting._id);
+                            setDeleteA(false);
+                            onOpen();
                           }}
                         >
                           Delete
@@ -522,6 +576,17 @@ const GuideList = () => {
                         </span>
                       </Text>
                       <Text color={"#84904B"} fontWeight="bold">
+                        Date: <br />
+                        <span
+                          style={{
+                            color: "black",
+                            fontWeight: "500",
+                          }}
+                        >
+                          {format(new Date(waiting.updatedAt), "MMMM dd, yyyy")}
+                        </span>
+                      </Text>
+                      <Text color={"#84904B"} fontWeight="bold">
                         Downloads: <br />
                         <span
                           style={{
@@ -573,40 +638,10 @@ const GuideList = () => {
                         <Button
                           variant={"outline"}
                           colorScheme={"red"}
-                          onClick={async () => {
-                            setLoading(true);
-                            const response = await fetch(
-                              `${process.env.REACT_APP_API_BASE_URL}/api/downloads/remove-downloads`,
-                              {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({
-                                  id: waiting._id,
-                                }),
-                              }
-                            );
-
-                            const responseData = await response.json();
-                            if (responseData.success) {
-                              setLoading(false);
-                              toast({
-                                title: "Removed successfully!",
-                                status: "success",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                              setRefetch((prev) => !prev);
-                            } else {
-                              setLoading(false);
-                              toast({
-                                title: "Something went wrong!",
-                                status: "error",
-                                isClosable: true,
-                                position: "top",
-                                duration: 2000,
-                              });
-                            }
+                          onClick={() => {
+                            setDeletableId(waiting._id);
+                            setDeleteA(false);
+                            onOpen();
                           }}
                         >
                           Delete

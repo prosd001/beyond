@@ -187,7 +187,7 @@ const Articales = () => {
                         bg: "#604945",
                       }}
                       onClick={() => {
-                        navigate(`/edit-articale/${articale.slug}`);
+                        navigate(`/edit-article/${articale.slug}`);
                       }}
                     >
                       Edit

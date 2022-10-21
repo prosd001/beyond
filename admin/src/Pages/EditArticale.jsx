@@ -18,6 +18,7 @@ const EditArticale = () => {
   // Editor content
   const [content, setContent] = useState("");
   // Local states
+  const [lang, setLang] = useState("FR");
   const [type, setType] = useState("Articale");
   const [privacy, setPrivacy] = useState("Private");
   const [bannerUrl, setBannerUrl] = useState("");
@@ -44,6 +45,7 @@ const EditArticale = () => {
         setType(data.articale[0].type);
         setGuideUrl(data.articale[0].guide_url);
         setPrivacy(data.articale[0].privacy);
+        setLang(data.articale[0].lang);
         setPageLoading(false);
       });
   }, [params.slug]);
@@ -67,6 +69,7 @@ const EditArticale = () => {
       guide_url: guideUrl,
       privacy,
       content,
+      lang,
     };
 
     // if (title) {
@@ -267,6 +270,29 @@ const EditArticale = () => {
             <option value="Articale">Article</option>
             <option value="Resource">Resource</option>
           </Select>
+
+          <Text
+            fontSize="2xl"
+            color="#604945"
+            marginY="10px"
+            marginTop="20px"
+            fontWeight="bold"
+          >
+            Language:
+          </Text>
+          <Select
+            variant="filled"
+            bgColor="#fff"
+            value={lang}
+            onChange={(e) => {
+              setLang(e.target.value);
+            }}
+          >
+            <option value="FR">FR</option>
+            <option value="EN">EN</option>
+            <option value="BOTH">Both</option>
+          </Select>
+
           {type === "Resource" && (
             <>
               <Text

@@ -572,11 +572,11 @@ const Articales = () => {
                       data-aos="fade-left"
                     >
                       {articales.map((articale) => (
-                        <div className="">
+                        <div className="h-[400px]">
                           <img
                             src={articale.banner_url}
                             alt=""
-                            className="object-cover w-full"
+                            className="object-cover w-full h-[300px]"
                           />
                           <p className="uppercase text-[#84904B] text-xs tracking-[6px] my-3">
                             {articale.type === "Resource"
@@ -605,7 +605,7 @@ const Articales = () => {
                       ))}
                     </div>
                     <div className="w-full flex justify-center my-5">
-                      {articales.length > 20 && (
+                      {articales.length > 30 && (
                         <button className="capitalize btn-gradient-bg text-white font-bold xl:px-10 xl:py-4 mx-auto px-4 py-2 mt-6">
                           {!lang ? "Show more" : "Montre plus"}
                         </button>

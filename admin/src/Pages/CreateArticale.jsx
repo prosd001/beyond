@@ -257,6 +257,7 @@ const CreateArticale = () => {
       >
         <option value="FR">FR</option>
         <option value="EN">EN</option>
+        <option value="BOTH">Both</option>
       </Select>
 
       {type === "Resource" && (

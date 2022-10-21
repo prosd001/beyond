@@ -7,6 +7,11 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "../styles/slider-home.css";
 
+function validateEmail(email) {
+  const re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
 const contentStyle = {
   background: "#fff",
   borderColor: "#fff",
@@ -20,7 +25,7 @@ const ContactMe = () => {
   const [modal, setModal] = useState(false);
 
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -34,28 +39,34 @@ const ContactMe = () => {
     const message = msgRef.current.value;
 
     if ((name, email, subject, message)) {
-      setLoading(true);
-      const response = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}/api/contacts/add-contact`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, subject, message }),
-        }
-      );
+      if (!validateEmail(email)) {
+        setError(`${!lang ? "Not a valid email!" : "Pas un e-mail valide!"}`);
+      } else {
+        setLoading(true);
+        const response = await fetch(
+          `${process.env.REACT_APP_API_BASE_URL}/api/contacts/add-contact`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, subject, message }),
+          }
+        );
 
-      const responseData = await response.json();
-      if (responseData.success) {
-        setLoading(false);
-        setSuccess(true);
-        setModal(true);
-        msgRef.current.value = "";
-        nameRef.current.value = "";
-        emailRef.current.value = "";
-        subRef.current.value = "";
+        const responseData = await response.json();
+        if (responseData.success) {
+          setLoading(false);
+          setSuccess(true);
+          setModal(true);
+          msgRef.current.value = "";
+          nameRef.current.value = "";
+          emailRef.current.value = "";
+          subRef.current.value = "";
+        }
       }
     } else {
-      setError(true);
+      setError(
+        `${!lang ? "All fields are required!" : "Tous les champs sont requis!"}`
+      );
     }
   };
 
@@ -166,7 +177,7 @@ const ContactMe = () => {
         }
         {error && !success && (
           <div className="w-full text-red-500 font-bold my-2 text-center">
-            Tous les champs sont requis!
+            {error}
           </div>
         )}
       </div>
@@ -278,7 +289,7 @@ const ContactMe = () => {
         }
         {error && !success && (
           <div className="w-full text-red-500 font-bold my-2 text-center">
-            All fields are required!
+            {error}
           </div>
         )}
       </div>

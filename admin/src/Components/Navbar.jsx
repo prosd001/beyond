@@ -324,12 +324,12 @@ const NAV_ITEMS = [
       {
         label: "All Articles",
         subLabel: "View all Articles",
-        href: "/articales",
+        href: "/articles",
       },
       {
         label: "Create Article",
         subLabel: "Create a new Article",
-        href: "/create-articale",
+        href: "/create-article",
       },
     ],
   },

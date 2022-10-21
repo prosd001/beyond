@@ -14,10 +14,15 @@ const contentStyle = {
   padding: "10px",
 };
 
+function validateEmail(email) {
+  const re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
 const WaitingList = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [lang, setLang] = useRecoilState(localizationState);
   const [modal, setModal] = useState(false);
 
@@ -29,27 +34,35 @@ const WaitingList = () => {
     const email = emailRef.current.value;
 
     if ((name, email)) {
-      setLoading(true);
-      const response = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}/api/waitings/add-waiting`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email }),
-        }
-      );
+      console.log(email);
+      if (!validateEmail(email)) {
+        setError(`${!lang ? "Not a valid email!" : "Pas un e-mail valide!"}`);
+      } else {
+        setLoading(true);
+        const response = await fetch(
+          `${process.env.REACT_APP_API_BASE_URL}/api/waitings/add-waiting`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email }),
+          }
+        );
 
-      const responseData = await response.json();
-      if (responseData.success) {
-        setLoading(false);
-        setSuccess(true);
-        nameRef.current.value = "";
-        emailRef.current.value = "";
-        setModal(true);
+        const responseData = await response.json();
+        if (responseData.success) {
+          setLoading(false);
+          setSuccess(true);
+          nameRef.current.value = "";
+          emailRef.current.value = "";
+          setError("");
+          setModal(true);
+        }
       }
     } else {
       setLoading(false);
-      setError(true);
+      setError(
+        `${!lang ? "All fields are required!" : "Tous les champs sont requis!"}`
+      );
     }
   };
   return (
@@ -124,9 +137,7 @@ const WaitingList = () => {
 
         {error && !success && (
           <div className="w-full text-red-500 font-bold my-2 text-center">
-            {!lang
-              ? "All fields are required!"
-              : "Tous les champs sont requis!"}
+            {error}
           </div>
         )}
         <div className="grid xl:grid-cols-3 gap-x-2 items-center my-8 grid-cols-1 gap-y-4">

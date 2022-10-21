@@ -137,7 +137,7 @@ const ArticalesDetails = () => {
             </div>
 
             {articale.type === "Resource" ? (
-              <Download url={articale.guide_url} />
+              <Download url={articale.guide_url} slug={articale.slug} />
             ) : (
               <WaitingList />
             )}

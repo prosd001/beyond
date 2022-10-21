@@ -13,9 +13,14 @@ const contentStyle = {
   padding: "10px",
 };
 
-const Download = ({ url }) => {
+function validateEmail(email) {
+  const re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
+const Download = ({ url, slug }) => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [lang, setLang] = useRecoilState(localizationState);
   const [modal, setModal] = useState(false);
 
@@ -30,8 +35,11 @@ const Download = ({ url }) => {
 
     if (check) {
       if ((name, email)) {
+        if (!validateEmail(email)) {
+          setError(`${!lang ? "Not a valid email!" : "Pas un e-mail valide!"}`);
+          return;
+        }
         setLoading(true);
-        setError(false);
         const response = await fetch(
           `${process.env.REACT_APP_API_BASE_URL}/api/waitings/add-waiting`,
           {
@@ -46,23 +54,39 @@ const Download = ({ url }) => {
           setLoading(false);
         }
       } else {
-        setError(true);
+        setError(
+          `${
+            !lang ? "All fields are required!" : "Tous les champs sont requis!"
+          }`
+        );
       }
     }
 
     if ((name, email)) {
-      setError(false);
+      if (!validateEmail(email)) {
+        setError(`${!lang ? "Not a valid email!" : "Pas un e-mail valide!"}`);
+        return;
+      }
       const response = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}/api/downloads/add-downloads`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, downloaded_resources: [url] }),
+          body: JSON.stringify({ name, email, downloaded_resources: [slug] }),
         }
       );
 
       const responseData = await response.json();
       if (responseData.success) {
+        if (!url.includes("resources.beyondwordz.ca")) {
+          window.open(url, "_blank");
+          setLoading(false);
+          setError("");
+          nameRef.current.value = "";
+          emailRef.current.value = "";
+          setModal(true);
+          return;
+        }
         setLoading(false);
         fetch(url, {
           method: "GET",
@@ -76,7 +100,7 @@ const Download = ({ url }) => {
             const url = window.URL.createObjectURL(new Blob([blob]));
             const link = document.createElement("a");
             link.href = url;
-            link.setAttribute("download", `Guide.pdf`);
+            link.setAttribute("download", `${slug}.pdf`);
 
             // Append to html link element page
             document.body.appendChild(link);
@@ -85,6 +109,7 @@ const Download = ({ url }) => {
             link.click();
             nameRef.current.value = "";
             emailRef.current.value = "";
+            setError("");
             setModal(true);
 
             // Clean up and remove the link
@@ -92,7 +117,9 @@ const Download = ({ url }) => {
           });
       }
     } else {
-      setError(true);
+      setError(
+        `${!lang ? "All fields are required!" : "Tous les champs sont requis!"}`
+      );
     }
   };
 
@@ -167,7 +194,12 @@ const Download = ({ url }) => {
             className="py-3 bg-[#223F1D] border-none focus:outline-none text-white px-4 placeholder:text-white placeholder:opacity-50 w-full my-4"
           />
           <div className="mr-auto my-3">
-            <input type={"checkbox"} className="checkbox" ref={checkRef} />
+            <input
+              type={"checkbox"}
+              className="checkbox"
+              ref={checkRef}
+              defaultChecked
+            />
             {!lang && (
               <span className="text-[#9AA098] ml-2">Join my waiting list</span>
             )}
@@ -187,9 +219,7 @@ const Download = ({ url }) => {
           </button>
           {error && (
             <div className="w-full text-red-500 font-bold my-2 text-center">
-              {lang
-                ? "Tous les champs sont requis!"
-                : "All fields are required!"}
+              {error}
             </div>
           )}
         </div>

@@ -145,7 +145,7 @@ const getAllArticales = async (req, res) => {
 // Get public articales
 const getPublicArticales = async (req, res) => {
     try {
-        const articales = await ArticaleModel.find({ privacy: 'Public', lang: 'FR' })
+        const articales = await ArticaleModel.find({ $or: [{ privacy: 'Public', lang: 'FR' }, { privacy: 'Public', lang: 'BOTH' }] })
 
         if (!articales) {
             res.status(500).json({ success: false, message: "Server error" });
@@ -166,7 +166,7 @@ const getPublicArticales = async (req, res) => {
 // Get public articales
 const getPublicEngArticales = async (req, res) => {
     try {
-        const articales = await ArticaleModel.find({ privacy: 'Public', lang: 'EN' })
+        const articales = await ArticaleModel.find({ $or: [{ privacy: 'Public', lang: 'EN' }, { privacy: 'Public', lang: 'BOTH' }] })
 
         if (!articales) {
             res.status(500).json({ success: false, message: "Server error" });

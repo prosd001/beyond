@@ -67,7 +67,7 @@ const Navbar = () => {
           <img
             src={logoDark}
             alt=""
-            className="cursor-pointer w-[280px] h-[133px]"
+            className="cursor-pointer  h-[133px]"
             onClick={() => {
               navigate("/");
             }}
@@ -157,7 +157,7 @@ const Navbar = () => {
           <img
             src={logoWhite}
             alt=""
-            className="cursor-pointer w-[280px] h-[133px]"
+            className="cursor-pointer  h-[133px]"
             onClick={() => {
               navigate("/");
             }}
@@ -296,7 +296,7 @@ const Navbar = () => {
         <img
           src={logoWhite}
           alt=""
-          className="cursor-pointer w-[280px] h-[133px]"
+          className="cursor-pointer  h-[133px]"
           onClick={() => {
             navigate("/");
           }}
@@ -425,7 +425,7 @@ const Navbar = () => {
         <img
           src={logoWhite}
           alt=""
-          className="cursor-pointer w-[280px] h-[133px]"
+          className="cursor-pointer  h-[133px]"
           onClick={() => {
             navigate("/");
           }}

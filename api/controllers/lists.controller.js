@@ -14,6 +14,24 @@ const addContact = async (req, res) => {
     }
 
     try {
+
+        const contactExists = await ContactModel.findOne({ email })
+
+
+        if (contactExists) {
+            const newData = { name, subject, message, archived: false, repeat: true }
+            const updatedContact = await ContactModel.findByIdAndUpdate(contactExists._id, newData, { new: true })
+            if (!updatedContact) {
+                return res.status(500).json({ success: false, message: "Server error" });
+            }
+
+            return res.status(200).json({
+                success: true,
+                message: "Contact added successfully",
+            });
+
+        }
+
         const newContact = await ContactModel.create({
             name, email, subject, message
         })
@@ -196,6 +214,23 @@ const addWaiting = async (req, res) => {
     }
 
     try {
+        const waitingExists = await WaitinglistModel.findOne({ email })
+
+
+        if (waitingExists) {
+            const newData = { name, archived: false, repeat: true }
+            const updatedWaiting = await WaitinglistModel.findByIdAndUpdate(waitingExists._id, newData, { new: true })
+            if (!updatedWaiting) {
+                return res.status(500).json({ success: false, message: "Server error" });
+            }
+
+            return res.status(200).json({
+                success: true,
+                message: "waiting added successfully",
+            });
+
+        }
+
         const newWaiting = await WaitinglistModel.create({
             name, email
         })

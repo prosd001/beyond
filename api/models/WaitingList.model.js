@@ -13,6 +13,10 @@ const waitingListSchema = new mongoose.Schema(
         archived: {
             type: Boolean,
             default: false
+        },
+        repeat: {
+            type: Boolean,
+            default: false
         }
     },
     {

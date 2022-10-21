@@ -42,9 +42,9 @@ const App = () => {
               <Route path="/upload-pdf" element={<UploadPdf />} />
               <Route path="/upload-image" element={<UploadImage />} />
               <Route path="/upload-video" element={<UploadVideo />} />
-              <Route path="/articales" element={<Articales />} />
-              <Route path="/create-articale" element={<CreateArticale />} />
-              <Route path="/edit-articale/:slug" element={<EditArticale />} />
+              <Route path="/articles" element={<Articales />} />
+              <Route path="/create-article" element={<CreateArticale />} />
+              <Route path="/edit-article/:slug" element={<EditArticale />} />
               <Route path="/showcase" element={<Showcase />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/waiting-list" element={<WaitingList />} />
