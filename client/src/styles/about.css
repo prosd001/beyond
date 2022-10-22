@@ -100,3 +100,9 @@
     background-position: 62%;
   }
 }
+
+@media only screen and (min-width: 2800px) {
+  .h_control_about {
+    height: 1250px;
+  }
+}

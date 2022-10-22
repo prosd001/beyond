@@ -61,7 +61,7 @@ const About = () => {
   return (
     <>
       <section className="">
-        <div className="relative w-full   bg__about 2xl:h-[1000px] xl:h-[800px] h-[600px] mx-auto">
+        <div className="relative w-full   bg__about 2xl:h-[1000px] xl:h-[800px] h-[600px] mx-auto h_control_about">
           <div className="xl:max-w-[2000px] relative w-full h-full mx-auto">
             {/* <img
             src={aboutBanner}

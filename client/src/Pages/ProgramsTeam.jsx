@@ -35,7 +35,7 @@ const ProgramsTeam = () => {
   return (
     <>
       <section className="">
-        <div className=" w-full relative mx-auto bg__programs_business 2xl:h-[1000px] xl:h-[800px] h-[600px]">
+        <div className=" w-full relative mx-auto bg__programs_business 2xl:h-[1000px] xl:h-[800px] h-[600px] h_control_about">
           <div className="xl:max-w-[2000px] relative w-full h-full mx-auto">
             <div
               className="absolute 2xl:top-[38%] xl:top-[38%] top-[30%] md:left-[15%] 2xl:left-[26%] xl:left-[17%] text-center font-bold"

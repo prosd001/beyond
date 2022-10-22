@@ -8,6 +8,7 @@ import Footer from "../Components/Footer";
 import { useRecoilValue } from "recoil";
 import { localizationState } from "../atoms/localizationAtom";
 import WaitingList from "../Components/WaitingList";
+import "../styles/about.css";
 
 const Articales = () => {
   const [loading, setLoading] = useState(true);
@@ -150,7 +151,7 @@ const Articales = () => {
         {!loading && (
           <>
             {!showcase.popular && (
-              <div className="relative w-full why-trees-bg 2xl:h-[1000px] xl:h-[800px] h-[600px] mx-auto">
+              <div className="relative w-full why-trees-bg 2xl:h-[1000px] xl:h-[800px] h-[600px] mx-auto h_control_about">
                 <div className="xl:max-w-[2000px] relative w-full h-full mx-auto">
                   {!lang && (
                     <p
