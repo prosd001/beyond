@@ -26,15 +26,15 @@ const SliderHome = () => {
   return lang ? (
     <div className="slider__home">
       <Slider {...sliderHomeSettings}>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg2 relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg3 relative w-full xl:h-[950px] h-[700px]"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg relative w-full xl:h-[950px] h-[700px] h_control"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg2 relative w-full xl:h-[950px] h-[700px] h_control"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg3 relative w-full xl:h-[950px] h-[700px] h_control"></div>
         {/* <div className=" bg-no-repeat xl:bg-cover home__sbg4 relative w-full xl:h-[950px] h-[700px]"></div> */}
       </Slider>
 
-      <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px]">
+      <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px] h_control">
         <div
-          className="max-w-[1000px] mx-auto text-center xl:mt-[250px] mt-[150px]"
+          className="max-w-[1000px] mx-auto text-center xl:mt-[250px] mt-[150px] h_control_text"
           data-aos="fade-up"
         >
           <h2 className="capitalize xl:text-[64px] text-[44px] font-bold">
@@ -81,15 +81,15 @@ const SliderHome = () => {
   ) : (
     <div className="slider__home">
       <Slider {...sliderHomeSettings}>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg2 relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg3 relative w-full xl:h-[950px] h-[700px]"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg relative w-full xl:h-[950px] h-[700px] h_control"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg2 relative w-full xl:h-[950px] h-[700px] h_control"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg3 relative w-full xl:h-[950px] h-[700px] h_control"></div>
         {/* <div className=" bg-no-repeat xl:bg-cover home__sbg4 relative w-full xl:h-[950px] h-[700px]"></div> */}
       </Slider>
 
-      <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px]">
+      <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px] h_control">
         <div
-          className="max-w-[1000px] mx-auto text-center xl:mt-[250px] mt-[150px]"
+          className="max-w-[1000px] mx-auto text-center xl:mt-[250px] mt-[150px] h_control_text"
           data-aos="fade-up"
         >
           <h2 className="capitalize xl:text-[64px] text-[44px] font-bold">

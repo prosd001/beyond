@@ -276,6 +276,22 @@
   }
 }
 
+@media only screen and (min-width: 2800px) {
+  .h_control {
+    height: 1250px;
+  }
+  .h_control_text {
+    margin-top: 400px;
+  }
+  .button__bar {
+    bottom: 30%;
+  }
+
+  .button__bar2 {
+    bottom: 30%;
+  }
+}
+
 @media only screen and (min-width: 500px) and (max-width: 850px) {
   .button__bar {
     width: 100%;

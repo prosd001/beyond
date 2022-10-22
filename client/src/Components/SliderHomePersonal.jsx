@@ -26,15 +26,15 @@ const SliderHomePersonal = () => {
   return lang ? (
     <div className="slider__home">
       <Slider {...sliderHomeSettings}>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg_p relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg2_p relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg3_p relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg4_p relative w-full xl:h-[950px] h-[700px]"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg_p relative w-full xl:h-[950px] h-[700px] h_control"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg2_p relative w-full xl:h-[950px] h-[700px] h_control"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg3_p relative w-full xl:h-[950px] h-[700px] h_control"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg4_p relative w-full xl:h-[950px] h-[700px] h_control"></div>
       </Slider>
 
-      <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px]">
+      <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px] h_control">
         <div
-          className="max-w-[1000px] mx-auto text-center xl:mt-[250px] mt-[150px]"
+          className="max-w-[1000px] mx-auto text-center xl:mt-[250px] mt-[150px] h_control_text"
           data-aos="zoom-in"
         >
           <h2 className="capitalize xl:text-[64px] text-[44px] font-bold">
@@ -73,7 +73,7 @@ const SliderHomePersonal = () => {
         <div className="h-[100px] xl:h-0"></div>
         <img
           src={smoke}
-          className="w-full object-cover mt-4 absolute -bottom-1 xl:-bottom-[14px] h-[130px] xl:h-auto "
+          className="w-full object-cover mt-4 absolute -bottom-1 xl:-bottom-[16px] h-[130px] xl:h-auto "
           alt=""
         />
       </div>
@@ -81,15 +81,15 @@ const SliderHomePersonal = () => {
   ) : (
     <div className="slider__home">
       <Slider {...sliderHomeSettings}>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg_p relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg2_p relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg3_p relative w-full xl:h-[950px] h-[700px]"></div>
-        <div className=" bg-no-repeat xl:bg-cover home__sbg4_p relative w-full xl:h-[950px] h-[700px]"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg_p relative w-full xl:h-[950px] h-[700px] h_control"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg2_p relative w-full xl:h-[950px] h-[700px] h_control"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg3_p relative w-full xl:h-[950px] h-[700px] h_control"></div>
+        <div className=" bg-no-repeat xl:bg-cover home__sbg4_p relative w-full xl:h-[950px] h-[700px] h_control"></div>
       </Slider>
 
-      <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px]">
+      <div className="absolute top-0 text-white w-screen xl:h-[950px] h-[700px] h_control">
         <div
-          className="max-w-[1000px] mx-auto text-center xl:mt-[250px] mt-[150px]"
+          className="max-w-[1000px] mx-auto text-center xl:mt-[250px] mt-[150px] h_control_text"
           data-aos="zoom-in"
         >
           <h2 className="capitalize xl:text-[64px] text-[44px] font-bold">
@@ -127,7 +127,7 @@ const SliderHomePersonal = () => {
         <div className="h-[100px] xl:h-0"></div>
         <img
           src={smoke}
-          className="w-full object-cover mt-4 absolute -bottom-1 xl:-bottom-[14px] h-[130px] xl:h-auto "
+          className="w-full object-cover mt-4 absolute -bottom-1 xl:-bottom-[16px] h-[130px] xl:h-auto "
           alt=""
         />
       </div>
